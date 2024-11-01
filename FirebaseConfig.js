@@ -20,18 +20,4 @@ const FIREBASE_AUTH = initializeAuth(FIREBASE_APP,
   {persistence: getReactNativePersistence(AsyncStorage),});
 const FIREBASE_DB = getFirestore(FIREBASE_APP);
 
-// Function to add a new user document to Firestore
-async function addUser(userId, firstName, lastName, username) {
-  try {
-    await setDoc(doc(FIREBASE_DB, "Users", userId), {
-      FirstName: firstName,
-      LastName: lastName,
-      Username: username
-    });
-    console.log("User added!");
-  } catch (error) {
-    console.error("Error adding user: ", error);
-  }
-}
-
-export {FIREBASE_AUTH, FIREBASE_DB, addUser};
+export {FIREBASE_AUTH, FIREBASE_DB};
