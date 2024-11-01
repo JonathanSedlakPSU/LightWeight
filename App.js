@@ -1,11 +1,10 @@
 // Import React libraries / functions
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// Import Firbase Configuration
+// Import Firebase Configuration
 import { FIREBASE_AUTH, FIREBASE_DB } from './FirebaseConfig';
 
 // Import Screens
