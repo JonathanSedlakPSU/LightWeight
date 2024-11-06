@@ -1,6 +1,6 @@
 // Import React libraries / functions
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -10,7 +10,7 @@ import { FIREBASE_AUTH, FIREBASE_DB } from './FirebaseConfig';
 // Import Screens
 import LoginScreen from './Screens/LoginScreen';
 import HomeScreen from './Screens/HomeScreen';
-import WorkoutScreen from './Screens/WorkoutScreen';
+import WorkoutsPage from './Screens/WorkoutScreen';
 import ActivityScreen from './Screens/ActivityScreen';
 
 ///////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@ export default function App() {
     <View style={styles.container}>
     <NavigationContainer>
     <Tab.Navigator initialRouteName="Home">
-          <Tab.Screen name="Workout" component={WorkoutScreen} />
+          <Tab.Screen name="Workout" component={WorkoutsPage} />
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Activity" component={ActivityScreen} />
         </Tab.Navigator>
