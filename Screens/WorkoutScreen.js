@@ -1,12 +1,12 @@
 import * as React from "react";
-import {StyleSheet, View, Text, Image} from "react-native";
+import {StyleSheet, View, Text, Image, ScrollView} from "react-native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const WorkoutsPage = () => {
   	
   	return (
     		<View style={styles.workoutsPage}>
-      			<View style={styles.upperBodyParent}>
+      			<View style={[styles.upperBodyParent, styles.scaledContent]}>
         				<View style={styles.upperBody}>
           					<View style={[styles.push, styles.pushLayout]}>
             						<View style={styles.pushChild} />
@@ -34,7 +34,7 @@ const WorkoutsPage = () => {
             						<View style={[styles.coreChild, styles.childPosition]} />
             						<View style={[styles.profileLevel3, styles.pushLayout]}>
               							<Image style={[styles.coreIcon, styles.iconPosition]} resizeMode="cover" source={require('./Assets/WorkoutScreen/Core.png')} />
-              							<Text style={[styles.core1, styles.bodyTypo]}>Core</Text>
+              							<Text style={[styles.push1, styles.bodyTypo]}>Core</Text>
             						</View>
           					</View>
           					<View style={[styles.legs, styles.corePosition]}>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     		fontWeight: "700",
     		lineHeight: 30,
     		letterSpacing: 0,
-    		fontSize: FontSize.size_5xl,
+    		fontSize: FontSize.size_xl,
     		top: 0
   	},
   	iconLayout: {
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   	},
   	ubLayout1: {
     		width: 352,
-    		position: "absolute"
+    		position: "relative"
   	},
   	corePosition: {
     		top: 75,
@@ -131,16 +131,16 @@ const styles = StyleSheet.create({
     		borderColor: Color.colorRed,
     		borderStyle: "solid",
     		top: 0,
-    		position: "absolute"
+    		position: "relative"
   	},
   	iconPosition: {
     		top: 56,
-    		position: "absolute"
+    		position: "relative"
   	},
   	ub1Position: {
     		width: 358,
     		left: 0,
-    		position: "absolute"
+    		position: "relative"
   	},
   	pushChild: {
     		left: 63,
@@ -150,13 +150,14 @@ const styles = StyleSheet.create({
     		borderColor: Color.colorRed,
     		borderStyle: "solid",
     		top: 0,
-    		position: "absolute"
+    		position: "relative"
   	},
   	push1: {
     		height: 145,
     		left: 0,
     		width: 298,
-    		position: "absolute"
+    		position: "absolute",
+			
   	},
   	pushIcon: {
     		left: 75,
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
     		top: 8
   	},
   	push: {
-    		left: -45,
+    		left: -55,
     		height: 153,
     		top: 73,
     		width: 298
@@ -176,7 +177,7 @@ const styles = StyleSheet.create({
     		left: 76
   	},
   	pull: {
-    		left: 128,
+    		left: 125,
     		height: 153,
     		top: 73,
     		width: 298
@@ -225,12 +226,6 @@ const styles = StyleSheet.create({
     		width: 139,
     		height: 74
   	},
-  	core1: {
-    		height: 113,
-    		left: 0,
-    		width: 298,
-    		position: "absolute"
-  	},
   	profileLevel3: {
     		height: 130,
     		left: 0,
@@ -246,7 +241,7 @@ const styles = StyleSheet.create({
     		height: 75
   	},
   	legs: {
-    		left: -47,
+    		left: -55,
     		height: 153
   	},
   	ubItem: {
@@ -306,22 +301,26 @@ const styles = StyleSheet.create({
     		height: 153
   	},
   	upperBodyParent: {
-    		left: -38,
+    		left: 0,
     		alignItems: "center",
     		justifyContent: "center",
     		paddingHorizontal: 10,
     		paddingVertical: 30,
     		gap: 19,
     		top: 0,
-    		position: "absolute"
+    		position: "relative"
   	},
   	workoutsPage: {
     		backgroundColor: "#1c0101",
     		flex: 1,
-    		width: "100%",
     		height: 880,
-    		overflow: "hidden"
-  	}
+    		overflow: "visible",
+			alignItems: "center",
+  	},
+	
+	 scaledContent: {
+    		transform: [{ scale: 0.9 }],  // Adjust scale factor as needed
+  	},
 });
 
 export default WorkoutsPage;

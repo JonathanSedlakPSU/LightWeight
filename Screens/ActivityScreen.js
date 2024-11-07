@@ -6,24 +6,21 @@ const ActivityPage = () => {
   	
   	return (
     		<View style={styles.activityPage}>
-      			<View style={styles.goalsParent}>
+      			<View style={[styles.goalsParent,styles.scaledContent]}>
         				<View style={[styles.goals, styles.goalsLayout]}>
           					<View style={styles.goalsChild} />
           					<Image style={styles.image1Icon} resizeMode="cover" source={require('./Assets/ActivityScreen/Goal.png')} />
-          					<Text style={[styles.goals1, styles.goals1Layout]}>Goals</Text>
+          					<Text style={[styles.goals1, styles.goals1Layout, styles.scaledContent]}>Goals</Text>
         				</View>
         				<View style={styles.goalsLayout}>
           					<View style={styles.goalsChild} />
           					<View style={styles.logCalories1}>
-            						<View style={[styles.plus, styles.plusLayout]}>
+            						<View style={[styles.plus, styles.plusLayout, ]}>
               							<Image style={[styles.circleIcon, styles.plusLayout]} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
-              							<View style={styles.plus1}>
-                								<View style={[styles.plusChild, styles.plusBg]} />
-                								<View style={[styles.plusItem, styles.plusBg]} />
-              							</View>
+              							
             						</View>
-            						<Text style={[styles.logCalories2, styles.calTypo]}>Log Calories</Text>
-            						<Text style={[styles.cal, styles.calTypo]}>1,525 cal</Text>
+            						<Text style={[styles.logCalories2, styles.calTypo, styles.scaledContent1]}>Log Calories</Text>
+            						<Text style={[styles.cal, styles.calTypo, styles.scaledContent1]}>1,525 cal</Text>
           					</View>
         				</View>
         				<View style={styles.activityLevels}>
@@ -79,7 +76,7 @@ const styles = StyleSheet.create({
     		color: Color.colorWhite,
     		fontFamily: FontFamily.interBold,
     		fontWeight: "700",
-    		lineHeight: 30,
+    		lineHeight: 0,
     		letterSpacing: 0
   	},
   	outterLayerPosition: {
@@ -132,7 +129,7 @@ const styles = StyleSheet.create({
     		color: Color.colorWhite,
     		fontFamily: FontFamily.interBold,
     		fontWeight: "700",
-    		lineHeight: 30,
+    		lineHeight: 33,
     		letterSpacing: 0,
     		height: 33
   	},
@@ -170,8 +167,8 @@ const styles = StyleSheet.create({
     		left: 166
   	},
   	logCalories2: {
-    		width: 172,
-    		height: 33,
+    		width: 182,
+    		height: 40,
     		position: "absolute",
     		left: 0,
     		top: 0
@@ -179,8 +176,8 @@ const styles = StyleSheet.create({
   	cal: {
     		top: 36,
     		left: 29,
-    		width: 113,
-    		height: 26,
+    		width: 133,
+    		height: 35,
     		position: "absolute"
   	},
   	logCalories1: {
@@ -312,7 +309,13 @@ const styles = StyleSheet.create({
     		width: "100%",
     		height: 932,
     		overflow: "hidden"
-  	}
+  	},
+     scaledContent: {
+      transform: [{ scale: 0.9 }],  // Adjust scale factor as needed
+ },
+ scaledContent1: {
+      transform: [{ scale: 0.8 }],  // Adjust scale factor as needed
+ },
 });
 
 export default ActivityPage;

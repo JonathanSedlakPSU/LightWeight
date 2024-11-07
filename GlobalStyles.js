@@ -8,7 +8,7 @@ export const FontFamily = {
 export const FontSize = {
    size_sm: 14,
    size_lg: 18,
-   size_xl: 20,
+   size_xl: 21,
    size_5xl: 24,
    };
 /* Colors */
@@ -16,7 +16,10 @@ export const Color = {
    colorWhite: "#fff",
    colorRed: "#ff0000",
    colorBlack: "#000",
-   orange: "#ff3d00"
+   colorLimegreen: "#09c312",
+   orange: "#ff3d00",
+   colorDarkgray: "#a3a3a3",
+   colorGainsboro: "#d9d9d9",
 };
 /* Gaps */
 export const Gap = {
@@ -26,5 +29,6 @@ export const Gap = {
 export const Border = {
    br_3xs: 10,
    br_mini: 15,
+   br_xl: 20,
    br_6xl: 25,
 };

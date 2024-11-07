@@ -8,10 +8,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FIREBASE_AUTH, FIREBASE_DB } from './FirebaseConfig';
 
 // Import Screens
-import LoginScreen from './Screens/LoginScreen';
+import LoginPage from './Screens/LoginScreen';
+import SignUpPage from './Screens/SignUpPage';
 import HomePage from './Screens/HomeScreen';
 import WorkoutsPage from './Screens/WorkoutScreen';
 import ActivityPage from './Screens/ActivityScreen';
+
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -27,6 +29,8 @@ export default function App() {
           <Tab.Screen name="Workout" component={WorkoutsPage} />
           <Tab.Screen name="Home" component={HomePage} />
           <Tab.Screen name="Activity" component={ActivityPage} />
+          <Tab.Screen name="Login" component={LoginPage} />
+          <Tab.Screen name="SignUp" component={SignUpPage} />
         </Tab.Navigator>
     </NavigationContainer>
     </View>
@@ -39,6 +43,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingBottom: 20, // Space for the rounded tab bar
-    backgroundColor: '#f8f8f8', // Background color outside the tab bar
+    backgroundColor: '#1c0101', // Background color outside the tab bar
   },
 });

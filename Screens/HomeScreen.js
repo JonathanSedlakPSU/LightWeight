@@ -1,12 +1,12 @@
 import * as React from "react";
-import {Image, StyleSheet, Text, View} from "react-native";
+import {Image, StyleSheet, Text, View, ScrollView} from "react-native";
 import { Color, FontFamily, FontSize, Border, Gap } from "../GlobalStyles";
 
 const HomePage = () => {
   	
   	return (
     		<View style={styles.homePage}>
-      			<View style={styles.profileLevelParent}>
+      			<View style={[styles.profileLevelParent, styles.scaledContent]}>
         				<View style={styles.profileLevel}>
           					<View style={[styles.ellipseParent, styles.groupChildLayout]}>
             						<Image style={[styles.groupChild, styles.groupPosition]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
@@ -39,8 +39,8 @@ const HomePage = () => {
             						<View style={[styles.stats1, styles.statsPosition]}>
               							<View style={styles.strength}>
                 								<View style={[styles.ellipseGroup, styles.groupLayout]}>
-                  									<Image style={[styles.groupItem, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
-                  									<Text style={[styles.text3, styles.textTypo]}>3</Text>
+                  									<Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                  									<Text style={[styles.ellipsenumber, styles.textTypo]}>3</Text>
                 								</View>
                 								<View style={[styles.strength1, styles.groupPosition]}>
                   									<Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/Strength.png')} />
@@ -49,8 +49,8 @@ const HomePage = () => {
                             </View>
                             <View style={styles.strength}>
                                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                                    <Image style={[styles.groupItem, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
-                                    <Text style={[styles.text3, styles.textTypo]}>2</Text>
+                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
                                 </View>
                                 <View style={[styles.strength1, styles.groupPosition]}>
                                     <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/Speed.png')} />
@@ -59,8 +59,8 @@ const HomePage = () => {
                             </View>
                             <View style={styles.strength}>
                                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                                    <Image style={[styles.groupItem, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
-                                    <Text style={[styles.text3, styles.textTypo]}>1</Text>
+                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Text style={[styles.ellipsenumber, styles.textTypo]}>1</Text>
                                 </View>
                                 <View style={[styles.strength1, styles.groupPosition]}>
                                     <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/Stamina.png')} />
@@ -70,8 +70,8 @@ const HomePage = () => {
                             </View>
                             <View style={styles.strength}>
                                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                                    <Image style={[styles.groupItem, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
-                                    <Text style={[styles.text3, styles.textTypo]}>6</Text>
+                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Text style={[styles.ellipsenumber, styles.textTypo]}>6</Text>
                                 </View>
                                 <View style={[styles.strength1, styles.groupPosition]}>
                                     <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/UpperBody.png')} />
@@ -81,8 +81,8 @@ const HomePage = () => {
                             </View>
                             <View style={styles.strength}>
                                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                                    <Image style={[styles.groupItem, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
-                                    <Text style={[styles.text3, styles.textTypo]}>2</Text>
+                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
                                 </View>
                                 <View style={[styles.strength1, styles.groupPosition]}>
                                     <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/LowerBody.png')} />
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     textTypo: {
         textAlign: "center",
         color: Color.colorWhite,
-        lineHeight: 23,
+        lineHeight: 29,
         letterSpacing: 0,
         fontFamily: FontFamily.interBold,
         fontWeight: "700",
@@ -158,16 +158,16 @@ const styles = StyleSheet.create({
         width: 50
     },
     groupChild: {
-        height: 85,
-        width: 82,
-        top: 0
+        height: 65,
+        width: 65,
+        top: 5
     },
     text: {
-        top: 34,
-        left: 26,
-        fontSize: 48,
+        top: 25,
+        left: 18,
+        fontSize: 30,
         width: 30,
-        height: 18
+        height: 30
     },
     ellipseParent: {
         top: 45,
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     level: {
         top: 70,
         left: 146,
-        fontSize: 32,
+        fontSize: 22,
         width: 92,
         height: 44,
         position: "absolute"
@@ -222,11 +222,11 @@ const styles = StyleSheet.create({
     },
     calories2: {
         top: 66,
-        height: 27,
+        height: 33,
         marginLeft: -86,
         width: 172,
         lineHeight: 30,
-        fontSize: FontSize.size_5xl,
+        fontSize: 20,
         textAlign: "center",
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
         height: 35,
         lineHeight: 30,
         width: 162,
-        fontSize: FontSize.size_5xl,
+        fontSize: 20,
         textAlign: "center",
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
@@ -309,17 +309,17 @@ const styles = StyleSheet.create({
         top: 0,
         position: "absolute"
     },
-    groupItem: {
-        left: 0,
+    ellipse: {
+        left: 10,
         position: "absolute",
         top: 0
     },
-    text3: {
-        top: 16,
-        left: 9,
+    ellipsenumber: {
+        top: 9,
+        left: 20,
         fontSize: FontSize.size_lg,
         width: 32,
-        height: 19
+        height: 30
     },
     ellipseGroup: {
         left: 153,
@@ -328,7 +328,7 @@ const styles = StyleSheet.create({
     },
     strength2: {
         fontSize: FontSize.size_sm,
-        width: 81,
+        width: 100,
         height: 32
     },
     strength1: {
@@ -366,15 +366,19 @@ const styles = StyleSheet.create({
         width: 411,
         left: "50%",
         top: 0,
-        position: "absolute"
+        position: "relative"
     },
     homePage: {
         backgroundColor: "#1c0101",
         flex: 1,
         width: "100%",
         height: 880,
-        overflow: "hidden"
-    }
+        overflow: "visible"
+    },
+    scaledContent: {
+    		transform: [{ scale: 0.9 }],  // Adjust scale factor as needed
+  	},
+    
 });
 
 export default HomePage;
