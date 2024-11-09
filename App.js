@@ -13,6 +13,10 @@ import SignUpPage from './Screens/SignUpPage';
 import HomePage from './Screens/HomeScreen';
 import WorkoutsPage from './Screens/WorkoutScreen';
 import ActivityPage from './Screens/ActivityScreen';
+// Pop-Ups
+import GoalsPopUp from './Screens/GoalsPop-Up';
+import DailyQuestPopup from './Screens/DailyQuestPop-Up';
+import LogCaloriesPopUp from './Screens/LogCaloriesPop-Up';
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -26,11 +30,12 @@ export default function App() {
     <View style={styles.container}>
     <NavigationContainer>
     <Tab.Navigator initialRouteName="Home">
-          <Tab.Screen name="Workout" component={WorkoutsPage} />
+          <Tab.Screen name="Workouts" component={WorkoutsPage} />
           <Tab.Screen name="Home" component={HomePage} />
           <Tab.Screen name="Activity" component={ActivityPage} />
           <Tab.Screen name="Login" component={LoginPage} />
           <Tab.Screen name="SignUp" component={SignUpPage} />
+          <Tab.Screen name="goals" component={GoalsPopUp} />
         </Tab.Navigator>
     </NavigationContainer>
     </View>

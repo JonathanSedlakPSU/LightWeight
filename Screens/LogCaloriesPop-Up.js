@@ -8,7 +8,6 @@ const LogCaloriesPopUp = () => {
     		<View style={styles.logCaloriesPopUp}>
       			<View style={styles.caloriePopup} />
       			<View style={[styles.vectorParent, styles.groupPosition]}>
-        				<Image style={[styles.groupChild, styles.groupChildPosition]} resizeMode="cover" source="Rectangle 36.png" />
         				<View style={styles.breakfastParent}>
           					<Text style={[styles.breakfast, styles.calTypo]}>{`Breakfast
 `}</Text>
@@ -23,7 +22,6 @@ const LogCaloriesPopUp = () => {
                 </View>
             </View>
             <View style={[styles.vectorGroup, styles.groupPosition]}>
-                <Image style={[styles.groupChild, styles.groupChildPosition]} resizeMode="cover" source="Rectangle 36.png" />
                 <View style={styles.breakfastParent}>
                     <Text style={[styles.breakfast, styles.calTypo]}>Lunch</Text>
                     <View style={styles.plus}>
@@ -37,7 +35,6 @@ const LogCaloriesPopUp = () => {
                 </View>
             </View>
             <View style={[styles.vectorContainer, styles.groupPosition]}>
-                <Image style={[styles.groupChild, styles.groupChildPosition]} resizeMode="cover" source="Rectangle 36.png" />
                 <View style={styles.breakfastParent}>
           					<Text style={[styles.breakfast, styles.calTypo]}>{`Dinner
           					`}</Text>
@@ -52,7 +49,6 @@ const LogCaloriesPopUp = () => {
                 </View>
             </View>
             <View style={[styles.groupView, styles.groupPosition]}>
-                <Image style={[styles.groupChild, styles.groupChildPosition]} resizeMode="cover" source="Rectangle 36.png" />
                 <View style={styles.breakfastParent}>
           					<Text style={[styles.breakfast, styles.calTypo]}>{`Snacks
           					`}</Text>

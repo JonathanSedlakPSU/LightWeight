@@ -243,7 +243,8 @@ const styles = StyleSheet.create({
   	dailyQuestPopup: {
     		flex: 1,
     		height: 504,
-    		width: "100%"
+    		width: "100%",
+			transform: [{ scale: 0.7 }]
   	}
 });
 

@@ -20,13 +20,9 @@ const GoalsPopUp = () => {
       			<View style={[styles.bodyweight, styles.bodyweightLayout]}>
         				<View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
         				<Text style={[styles.bodyWeightLbs, styles.bodyWeightLbsTypo]}>Body Weight (lbs)</Text>
-        				<Text style={[styles.goal165Lbs, styles.lbsTypo]}>{`Goal:
-165 lbs
-`}</Text>
-        				<Text style={[styles.current198Lbs, styles.lbsTypo]}>{`Current:
-        				198 lbs`}</Text>
-        				<Text style={[styles.starting200Lbs, styles.lbsTypo]}>{`Starting:
-        				200 lbs`}</Text>
+        				<Text style={[styles.goal165Lbs, styles.lbsTypo]}>{`Goal: 165 lbs`}</Text>
+        				<Text style={[styles.current198Lbs, styles.lbsTypo]}>{`Current: 198 lbs`}</Text>
+        				<Text style={[styles.starting200Lbs, styles.lbsTypo]}>{`Starting: 200 lbs`}</Text>
             </View>
             <View style={[styles.weeklyworkouts, styles.bodyweightLayout]}>
                 <View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
@@ -80,9 +76,9 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         lineHeight: 30,
         letterSpacing: 0,
-        fontSize: FontSize.size_5xl,
+        fontSize: '20px',
         left: "50%",
-        position: "absolute"
+        position: "relative"
     },
     lbsTypo: {
         height: 42,
@@ -91,9 +87,9 @@ const styles = StyleSheet.create({
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
         fontWeight: "700",
-        lineHeight: 30,
+        lineHeight: 35,
         letterSpacing: 0,
-        fontSize: FontSize.size_5xl,
+        fontSize: '15px',
         position: "absolute"
     },
     goal5DaysTypo: {
@@ -173,7 +169,7 @@ const styles = StyleSheet.create({
         borderRadius: Border.br_xl
     },
     bodyWeightLbs: {
-        marginLeft: -108.5,
+        marginLeft: -110.5,
         width: 217
     },
     goal165Lbs: {
@@ -202,7 +198,7 @@ const styles = StyleSheet.create({
     },
     weeklyWorkoutsDays: {
         marginLeft: -144.5,
-        width: 289
+        width: 310
     },
     goal5Days: {
         width: 92
@@ -223,8 +219,10 @@ const styles = StyleSheet.create({
     goalsPopup: {
         flex: 1,
         height: 706,
-        width: "100%"
-    }
+        width: "100%",
+        transform: [{ scale: 0.8 }]
+    },
+    
 });
 
 export default GoalsPopUp;
