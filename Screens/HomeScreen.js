@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     groupChild: {
         height: 65,
         width: 65,
-        top: 5
+        top: 5,
     },
     text: {
         top: 25,
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     caloriesBurnedChild: {
         width: 168,
         borderWidth: 4,
-        borderColor: Color.colorRed,
+        borderColor: Color.theme1,
         borderStyle: "solid",
         borderRadius: Border.br_3xs,
         left: 4,
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
     },
     dailyQuestsChild: {
         borderWidth: 4,
-        borderColor: Color.colorRed,
+        borderColor: Color.theme1,
         borderStyle: "solid",
         height: 124,
         borderRadius: Border.br_3xs,

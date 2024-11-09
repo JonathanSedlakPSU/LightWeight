@@ -1,91 +1,102 @@
 import * as React from "react";
-import {StyleSheet, View, Image, Text} from "react-native";
+import {StyleSheet, View, Text, Image} from "react-native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const LogCaloriesPopUp = () => {
   	
   	return (
-    		<View style={styles.logCaloriesPopUp}>
-      			<View style={styles.caloriePopup} />
-      			<View style={[styles.vectorParent, styles.groupPosition]}>
-        				<View style={styles.breakfastParent}>
-          					<Text style={[styles.breakfast, styles.calTypo]}>{`Breakfast
-`}</Text>
-                    <View style={styles.plus}>
-                        <Image style={styles.groupChildPosition} resizeMode="cover" source="Circle.png" />
-                        <View style={styles.plus1}>
-                            <View style={styles.plusChild} />
-                            <View style={styles.plusChildPosition} />
-                        </View>
-                    </View>
-                    <Text style={[styles.cal, styles.calTypo]}>240 cal</Text>
+    		<View style={styles.LogCaloriesPopUp}>
+      			<View style={styles.goalManager}/>
+      			<View style={[styles.boxPosition1, styles.boxPositionLayout]}>
+        			<View style={[styles.colorbackground, styles.boxPositionLayout]} />
+        				<Text style={[styles.title]}>Breakfast</Text>
+        				<Text style={[styles.cal]}>{`240 cal`}</Text>
+                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
-            </View>
-            <View style={[styles.vectorGroup, styles.groupPosition]}>
-                <View style={styles.breakfastParent}>
-                    <Text style={[styles.breakfast, styles.calTypo]}>Lunch</Text>
-                    <View style={styles.plus}>
-                        <Image style={styles.groupChildPosition} resizeMode="cover" source="Circle.png" />
-                        <View style={styles.plus1}>
-                            <View style={styles.plusChild} />
-                            <View style={styles.plusChildPosition} />
-                        </View>
-                    </View>
-                    <Text style={[styles.cal, styles.calTypo]}>605</Text>
+                <View style={[styles.boxPosition2, styles.boxPositionLayout]}>
+                    <View style={[styles.colorbackground, styles.boxPositionLayout]} />
+                        <Text style={[styles.title]}>Lunch</Text>
+                        <Text style={[styles.cal]}>{`300 cal`}</Text>
+                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+
                 </View>
-            </View>
-            <View style={[styles.vectorContainer, styles.groupPosition]}>
-                <View style={styles.breakfastParent}>
-          					<Text style={[styles.breakfast, styles.calTypo]}>{`Dinner
-          					`}</Text>
-                    <View style={styles.plus}>
-                        <Image style={styles.groupChildPosition} resizeMode="cover" source="Circle.png" />
-                        <View style={styles.plus1}>
-                            <View style={styles.plusChild} />
-                            <View style={styles.plusChildPosition} />
-                        </View>
-                    </View>
-                    <Text style={[styles.cal, styles.calTypo]}>0 cal</Text>
+                <View style={[styles.boxPosition3, styles.boxPositionLayout]}>
+                    <View style={[styles.colorbackground, styles.boxPositionLayout]} />
+                        <Text style={[styles.title]}>Dinner</Text>
+        				<Text style={[styles.cal]}>{`0 cal`}</Text>
+                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+
                 </View>
-            </View>
-            <View style={[styles.groupView, styles.groupPosition]}>
-                <View style={styles.breakfastParent}>
-          					<Text style={[styles.breakfast, styles.calTypo]}>{`Snacks
-          					`}</Text>
-                    <View style={styles.plus}>
-                        <Image style={styles.groupChildPosition} resizeMode="cover" source="Circle.png" />
-                        <View style={styles.plus1}>
-                            <View style={styles.plusChild} />
-                            <View style={styles.plusChildPosition} />
-                        </View>
-                    </View>
-                    <Text style={[styles.cal, styles.calTypo]}>62 cal</Text>
+                <View style={[styles.boxPosition4, styles.boxPositionLayout]}>
+                    <View style={[styles.colorbackground, styles.boxPositionLayout]} />
+                        <Text style={[styles.title]}>Snacks</Text>
+        				<Text style={[styles.cal]}>{`0 cal`}</Text>
+                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+
                 </View>
-            </View>
         </View>);
 };
 
 const styles = StyleSheet.create({
-    groupPosition: {
-        left: "8.9%",
-        right: "8.9%",
-        width: "82.2%",
-        height: "17.88%",
-        position: "absolute"
-    },
-    groupChildPosition: {
-        maxHeight: "100%",
-        overflow: "hidden",
-        maxWidth: "100%",
+    dailyPosition: {
+        right: "0%",
         left: "0%",
         bottom: "0%",
-        right: "0%",
         top: "0%",
         height: "100%",
         position: "absolute",
         width: "100%"
     },
-    calTypo: {
+    questManagerPosition: {
+        width: 298,
+        left: "50%",
+        position: "absolute"
+    },
+    boxPositionLayout: {
+        height: 125,
+        width: 365,
+        position: "absolute"
+    },
+    title: {
+        height: 53,
+        top: 20,
+        textAlign: "center",
+        color: Color.colorWhite,
+        fontFamily: FontFamily.interBold,
+        fontWeight: "700",
+        lineHeight: 30,
+        letterSpacing: 0,
+        fontSize: '29px',
+        position: "relative",
+        left: "-5%",
+        width: 310,
+        //Stroke
+        textShadowColor: "#000", // Outline color
+        textShadowOffset: { width: 2, height: 2 }, // Controls outline width
+        textShadowRadius: 1,
+    },
+    cal: {
+        height: 40,
+        top: 5,
+        textAlign: "center",
+        color: Color.colorWhite,
+        fontFamily: FontFamily.interBold,
+        fontWeight: "700",
+        lineHeight: 45,
+        letterSpacing: 0,
+        fontSize: '20px',
+        position: "relative",
+        left: "-12%",
+        //Stroke
+        textShadowColor: "#000", // Outline color
+        textShadowOffset: { width: 2, height: 2 }, // Controls outline width
+        textShadowRadius: 1,
+
+    },
+    goal5DaysTypo: {
+        top: 64,
+        height: 42,
+        right: 0,
         textAlign: "center",
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
@@ -95,28 +106,28 @@ const styles = StyleSheet.create({
         fontSize: FontSize.size_5xl,
         position: "absolute"
     },
-    caloriePopup: {
-        borderRadius: 20,
+    dailyQuestsChild: {
+        backgroundColor: "#000",
         borderStyle: "solid",
         borderColor: Color.colorWhite,
         borderWidth: 5,
-        backgroundColor: Color.colorBlack,
-        bottom: "0%",
-        height: "100%",
-        left: "0%",
-        right: "0%",
-        top: "0%",
-        position: "absolute",
-        width: "100%"
+        borderRadius: Border.br_xl
     },
-    groupChild: {
-        borderRadius: Border.br_mini
+    bar: {
+        height: "3.71%",
+        marginLeft: -114.58,
+        top: "96.25%",
+        bottom: "0.04%",
+        backgroundColor: "#d9d9d9",
+        width: 229,
+        left: "50%",
+        borderRadius: Border.br_xl,
+        position: "absolute"
     },
-    breakfast: {
-        height: "53.7%",
-        width: "77.82%",
-        left: "0%",
-        top: "0%",
+    goals: {
+        width: 149,
+        height: 33,
+        textAlign: "center",
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
         fontWeight: "700",
@@ -124,87 +135,135 @@ const styles = StyleSheet.create({
         letterSpacing: 0,
         fontSize: FontSize.size_5xl
     },
-    plusChild: {
-        right: "37.59%",
-        left: "37.49%",
-        borderRadius: Border.br_3xs,
-        width: "24.92%",
-        backgroundColor: Color.colorBlack,
-        bottom: "0%",
+    questsHeader: {
+        height: "67.31%",
+        marginLeft: -149,
+        bottom: "32.69%",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingHorizontal: 20,
+        paddingVertical: 0,
+        borderRadius: Border.br_xl,
         top: "0%",
-        height: "100%",
-        position: "absolute"
+        width: 298
     },
-    plusChildPosition: {
-        transform: [
-            {
-                rotate: "-90deg"
-            }
-        ],
-        bottom: "-62.53%",
-        right: "75.08%",
-        top: "62.53%",
-        borderRadius: Border.br_3xs,
-        width: "24.92%",
-        backgroundColor: Color.colorBlack,
+    questManager: {
+        height: "10.31%",
+        marginLeft: -148.8,
+        top: "3.33%",
+        bottom: "86.36%"
+    },
+    goalManager: {
+        width: "99.9%",
+        right: "0.1%",
         left: "0%",
+        bottom: "0%",
         height: "100%",
-        position: "absolute"
+        top: "0%",
+        position: "absolute",
+        borderWidth: 5,
+        borderRadius: Border.br_xl,
+        backgroundColor: "#000",
     },
-    plus1: {
-        height: "74.25%",
-        width: "64.99%",
-        top: "13.33%",
-        right: "17.61%",
-        bottom: "12.42%",
-        left: "17.4%",
-        position: "absolute"
+    colorbackground: {
+        top: 0,
+        backgroundColor: Color.theme2,
+        alignItems: "center",
+        left: -5,
+        borderRadius: Border.br_xl,
     },
-    plus: {
-        height: "74.07%",
-        width: "19.72%",
-        top: "18.52%",
-        bottom: "7.41%",
-        left: "80.28%",
-        right: "0%",
-        position: "absolute"
+    current: {
+        marginLeft: -52.5,
+        width: 106,
+        height: 42,
+        top: 63,
+        left: "50%"
     },
-    cal: {
-        height: "37.04%",
-        width: "70.78%",
-        top: "62.96%",
-        left: "4.75%"
+    starting: {
+        width: 116,
+        height: 42,
+        top: 63,
+        left: 0
     },
-    breakfastParent: {
-        height: "58.06%",
-        width: "83.65%",
-        top: "17.2%",
-        right: "8.41%",
-        bottom: "24.73%",
-        left: "7.94%",
-        position: "absolute"
+    boxPosition1: {
+        top: 50,
+        left: 20,
+        width: 365
     },
-    vectorParent: {
-        top: "6.92%",
-        bottom: "75.19%"
+    boxPosition2Days: {
+        marginLeft: -144.5,
+        width: 310
     },
-    vectorGroup: {
-        top: "28.27%",
-        bottom: "53.85%"
+    goal5Days: {
+        width: 92
     },
-    vectorContainer: {
-        top: "49.62%",
-        bottom: "32.5%"
+    boxPosition2: {
+        top: 200,
+        left: 20,
+        width: 365
     },
-    groupView: {
-        top: "70.96%",
-        bottom: "11.15%"
+    goal2100Cal: {
+        width: 108
     },
-    logCaloriesPopUp: {
+    boxPosition3: {
+        top: 350,
+        left: 20,
+        width: 365
+    },
+    boxPosition4: {
+        top: 500,
+        left: 20,
+        width: 365
+    },
+    LogCaloriesPopUp: {
         flex: 1,
-        height: 520,
-        width: "100%"
+        height: 706,
+        width: "100%",
+        transform: [{ scale: 0.8 }]
+    },
+    number1: {
+        color: Color.colorWhite,
+        fontFamily: FontFamily.interBold,
+        lineHeight: 35,
+        fontSize: '17px',
+        position: "relative",
+        marginLeft: -52.5,
+        width: 106,
+        height: 42,
+        top: 40,
+        left: "25%"
+    },
+    number2: {
+        color: Color.colorWhite,
+        fontFamily: FontFamily.interBold,
+        lineHeight: 35,
+        fontSize: '17px',
+        position: "relative",
+        marginLeft: 70,
+        width: 106,
+        height: 42,
+        top: -3,
+        left: "25%"
+    },
+    number3: {
+        color: Color.colorWhite,
+        fontFamily: FontFamily.interBold,
+        lineHeight: 35,
+        fontSize: '17px',
+        position: "relative",
+        marginLeft: 210,
+        width: 106,
+        height: 42,
+        top: -45,
+        left: "20%"
+    },
+    image: {
+        top: -60,
+        position: "relative",
+        left: "70%",
     }
+    
 });
 
 export default LogCaloriesPopUp;

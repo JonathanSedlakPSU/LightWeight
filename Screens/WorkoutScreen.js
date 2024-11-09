@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     		left: 70,
     		height: 148,
     		width: 158,
-    		borderColor: Color.colorRed,
+    		borderColor: Color.theme1,
     		borderStyle: "solid",
     		top: 0,
     		position: "relative"
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     		height: 148,
     		width: 158,
     		borderWidth: 2,
-    		borderColor: Color.colorRed,
+    		borderColor: Color.theme1,
     		borderStyle: "solid",
     		top: 0,
     		position: "relative"
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     		width: 363,
     		height: 237,
     		borderWidth: 4,
-    		borderColor: Color.colorRed,
+    		borderColor: Color.theme1,
     		borderStyle: "solid"
   	},
   	coreChild: {

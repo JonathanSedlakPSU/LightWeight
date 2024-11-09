@@ -29,13 +29,15 @@ export default function App() {
   return (
     <View style={styles.container}>
     <NavigationContainer>
-    <Tab.Navigator initialRouteName="Home">
+      <Tab.Navigator initialRouteName="Home">
           <Tab.Screen name="Workouts" component={WorkoutsPage} />
           <Tab.Screen name="Home" component={HomePage} />
           <Tab.Screen name="Activity" component={ActivityPage} />
           <Tab.Screen name="Login" component={LoginPage} />
           <Tab.Screen name="SignUp" component={SignUpPage} />
           <Tab.Screen name="goals" component={GoalsPopUp} />
+          <Tab.Screen name="LC" component={LogCaloriesPopUp} />
+          <Tab.Screen name="DQ" component={DailyQuestPopup} />
         </Tab.Navigator>
     </NavigationContainer>
     </View>

@@ -101,12 +101,12 @@ const styles = StyleSheet.create({
   	},
   	rectanglesChildLayout: {
     		width: 21,
-    		backgroundColor: Color.orange,
+    		backgroundColor: Color.theme2,
     		position: "absolute"
   	},
   	goalsChild: {
     		borderRadius: Border.br_6xl,
-    		backgroundColor: Color.orange,
+    		backgroundColor: Color.theme2,
     		left: 0,
     		height: 123,
     		width: 240,
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   	},
   	outterLayer: {
     		borderStyle: "solid",
-    		borderColor: "#ff0000",
+    		borderColor: Color.theme1,
     		borderWidth: 4,
     		height: 298,
     		borderRadius: Border.br_3xs,

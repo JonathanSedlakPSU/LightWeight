@@ -8,7 +8,6 @@ const GoalsPopUp = () => {
     		<View style={styles.goalsPopup}>
       			<View style={styles.goalManager}>
         				<View style={styles.dailyPosition}>
-          					<View style={[styles.dailyQuestsChild, styles.dailyPosition]} />
           					<View style={[styles.questManager, styles.questManagerPosition]}>
             						<View style={styles.bar} />
             						<View style={[styles.questsHeader, styles.questManagerPosition]}>
@@ -18,31 +17,34 @@ const GoalsPopUp = () => {
         				</View>
       			</View>
       			<View style={[styles.bodyweight, styles.bodyweightLayout]}>
-        				<View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
-        				<Text style={[styles.bodyWeightLbs, styles.bodyWeightLbsTypo]}>Body Weight (lbs)</Text>
-        				<Text style={[styles.goal165Lbs, styles.lbsTypo]}>{`Goal: 165 lbs`}</Text>
-        				<Text style={[styles.current198Lbs, styles.lbsTypo]}>{`Current: 198 lbs`}</Text>
-        				<Text style={[styles.starting200Lbs, styles.lbsTypo]}>{`Starting: 200 lbs`}</Text>
-            </View>
-            <View style={[styles.weeklyworkouts, styles.bodyweightLayout]}>
-                <View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
-                <Text style={[styles.weeklyWorkoutsDays, styles.bodyWeightLbsTypo]}>Weekly Workouts (days)</Text>
-        				<Text style={[styles.goal5Days, styles.goal5DaysTypo]}>{`Goal:
-        				5 days`}</Text>
-        				<Text style={[styles.current198Lbs, styles.lbsTypo]}>{`Current:
-        				2 days`}</Text>
-        				<Text style={[styles.starting200Lbs, styles.lbsTypo]}>{`Starting:
-        				0 days`}</Text>
-            </View>
-            <View style={[styles.calories, styles.bodyweightLayout]}>
-                <View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
-                <Text style={[styles.weeklyWorkoutsDays, styles.bodyWeightLbsTypo]}>Daily Calories (cal)</Text>
-        				<Text style={[styles.goal2100Cal, styles.goal5DaysTypo]}>{`Goal:
-        				2100 cal`}</Text>
-        				<Text style={[styles.current198Lbs, styles.lbsTypo]}>{`Current:
-        				3050 cal`}</Text>
-        				<Text style={[styles.starting200Lbs, styles.lbsTypo]}>{`Starting:
-        				4200 cal`}</Text>
+        			<View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
+        				<Text style={[styles.bodyWeightLbsTypo]}>Body Weight (lbs)</Text>
+        				<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
+        				<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
+        				<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
+                        <Text style={[styles.number1, ]}>{`165`}</Text>
+        				<Text style={[styles.number2, ]}>{`198`}</Text>
+        				<Text style={[styles.number3, ]}>{`200`}</Text>
+                    </View>
+                <View style={[styles.weeklyworkouts, styles.bodyweightLayout]}>
+                    <View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
+                        <Text style={[styles.bodyWeightLbsTypo]}>Weekly Workouts (days)</Text>
+                        <Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
+        				<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
+        				<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
+                        <Text style={[styles.number1, ]}>{`165`}</Text>
+        				<Text style={[styles.number2, ]}>{`198`}</Text>
+        				<Text style={[styles.number3, ]}>{`200`}</Text>
+                    </View>
+                <View style={[styles.calories, styles.bodyweightLayout]}>
+                    <View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
+                        <Text style={[styles.bodyWeightLbsTypo]}>Daily Calories (cal)</Text>
+        				<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
+        				<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
+        				<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
+                        <Text style={[styles.number1, ]}>{`165`}</Text>
+        				<Text style={[styles.number2, ]}>{`198`}</Text>
+        				<Text style={[styles.number3, ]}>{`200`}</Text>
             </View>
         </View>);
 };
@@ -77,8 +79,13 @@ const styles = StyleSheet.create({
         lineHeight: 30,
         letterSpacing: 0,
         fontSize: '20px',
-        left: "50%",
-        position: "relative"
+        position: "relative",
+        left: "5%",
+        width: 310,
+        //Stroke
+        textShadowColor: "#000", // Outline color
+        textShadowOffset: { width: 2, height: 2 }, // Controls outline width
+        textShadowRadius: 1,
     },
     lbsTypo: {
         height: 42,
@@ -89,8 +96,12 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         lineHeight: 35,
         letterSpacing: 0,
-        fontSize: '15px',
-        position: "absolute"
+        fontSize: '17px',
+        position: "absolute",
+        //Stroke
+        textShadowColor: "#000", // Outline color
+        textShadowOffset: { width: 2, height: 2 }, // Controls outline width
+        textShadowRadius: 1,
     },
     goal5DaysTypo: {
         top: 64,
@@ -105,13 +116,7 @@ const styles = StyleSheet.create({
         fontSize: FontSize.size_5xl,
         position: "absolute"
     },
-    dailyQuestsChild: {
-        backgroundColor: "#000",
-        borderStyle: "solid",
-        borderColor: Color.colorWhite,
-        borderWidth: 5,
-        borderRadius: Border.br_xl
-    },
+    
     bar: {
         height: "3.71%",
         marginLeft: -114.58,
@@ -160,32 +165,33 @@ const styles = StyleSheet.create({
         bottom: "0%",
         height: "100%",
         top: "0%",
-        position: "absolute"
+        position: "absolute",
+        backgroundColor: "#000",
+        borderStyle: "solid",
+        borderWidth: 5,
+        borderRadius: Border.br_xl
     },
     bodyweightChild: {
         top: 0,
-        backgroundColor: Color.orange,
-        left: 0,
-        borderRadius: Border.br_xl
+        backgroundColor: Color.theme2,
+        alignItems: "center",
+        left: -5,
+        borderRadius: Border.br_xl,
     },
-    bodyWeightLbs: {
-        marginLeft: -110.5,
-        width: 217
-    },
-    goal165Lbs: {
+    goal: {
         width: 92,
-        right: 0,
+        right: 18,
         height: 42,
         top: 63
     },
-    current198Lbs: {
+    current: {
         marginLeft: -52.5,
         width: 106,
         height: 42,
         top: 63,
         left: "50%"
     },
-    starting200Lbs: {
+    starting: {
         width: 116,
         height: 42,
         top: 63,
@@ -221,6 +227,54 @@ const styles = StyleSheet.create({
         height: 706,
         width: "100%",
         transform: [{ scale: 0.8 }]
+    },
+    number1: {
+        color: Color.colorWhite,
+        fontFamily: FontFamily.interBold,
+        lineHeight: 35,
+        fontSize: '17px',
+        position: "relative",
+        marginLeft: -52.5,
+        width: 106,
+        height: 42,
+        top: 40,
+        left: "25%",
+        //Stroke
+        textShadowColor: "#000", // Outline color
+        textShadowOffset: { width: 2, height: 2 }, // Controls outline width
+        textShadowRadius: 1,
+    },
+    number2: {
+        color: Color.colorWhite,
+        fontFamily: FontFamily.interBold,
+        lineHeight: 35,
+        fontSize: '17px',
+        position: "relative",
+        marginLeft: 70,
+        width: 106,
+        height: 42,
+        top: -3,
+        left: "25%",
+        //Stroke
+        textShadowColor: "#000", // Outline color
+        textShadowOffset: { width: 2, height: 2 }, // Controls outline width
+        textShadowRadius: 1,
+    },
+    number3: {
+        color: Color.colorWhite,
+        fontFamily: FontFamily.interBold,
+        lineHeight: 35,
+        fontSize: '17px',
+        position: "relative",
+        marginLeft: 210,
+        width: 106,
+        height: 42,
+        top: -45,
+        left: "20%",
+        //Stroke
+        textShadowColor: "#000", // Outline color
+        textShadowOffset: { width: 2, height: 2 }, // Controls outline width
+        textShadowRadius: 1,
     },
     
 });
