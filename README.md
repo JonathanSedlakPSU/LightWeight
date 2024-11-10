@@ -11,6 +11,7 @@ npm install @react-navigation/bottom-tabs
 npm install @expo/vector-icons
 npm install react-native-svg@15.2.0
 npm install react-native-linear-gradient
+npm install expo@51.0.39
 
 
 
