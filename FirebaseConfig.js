@@ -4,12 +4,12 @@ import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
-// Firebase configuration
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC2U4_yOGa1iLk9VA9fWVTzxRKDGbBX7Ec",
   authDomain: "fir-project1-6db74.firebaseapp.com",
   projectId: "fir-project1-6db74",
-  storageBucket: "fir-project1-6db74.appspot.com",
+  storageBucket: "fir-project1-6db74.firebasestorage.app",
   messagingSenderId: "137780388240",
   appId: "1:137780388240:web:9013af8737ac39a3031315"
 };
@@ -20,10 +20,11 @@ const FIREBASE_AUTH = initializeAuth(FIREBASE_APP,
   {persistence: getReactNativePersistence(AsyncStorage),});
 const FIREBASE_DB = getFirestore(FIREBASE_APP);
 
+// Function to add a user to Firestore
 // Function to add a new user document to Firestore
-async function addUser(userId, firstName, lastName, username) {
+async function addUser(firstName, lastName, username) {
   try {
-    await setDoc(doc(FIREBASE_DB, "Users", userId), {
+    await setDoc(doc(FIREBASE_DB, "/Users", username), {
       FirstName: firstName,
       LastName: lastName,
       Username: username

@@ -2,14 +2,14 @@ import * as React from "react";
 import {StyleSheet, View, Text, Image} from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
 
-const LoginPage = () => {
+const SignUpPage = () => {
   	
   	return (
-    		<View style={styles.loginpage}>
+    		<View style={styles.signuppage}>
       			<View style={[styles.header, ]}>
         				<View style={styles.bar} />
         				<View style={[styles.header1, styles.headerPosition]}>
-          					<Text style={styles.login}>Login</Text>
+          					<Text style={styles.login}>Sign Up</Text>
         				</View>
       			</View>
       			<View style={styles.loginBox}>
@@ -22,10 +22,14 @@ const LoginPage = () => {
           			<View style={[styles.passwordTextbox]} />
           			<Text style={[styles.passwordTypo]}>Username</Text>
         			</View>
-
-					  <Text style={[styles.forgotPassword, styles.loginPagePosition]}>Forgot Password?</Text>
-					  <Text style={[styles.loginPage, styles.loginPagePosition]}>Sign Up</Text>
-					  
+					  <View style={[styles.Layout1]}>
+          			<View style={[styles.passwordTextbox]} />
+          			<Text style={[styles.passwordTypo]}>Password</Text>
+        			</View>
+					  <View style={[styles.Layout1]}>
+          			<View style={[styles.passwordTextbox]} />
+          			<Text style={[styles.passwordTypo]}>Confirm Password</Text>
+        			</View>
 					<View style={[styles.loginButtonContainer]}>
           			<View style={[styles.loginButton]} />
           			<Text style={styles.loginText}>Create Account</Text>
@@ -46,7 +50,7 @@ const LoginPage = () => {
 const styles = StyleSheet.create({
   	headerPosition: {
     		width: 430,
-    		left: 115,
+    		left: 100,
     		position: "relative"
   	},
   	Layout1: {
@@ -187,7 +191,7 @@ const styles = StyleSheet.create({
     		position: "realtive"
   	},
   	loginButtonContainer: {
-    		top: 200,
+    		top: 250,
     		left: 21,
 			height: 35,
     		width: 300,
@@ -206,7 +210,7 @@ const styles = StyleSheet.create({
     		left: 12
   	},
   	facebookSsoContainer: {
-    		top: 270,
+    		top: 314,
     		width: 125,
     		left: 18,
 			width: 145,
@@ -227,7 +231,7 @@ const styles = StyleSheet.create({
   	},
   	googleSsoContainer: {
     		left: 176,
-    		top: 270,
+    		top: 314,
 			width: 145,
     		height: 35,
     		position: "absolute"
@@ -235,11 +239,11 @@ const styles = StyleSheet.create({
   	loginBox: {
     		top: 80,
     		left: 25,
-    		height: 466,
+    		height: 476,
     		width: 348,
     		position: "relative"
   	},
-  	loginpage: {
+  	signuppage: {
     		backgroundColor: "#1c0101",
     		flex: 1,
     		width: "100%",
@@ -259,31 +263,6 @@ const styles = StyleSheet.create({
     		left: "50%",
     		position: "relative"
   	},
-	forgotPassword: {
-      	width: 210,
-      	fontFamily: FontFamily.interBold,
-      	fontWeight: "700",
-      	top: 122,
-      	left: 10
-   },
-	loginPagePosition: {
-   		top: 122,
-   		fontSize: 15,
-   		height: 35,
-   		textAlign: "center",
-   		color: Color.colorWhite,
-   		lineHeight: 30,
-   		letterSpacing: 0,
-   		position: "absolute"
-	},
-	loginPage: {
-         right: 10,
-         fontStyle: "italic",
-         fontWeight: "500",
-         fontFamily: FontFamily.interMedium,
-         width: 125
-   },
-
 });
 
-export default LoginPage;
+export default SignUpPage;
