@@ -12,8 +12,7 @@ const DailyQuestPopup = () => {
           					<View style={styles.questManager}>
             						<View style={styles.bar} />
             						<View style={styles.questsHeader}>
-              							<Text style={[styles.quests, styles.textTypo]}>Quests</Text>
-              							<Text style={[styles.text, styles.textTypo]}>1/3</Text>
+              							<Text style={[ styles.textTypo]}>Quests</Text>
             						</View>
           					</View>
         				</View>
@@ -61,7 +60,8 @@ const styles = StyleSheet.create({
     		fontWeight: "700",
     		lineHeight: 30,
     		letterSpacing: 0,
-    		fontSize: FontSize.size_5xl
+    		fontSize: FontSize.size_5xl,
+			left: 40,
   	},
   	groupPosition: {
     		left: "4.03%",
@@ -117,10 +117,7 @@ const styles = StyleSheet.create({
     		position: "absolute"
   	},
   	quests: {
-    		width: 149
-  	},
-  	text: {
-    		width: 52
+    		width: 250
   	},
   	questsHeader: {
     		height: "67.44%",
@@ -135,7 +132,7 @@ const styles = StyleSheet.create({
     		left: "50%",
     		marginLeft: -149,
     		top: "0%",
-    		position: "absolute"
+    		position: "relative"
   	},
   	questManager: {
     		height: "10.3%",

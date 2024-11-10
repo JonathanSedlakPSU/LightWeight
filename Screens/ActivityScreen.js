@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   	},
   	mon: {
     		marginLeft: -177.5,
-    		fontSize: FontSize.size_sm
+    		fontSize: FontSize.size_sm,
   	},
   	tues: {
     		marginLeft: -127.73
