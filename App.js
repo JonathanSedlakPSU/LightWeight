@@ -1,5 +1,5 @@
 // Import React libraries / functions
-import React from 'react';
+import React, { useEffect } from 'react'; 
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,7 +7,7 @@ import { Color, Border, FontSize, FontFamily } from "./GlobalStyles";
 
 
 // Import Firebase Configuration
-import { FIREBASE_AUTH, FIREBASE_DB } from './FirebaseConfig';
+import { FIREBASE_AUTH, FIREBASE_DB, addUser} from './FirebaseConfig';
 
 // Import Screens
 import LoginPage from './Screens/LoginScreen';
@@ -28,6 +28,13 @@ const Tab = createBottomTabNavigator();
 
 // Main Function to start app
 export default function App() {
+
+  useEffect(() => {
+    // Add a test user to the database on app load
+    addUser("Jon", "Schoolz", "JonySchoolzzzzz")
+  }, []);
+
+
   return (
     <View style={styles.container}>
     <NavigationContainer>
