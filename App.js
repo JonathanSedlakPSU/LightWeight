@@ -5,7 +5,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Color, Border, FontSize, FontFamily } from "./GlobalStyles";
 
-
 // Import Firebase Configuration
 import { FIREBASE_AUTH, FIREBASE_DB, addUser} from './FirebaseConfig';
 

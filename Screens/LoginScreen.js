@@ -16,11 +16,11 @@ const LoginPage = () => {
 					<View style={[styles.outterLayer]} />
 					<View style={[styles.Layout1]}>
           			<View style={[styles.passwordTextbox]} />
-          			<Text style={[styles.passwordTypo]}>Email</Text>
+          			<Text style={[styles.passwordTypo]}>Username</Text>
         			</View>
 					  <View style={[styles.Layout1]}>
           			<View style={[styles.passwordTextbox]} />
-          			<Text style={[styles.passwordTypo]}>Username</Text>
+          			<Text style={[styles.passwordTypo]}>Password</Text>
         			</View>
 
 					  <Text style={[styles.forgotPassword, styles.loginPagePosition]}>Forgot Password?</Text>
