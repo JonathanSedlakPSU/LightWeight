@@ -5,7 +5,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Color, Border, FontSize, FontFamily } from "./GlobalStyles";
 
-
 // Import Firebase Configuration
 import { FIREBASE_AUTH, FIREBASE_DB, addUser} from './FirebaseConfig';
 
@@ -28,12 +27,12 @@ const Tab = createBottomTabNavigator();
 
 // Main Function to start app
 export default function App() {
-
+  /*
   useEffect(() => {
     // Add a test user to the database on app load
-    addUser("Jon", "Schoolz", "JonySchoolzzzzz")
+    addUser("hello", "world", "hellowWorld12345")
   }, []);
-
+*/
 
   return (
     <View style={styles.container}>
