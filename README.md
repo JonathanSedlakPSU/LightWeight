@@ -12,8 +12,8 @@ npm install @expo/vector-icons
 npm install react-native-svg@15.2.0
 npm install react-native-linear-gradient
 npm install expo@51.0.39
-
-
+npm install eas-cli -g
+expo install expo-dev-client
 
 #####
 
@@ -23,4 +23,10 @@ npx expo start
 To clear cache:
 npx expo start --clear
 
+
+
+eas build --profile development --platform android
+To Run with Expo Dev:
+   
+   npx expo start
 #####
