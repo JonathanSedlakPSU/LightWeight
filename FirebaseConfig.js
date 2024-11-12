@@ -1,8 +1,15 @@
 // Import Firebase functions
-import { initializeApp } from 'firebase/app';
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import {
+  initializeAuth,
+  getReactNativePersistence,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import { LoginManager, AccessToken } from "react-native-fbsdk-next";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -11,14 +18,82 @@ const firebaseConfig = {
   projectId: "fir-project1-6db74",
   storageBucket: "fir-project1-6db74.firebasestorage.app",
   messagingSenderId: "137780388240",
-  appId: "1:137780388240:web:9013af8737ac39a3031315"
+  appId: "1:137780388240:web:9013af8737ac39a3031315",
 };
 
 // Initialize Firebase and Firestore
 const FIREBASE_APP = initializeApp(firebaseConfig);
-const FIREBASE_AUTH = initializeAuth(FIREBASE_APP, 
-  {persistence: getReactNativePersistence(AsyncStorage),});
+const FIREBASE_AUTH = initializeAuth(FIREBASE_APP, {
+  persistence: getReactNativePersistence(AsyncStorage),
+});
 const FIREBASE_DB = getFirestore(FIREBASE_APP);
+
+async function googleSignin() {
+  GoogleSignin.configure({
+    webClientId:
+      "137780388240-trbugevp7c2spgu8h6upqt6qkb103puk.apps.googleusercontent.com",
+  });
+
+  try {
+    // Get the user info
+    const userInfo = await GoogleSignin.signIn();
+    // Create a Google credential with the token
+    const googleCredential = GoogleAuthProvider.credential(
+      userInfo.data?.idToken
+    );
+    // Sign in with credential from the Google user. Creates a new user if none exists.
+    const user = await signInWithCredential(FIREBASE_AUTH, googleCredential);
+
+    // Get google account's first and last name and add the user to Firestore.
+    await setDoc(doc(FIREBASE_DB, "/Users"), {
+      FirstName: userInfo.data.user.givenName,
+      LastName: userInfo.data.user.familyName,
+      Username: "",
+    });
+    console.log("User added!");
+  } catch (e) {
+    alert(e.message);
+  } finally {
+    setLoading(false);
+  }
+}
+
+async function facebookSignin() {
+  try {
+    const result = await LoginManager.logInWithPermissions([
+      "public_profile",
+      "email",
+    ]);
+    if (result.isCancelled) {
+      throw "User cancelled the login process";
+    }
+    const data = await AccessToken.getCurrentAccessToken();
+    if (!data) {
+      throw "Something went wrong obtaining access token";
+    }
+    const facebookCredential = FacebookAuthProvider.credential(
+      data.accessToken
+    );
+    await signInWithCredential(FIREBASE_AUTH, facebookCredential);
+
+    const response = await fetch(
+      `https://graph.facebook.com/me?access_token=${data.accessToken}&fields=id,name,email`
+    );
+
+    //returns a json with the requested fields
+    const profile = await response.json();
+
+    await setDoc(doc(FIREBASE_DB, "Users"), {
+      Name: profile.name,
+      Email: profile.email,
+    });
+    console.log("User added!");
+  } catch (e) {
+    alert(e.message);
+  } finally {
+    setLoading(false);
+  }
+}
 
 // Function to add a user to Firestore
 // Function to add a new user document to Firestore
@@ -27,7 +102,7 @@ async function addUser(firstName, lastName, username) {
     await setDoc(doc(FIREBASE_DB, "/Users", username), {
       FirstName: firstName,
       LastName: lastName,
-      Username: username
+      Username: username,
     });
     console.log("User added!");
   } catch (error) {
@@ -35,4 +110,4 @@ async function addUser(firstName, lastName, username) {
   }
 }
 
-export {FIREBASE_AUTH, FIREBASE_DB, addUser};
+export { FIREBASE_AUTH, FIREBASE_DB, addUser, googleSignin };

@@ -11,6 +11,17 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+    ["@react-native-google-signin/google-signin"], 
+    ["react-native-fbsdk-next",
+      { 
+      "appID": "867712062234015",
+      "clientToken": "8acf43389dcf271df53639084c93245f",
+      "displayName": "Lightweight Facebook Login"
+     }
+    ]
+  ]
+    ,
     "ios": {
       "supportsTablet": true
     },
