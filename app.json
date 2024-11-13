@@ -1,9 +1,9 @@
 {
   "expo": {
     "name": "LightWeight",
-    "slug": "RNExpoFirebase",
+    "slug": "lightweight",
     "version": "1.0.0",
-    "owner": "jms10330",
+    "owner": "psulightweight",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,9 +13,7 @@
       "backgroundColor": "#ffffff"
     },
     "plugins": [
-      [
-        "@react-native-google-signin/google-signin"
-      ],
+      "@react-native-google-signin/google-signin",
       [
         "react-native-fbsdk-next",
         {
@@ -53,7 +51,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "eb52cdbe-64da-46fd-a164-ac58ff2b6427"
+        "projectId": "64217525-fabc-4d5d-84b1-771a2f2c513d"
       }
     }
   }

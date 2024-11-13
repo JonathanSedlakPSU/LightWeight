@@ -21,6 +21,8 @@ npm install @react-native-google-signin/google-signin
 # Install expo dev: 
 npm install -g eas-cli
 eas build --profile development --platform android
+eas init --id 64217525-fabc-4d5d-84b1-771a2f2c513d
+
 
 #####
 
