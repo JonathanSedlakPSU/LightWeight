@@ -22,11 +22,6 @@ npm install @react-native-google-signin/google-signin
 npm install -g eas-cli
 eas build --profile development --platform android
 
-
-
-
-
-
 #####
 
 # To run the app with Expo:
