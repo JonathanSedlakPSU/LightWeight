@@ -15,8 +15,8 @@
     ["@react-native-google-signin/google-signin"], 
     ["react-native-fbsdk-next",
       { 
-      "appID": "867712062234015",
-      "clientToken": "8acf43389dcf271df53639084c93245f",
+      "appID": "483119568081830",
+      "clientToken": "bc6c61d06165c4d2e07e6c2f28343b42",
       "displayName": "Lightweight Facebook Login"
      }
     ]
