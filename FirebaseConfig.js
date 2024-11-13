@@ -45,10 +45,17 @@ async function googleSignin() {
     const user = await signInWithCredential(FIREBASE_AUTH, googleCredential);
 
     // Get google account's first and last name and add the user to Firestore.
-    await setDoc(doc(FIREBASE_DB, "/Users"), {
-      FirstName: userInfo.data.user.givenName,
-      LastName: userInfo.data.user.familyName,
+    await setDoc(doc(FIREBASE_DB, "/Users", user.userInfo.uid), {
+      FirstName: firstName,
+      LastName: lastName,
       Username: "",
+      level: 1,
+      strength: 0,
+      speed: 0,
+      stamina: 0,
+      upperBody: 0,
+      lowerBody: 0,
+      calories: 0,
     });
     console.log("User added!");
   } catch (e) {
@@ -86,6 +93,14 @@ async function facebookSignin() {
     await setDoc(doc(FIREBASE_DB, "Users"), {
       Name: profile.name,
       Email: profile.email,
+      Username: "",
+      level: 1,
+      strength: 0,
+      speed: 0,
+      stamina: 0,
+      upperBody: 0,
+      lowerBody: 0,
+      calories: 0,
     });
     console.log("User added!");
   } catch (e) {
@@ -109,6 +124,13 @@ async function addUser(email, password, firstName, lastName, username) {
       FirstName: firstName,
       LastName: lastName,
       Username: username,
+      level: 1,
+      strength: 0,
+      speed: 0,
+      stamina: 0,
+      upperBody: 0,
+      lowerBody: 0,
+      calories: 0,
     });
     console.log("User added!");
   } catch (error) {
