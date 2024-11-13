@@ -97,9 +97,15 @@ async function facebookSignin() {
 
 // Function to add a user to Firestore
 // Function to add a new user document to Firestore
-async function addUser(firstName, lastName, username) {
+async function addUser(email, password, firstName, lastName, username) {
   try {
-    await setDoc(doc(FIREBASE_DB, "/Users", username), {
+    const response = await createUserWithEmailAndPassword(
+      FIREBASE_AUTH,
+      email,
+      password
+    );
+
+    await setDoc(doc(FIREBASE_DB, "/Users", response.user.uid), {
       FirstName: firstName,
       LastName: lastName,
       Username: username,
