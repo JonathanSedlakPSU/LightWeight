@@ -110,6 +110,26 @@ async function facebookSignin() {
   }
 }
 
+// Function to sign in a user with email and password
+async function signIn ()  {
+  try {
+    //get the response from the firebase
+      await signInWithEmailAndPassword(
+      FIREBASE_AUTH,
+      email,
+      password
+    );
+    //if the response is successful, log the response
+    navigation.navigate("Home");
+  } catch (e) {
+    //if there is an error, alert the user
+    alert(e.message);
+  } finally {
+    setLoading(false);
+  }
+
+}
+
 // Function to add a user to Firestore
 // Function to add a new user document to Firestore
 async function addUser(email, password, firstName, lastName, username) {
