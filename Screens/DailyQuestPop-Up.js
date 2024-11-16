@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
     		height: "100%",
     		left: "0%",
     		top: "0%",
-    		position: "absolute"
+    		position: "relative",
+			
   	},
   	textTypo: {
     		height: 33,
@@ -80,8 +81,8 @@ const styles = StyleSheet.create({
     		justifyContent: "center",
     		display: "flex",
     		left: "18.38%",
-    		top: "50%",
-    		width: "81.61%",
+    		top: "65%",
+    		width: "71.61%",
     		marginTop: -32,
     		lineHeight: 23,
     		fontSize: FontSize.size_lg,
@@ -152,13 +153,14 @@ const styles = StyleSheet.create({
   	},
   	groupChild: {
     		maxWidth: "100%",
-    		overflow: "hidden",
+    		overflow: "visible",
     		maxHeight: "100%",
     		left: "0%",
     		right: "0%",
     		bottom: "0%",
     		height: "100%",
-    		width: "100%"
+    		width: "100%",
+			transform: [{ scale: 0.9 }],
   	},
   	text1: {
     		height: "38%",
@@ -180,7 +182,7 @@ const styles = StyleSheet.create({
     		top: "10.94%",
     		right: "81.61%",
     		bottom: "10.94%",
-    		left: "0%",
+    		left: "1%",
     		position: "absolute"
   	},
   	groupParent: {

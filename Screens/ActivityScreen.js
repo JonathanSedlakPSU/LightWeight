@@ -145,17 +145,6 @@ const styles = StyleSheet.create({
     		height: 45,
     		top: 0
   	},
-  	plusItem: {
-    		top: 28,
-    		width: 11,
-    		transform: [
-      			{
-        				rotate: "-90deg"
-      			}
-    		],
-    		height: 39,
-    		left: 0
-  	},
   	plus1: {
     		top: 8,
     		left: 10,
