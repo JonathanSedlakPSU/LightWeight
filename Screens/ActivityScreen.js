@@ -7,22 +7,24 @@ const ActivityPage = () => {
   	return (
     		<View style={styles.activityPage}>
       			<View style={[styles.goalsParent,styles.scaledContent]}>
+
         				<View style={[styles.goals, styles.goalsLayout]}>
           					<View style={styles.goalsChild} />
           					<Image style={styles.image1Icon} resizeMode="cover" source={require('./Assets/ActivityScreen/Goal.png')} />
           					<Text style={[styles.goals1, styles.goals1Layout, styles.scaledContent]}>Goals</Text>
         				</View>
-        				<View style={styles.goalsLayout}>
+
+
+
+
+        				<View style={[styles.goals, styles.goalsLayout]}>
           					<View style={styles.goalsChild} />
-          					<View style={styles.logCalories1}>
-            						<View style={[styles.plus, styles.plusLayout, ]}>
-              							<Image style={[styles.circleIcon, styles.plusLayout]} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
-              							
-            						</View>
-            						<Text style={[styles.logCalories2, styles.calTypo, styles.scaledContent1]}>Log Calories</Text>
-            						<Text style={[styles.cal, styles.calTypo, styles.scaledContent1]}>1,525 cal</Text>
-          					</View>
+          					<Image style={[styles.image1Icon, styles.scaledContent1]} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+								
+          					<Text style={[styles.goals1, styles.logCalories2, styles.scaledContent]}>Log</Text>
+								<Text style={[styles.goals1, styles.logCalories1, styles.scaledContent]}>Calories</Text>
         				</View>
+
         				<View style={styles.activityLevels}>
           					<View style={[styles.outterLayer, styles.outterLayerPosition]} />
           					<View style={styles.days}>
@@ -57,18 +59,18 @@ const styles = StyleSheet.create({
   	},
   	goals1Layout: {
     		height: 33,
-    		position: "absolute"
+    		position: "relative"
   	},
   	plusLayout: {
     		height: 60,
     		width: 60,
     		top: 0,
-    		position: "absolute"
+    		position: "relative"
   	},
   	plusBg: {
     		backgroundColor: Color.colorBlack,
     		borderRadius: Border.br_3xs,
-    		position: "absolute"
+    		position: "relative"
   	},
   	calTypo: {
     		fontSize: FontSize.size_5xl,
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
   	},
   	image1Icon: {
     		top: 15,
-    		right: 17,
+    		right: 10,
     		width: 100,
     		height: 100,
     		position: "absolute"
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
     		fontWeight: "700",
     		lineHeight: 33,
     		letterSpacing: 0,
-    		height: 33
+    		height: 63
   	},
   	goals: {
     		overflow: "hidden"
@@ -160,21 +162,21 @@ const styles = StyleSheet.create({
     		height: 40,
     		position: "absolute",
     		left: 0,
-    		top: 0
+    		top: 25
   	},
   	cal: {
     		top: 36,
     		left: 29,
     		width: 133,
     		height: 35,
-    		position: "absolute"
+    		position: "relative"
   	},
   	logCalories1: {
-    		top: 31,
+    		top: 60,
     		width: 226,
     		height: 62,
-    		left: 0,
-    		position: "absolute"
+    		left: -30,
+    		position: "relative"
   	},
   	outterLayer: {
     		borderStyle: "solid",
@@ -213,7 +215,7 @@ const styles = StyleSheet.create({
     		height: 28,
     		marginLeft: -177.5,
     		left: "50%",
-    		position: "absolute"
+    		position: "relative"
   	},
   	activityLevelsChild: {
     		top: 263,
@@ -303,7 +305,7 @@ const styles = StyleSheet.create({
       transform: [{ scale: 0.9 }],  // Adjust scale factor as needed
  },
  scaledContent1: {
-      transform: [{ scale: 0.8 }],  // Adjust scale factor as needed
+      transform: [{ scale: 0.7 }],  // Adjust scale factor as needed
  },
 });
 
