@@ -27,7 +27,9 @@ eas init --id 64217525-fabc-4d5d-84b1-771a2f2c513d
 #####
 
 # To run the app with Expo:
+(open android emulator from android studio)
 npx expo start
+Press 'a' to open android
 
 # To clear cache:
 npx expo start --clear

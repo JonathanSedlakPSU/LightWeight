@@ -202,6 +202,7 @@ const styles = StyleSheet.create({
     height: 35,
     width: 300,
     position: "absolute",
+    
   },
   facebookButton: {
     backgroundColor: "#0095ff",

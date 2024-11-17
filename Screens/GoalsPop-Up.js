@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
     bodyweightLayout: {
         height: 146,
         width: 365,
-        position: "absolute"
+        position: "absolute",
+        left: 13
     },
     bodyWeightLbsTypo: {
         height: 53,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         letterSpacing: 0,
         fontSize: 20,
         position: "relative",
-        left: "5%",
+        left: "10%",
         width: 310,
         //Stroke
         textShadowColor: "#000", // Outline color
@@ -175,17 +176,17 @@ const styles = StyleSheet.create({
         top: 0,
         backgroundColor: Color.theme2,
         alignItems: "center",
-        left: -5,
+        left: 0,
         borderRadius: Border.br_xl,
     },
     goal: {
         width: 92,
-        right: 18,
+        right: 0,
         height: 42,
         top: 63
     },
     current: {
-        marginLeft: -52.5,
+        marginLeft: -45.5,
         width: 106,
         height: 42,
         top: 63,
@@ -195,7 +196,7 @@ const styles = StyleSheet.create({
         width: 116,
         height: 42,
         top: 63,
-        left: 0
+        left: 10
     },
     bodyweight: {
         top: 122,
@@ -234,7 +235,7 @@ const styles = StyleSheet.create({
         lineHeight: 35,
         fontSize: 17,
         position: "relative",
-        marginLeft: -52.5,
+        marginLeft: -40,
         width: 106,
         height: 42,
         top: 40,
@@ -250,7 +251,7 @@ const styles = StyleSheet.create({
         lineHeight: 35,
         fontSize: 17,
         position: "relative",
-        marginLeft: 70,
+        marginLeft: 85,
         width: 106,
         height: 42,
         top: -3,
@@ -266,7 +267,7 @@ const styles = StyleSheet.create({
         lineHeight: 35,
         fontSize: 17,
         position: "relative",
-        marginLeft: 210,
+        marginLeft: 233,
         width: 106,
         height: 42,
         top: -45,

@@ -28,7 +28,7 @@ export const Gap = {
    };
 /* border radiuses */
 export const Border = {
-   br_3xs: 10,
+   br_3xs: 5,
    br_mini: 15,
    br_xl: 20,
    br_6xl: 25,

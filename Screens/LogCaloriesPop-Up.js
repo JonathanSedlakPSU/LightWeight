@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     boxPositionLayout: {
         height: 125,
         width: 365,
-        position: "absolute"
+        position: "absolute",
+        left: 13,
     },
     title: {
         height: 53,
@@ -188,7 +189,6 @@ const styles = StyleSheet.create({
     },
     boxPosition1: {
         top: 50,
-        left: 20,
         width: 365
     },
     boxPosition2Days: {
@@ -199,21 +199,18 @@ const styles = StyleSheet.create({
         width: 92
     },
     boxPosition2: {
-        top: 200,
-        left: 20,
+        top: 220,
         width: 365
     },
     goal2100Cal: {
         width: 108
     },
     boxPosition3: {
-        top: 350,
-        left: 20,
+        top: 390,
         width: 365
     },
     boxPosition4: {
-        top: 500,
-        left: 20,
+        top: 560,
         width: 365
     },
     LogCaloriesPopUp: {
