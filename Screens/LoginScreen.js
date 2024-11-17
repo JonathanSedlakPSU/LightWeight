@@ -1,11 +1,53 @@
 import * as React from "react";
 import { StyleSheet, View, Text, Image, TextInput, Button } from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
-import { googleSignin, facebookSignin } from "../FirebaseConfig";
+import {facebookSignin, FIREBASE_AUTH } from "../FirebaseConfig";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import { signInWithCredential, GoogleAuthProvider } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
+  
+  const navigation = useNavigation();
+  async function googleSignin() {
+    GoogleSignin.configure({
+      webClientId:
+        "137780388240-trbugevp7c2spgu8h6upqt6qkb103puk.apps.googleusercontent.com",
+    });
+  
+    try {
+      // Get the user info
+      const userInfo = await GoogleSignin.signIn();
+      // Create a Google credential with the token
+      const googleCredential = GoogleAuthProvider.credential(
+        userInfo.data?.idToken
+      );
+      // Sign in with credential from the Google user. Creates a new user if none exists.
+      const userCredential = await signInWithCredential(FIREBASE_AUTH, googleCredential);
+  
+      /**
+      
+      // Get google account's first and last name and add the user to Firestore.
+      await setDoc(doc(FIREBASE_DB, "/Users", userCredential.user.uid), {
+        Username: "",
+        level: 1,
+        strength: 0,
+        speed: 0,
+        stamina: 0,
+        upperBody: 0,
+        lowerBody: 0,
+        calories: 0,
+      });
+  
+      **/
+      navigation.navigate("Home");
+      console.log("User added!");
+    } catch (e) {
+      alert(e.message);
+    }
+  }
+  
   return (
     <View style={styles.loginpage}>
       <View style={[styles.header]}>

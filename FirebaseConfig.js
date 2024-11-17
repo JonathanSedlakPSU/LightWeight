@@ -29,43 +29,6 @@ const FIREBASE_AUTH = initializeAuth(FIREBASE_APP, {
 });
 const FIREBASE_DB = getFirestore(FIREBASE_APP);
 
-async function googleSignin() {
-  GoogleSignin.configure({
-    webClientId:
-      "137780388240-trbugevp7c2spgu8h6upqt6qkb103puk.apps.googleusercontent.com",
-  });
-
-  try {
-    // Get the user info
-    const userInfo = await GoogleSignin.signIn();
-    // Create a Google credential with the token
-    const googleCredential = GoogleAuthProvider.credential(
-      userInfo.data?.idToken
-    );
-    // Sign in with credential from the Google user. Creates a new user if none exists.
-    const userCredential = await signInWithCredential(FIREBASE_AUTH, googleCredential);
-
-    /**
-    
-    // Get google account's first and last name and add the user to Firestore.
-    await setDoc(doc(FIREBASE_DB, "/Users", userCredential.user.uid), {
-      Username: "",
-      level: 1,
-      strength: 0,
-      speed: 0,
-      stamina: 0,
-      upperBody: 0,
-      lowerBody: 0,
-      calories: 0,
-    });
-
-    **/
-
-    console.log("User added!");
-  } catch (e) {
-    alert(e.message);
-  }
-}
 
 async function facebookSignin() {
   try {
@@ -161,4 +124,4 @@ async function addUser(email, password, firstName, lastName, username) {
   }
 }
 
-export { FIREBASE_AUTH, FIREBASE_DB, addUser, googleSignin, facebookSignin, signIn };
+export { FIREBASE_AUTH, FIREBASE_DB, addUser, facebookSignin, signIn };
