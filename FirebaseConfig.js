@@ -5,6 +5,7 @@ import {
   getReactNativePersistence,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  signInWithCredential
 } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
@@ -42,12 +43,12 @@ async function googleSignin() {
       userInfo.data?.idToken
     );
     // Sign in with credential from the Google user. Creates a new user if none exists.
-    const user = await signInWithCredential(FIREBASE_AUTH, googleCredential);
+    const userCredential = await signInWithCredential(FIREBASE_AUTH, googleCredential);
 
+    /**
+    
     // Get google account's first and last name and add the user to Firestore.
-    await setDoc(doc(FIREBASE_DB, "/Users", user.userInfo.uid), {
-      FirstName: firstName,
-      LastName: lastName,
+    await setDoc(doc(FIREBASE_DB, "/Users", userCredential.user.uid), {
       Username: "",
       level: 1,
       strength: 0,
@@ -57,11 +58,12 @@ async function googleSignin() {
       lowerBody: 0,
       calories: 0,
     });
+
+    **/
+
     console.log("User added!");
   } catch (e) {
     alert(e.message);
-  } finally {
-    setLoading(false);
   }
 }
 
@@ -83,12 +85,16 @@ async function facebookSignin() {
     );
     await signInWithCredential(FIREBASE_AUTH, facebookCredential);
 
+
+    /** 
     const response = await fetch(
       `https://graph.facebook.com/me?access_token=${data.accessToken}&fields=id,name,email`
     );
 
     //returns a json with the requested fields
     const profile = await response.json();
+
+
 
     await setDoc(doc(FIREBASE_DB, "Users"), {
       Name: profile.name,
@@ -102,11 +108,11 @@ async function facebookSignin() {
       lowerBody: 0,
       calories: 0,
     });
+
+    **/
     console.log("User added!");
   } catch (e) {
-    alert(e.message);
-  } finally {
-    setLoading(false);
+    
   }
 }
 
@@ -124,10 +130,7 @@ async function signIn ()  {
   } catch (e) {
     //if there is an error, alert the user
     alert(e.message);
-  } finally {
-    setLoading(false);
-  }
-
+  } 
 }
 
 // Function to add a user to Firestore
@@ -158,4 +161,4 @@ async function addUser(email, password, firstName, lastName, username) {
   }
 }
 
-export { FIREBASE_AUTH, FIREBASE_DB, addUser, googleSignin };
+export { FIREBASE_AUTH, FIREBASE_DB, addUser, googleSignin, facebookSignin, signIn };

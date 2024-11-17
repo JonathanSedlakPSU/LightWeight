@@ -1,4 +1,4 @@
-package com.jmp7651.RNExpoFirebase
+package com.psu.lightweight
 
 import android.os.Build
 import android.os.Bundle

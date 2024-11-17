@@ -37,11 +37,12 @@
       }
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.jmp7651.RNExpoFirebase",
+      "package": "com.psu.lightweight",
       "permissions": [
         "android.permission.INTERNET"
       ]

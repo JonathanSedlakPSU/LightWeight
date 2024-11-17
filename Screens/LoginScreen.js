@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet, View, Text, Image, TextInput, Button } from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
-
+import { googleSignin, facebookSignin } from "../FirebaseConfig";
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -19,14 +19,14 @@ const LoginPage = () => {
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setEmail(text)}
-            placeholder="Email"
+            placeholder=" Email"
             style={[styles.passwordTextbox]}
           />
         </View>
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setPassword(text)}
-            placeholder="Password"
+            placeholder=" Password"
             style={[styles.passwordTextbox]}
           />
         </View>
@@ -40,13 +40,13 @@ const LoginPage = () => {
 
         <View style={[styles.loginButtonContainer]}>
           <Button title="Login" style={[styles.loginButton]} />
-          <Text style={styles.loginText}>Create Account</Text>
+          <Text style={styles.loginText}>Sign in with</Text>
         </View>
         <View style={[styles.facebookSsoContainer]}>
-          <Button title="Facebook" style={[styles.facebookButton]} />
+          <Button title="Facebook" style={[styles.facebookButton]} onPress={facebookSignin} />
         </View>
         <View style={[styles.googleSsoContainer]}>
-          <Button title="Google" style={[styles.googleButton]} />
+          <Button title="Google" style={[styles.googleButton]} onPress={googleSignin} />
         </View>
       </View>
     </View>
@@ -202,7 +202,6 @@ const styles = StyleSheet.create({
     height: 35,
     width: 300,
     position: "absolute",
-    
   },
   facebookButton: {
     backgroundColor: "#0095ff",

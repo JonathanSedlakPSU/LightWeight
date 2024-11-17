@@ -20,24 +20,24 @@ const SignUpPage = () => {
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setEmail(text)}
-            placeholder="Email"
+            placeholder=" Email"
             style={[styles.passwordTextbox]}
           />
         </View>
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setUsername(text)}
-            placeholder="Username"
+            placeholder=" Username"
             style={[styles.passwordTextbox]}
           />
         </View>
         <View style={[styles.Layout1]}>
           <TextInput onChangeText={(text) => setPassword(text)}
-            placeholder="Password"style={[styles.passwordTextbox]} />
+            placeholder=" Password"style={[styles.passwordTextbox]} />
         </View>
         <View style={[styles.Layout1]}>
           <TextInput onChangeText={(text) => setPassword(text)}
-            placeholder="Confirm Password"style={[styles.passwordTextbox]} />
+            placeholder=" Confirm Password"style={[styles.passwordTextbox]} />
           
         </View>
         <View style={[styles.loginButtonContainer]}>

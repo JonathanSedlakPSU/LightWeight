@@ -1,4 +1,4 @@
-package com.jmp7651.RNExpoFirebase
+package com.psu.lightweight
 
 import android.app.Application
 import android.content.res.Configuration
