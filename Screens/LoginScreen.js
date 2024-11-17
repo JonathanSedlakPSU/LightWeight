@@ -1,21 +1,29 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Image, TextInput, Button } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TextInput,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
-import {facebookSignin, FIREBASE_AUTH } from "../FirebaseConfig";
+import { facebookSignin, FIREBASE_AUTH } from "../FirebaseConfig";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { signInWithCredential, GoogleAuthProvider } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  
+
   const navigation = useNavigation();
   async function googleSignin() {
     GoogleSignin.configure({
       webClientId:
         "137780388240-trbugevp7c2spgu8h6upqt6qkb103puk.apps.googleusercontent.com",
     });
-  
+
     try {
       // Get the user info
       const userInfo = await GoogleSignin.signIn();
@@ -24,8 +32,11 @@ const LoginPage = () => {
         userInfo.data?.idToken
       );
       // Sign in with credential from the Google user. Creates a new user if none exists.
-      const userCredential = await signInWithCredential(FIREBASE_AUTH, googleCredential);
-  
+      const userCredential = await signInWithCredential(
+        FIREBASE_AUTH,
+        googleCredential
+      );
+
       /**
       
       // Get google account's first and last name and add the user to Firestore.
@@ -47,7 +58,7 @@ const LoginPage = () => {
       alert(e.message);
     }
   }
-  
+
   return (
     <View style={styles.loginpage}>
       <View style={[styles.header]}>
@@ -76,19 +87,28 @@ const LoginPage = () => {
         <Text style={[styles.forgotPassword, styles.loginPagePosition]}>
           Forgot Password?
         </Text>
-        <Text style={[styles.loginPage, styles.loginPagePosition]}>
-          Sign Up
-        </Text>
-
+        <TouchableOpacity style={[styles.loginPage, styles.loginPagePosition]} onPress={() => navigation.navigate('SignUp')}>
+          <Text style={[styles.loginPage, styles.signUpText]}>
+            Sign Up
+          </Text>
+        </TouchableOpacity>
         <View style={[styles.loginButtonContainer]}>
           <Button title="Login" style={[styles.loginButton]} />
           <Text style={styles.loginText}>Sign in with</Text>
         </View>
         <View style={[styles.facebookSsoContainer]}>
-          <Button title="Facebook" style={[styles.facebookButton]} onPress={facebookSignin} />
+          <Button
+            title="Facebook"
+            style={[styles.facebookButton]}
+            onPress={facebookSignin}
+          />
         </View>
         <View style={[styles.googleSsoContainer]}>
-          <Button title="Google" style={[styles.googleButton]} onPress={googleSignin} />
+          <Button
+            title="Google"
+            style={[styles.googleButton]}
+            onPress={googleSignin}
+          />
         </View>
       </View>
     </View>
@@ -334,6 +354,15 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontFamily: FontFamily.interMedium,
     width: 125,
+  },
+
+  signUpText: {
+    // Styles for Text inside TouchableOpacity
+    color: Color.colorWhite,
+    fontSize: 16,
+    marginLeft: 40,
+    posiiton: "relative",
+    marginTop: 3,
   },
 });
 

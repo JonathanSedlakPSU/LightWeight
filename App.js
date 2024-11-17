@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import { Color, Border, FontSize, FontFamily } from "./GlobalStyles";
 
 // Import Firebase Configuration
@@ -23,22 +24,31 @@ import LogCaloriesPopUp from "./Screens/LogCaloriesPop-Up";
 
 // Create a TabBar at bottom of screen
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function TabBar() {
+  return (
+    <Tab.Navigator initialRouteName="Home">
+      <Tab.Screen name="Workouts" component={WorkoutsPage} />
+      <Tab.Screen name="Home" component={HomePage} />
+      <Tab.Screen name="Activity" component={ActivityPage} />
+      <Tab.Screen name="goals" component={GoalsPopUp} />
+      <Tab.Screen name="LC" component={LogCaloriesPopUp} />
+      <Tab.Screen name="DQ" component={DailyQuestPopup} />
+    </Tab.Navigator>
+  );
+}
 
 // Main Function to start app
 export default function App() {
   return (
     <View style={styles.container}>
       <NavigationContainer>
-        <Tab.Navigator initialRouteName="Home">
-          <Tab.Screen name="Workouts" component={WorkoutsPage} />
-          <Tab.Screen name="Home" component={HomePage} />
-          <Tab.Screen name="Activity" component={ActivityPage} />
-          <Tab.Screen name="Login" component={LoginPage} />
-          <Tab.Screen name="SignUp" component={SignUpPage} />
-          <Tab.Screen name="goals" component={GoalsPopUp} />
-          <Tab.Screen name="LC" component={LogCaloriesPopUp} />
-          <Tab.Screen name="DQ" component={DailyQuestPopup} />
-        </Tab.Navigator>
+      <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen name="Login" component={LoginPage} />
+          <Stack.Screen name="SignUp" component={SignUpPage} />
+          <Stack.Screen name="Home" component={TabBar} options={{ headerShown: false }} />
+        </Stack.Navigator>
       </NavigationContainer>
     </View>
   );
