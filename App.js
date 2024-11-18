@@ -28,9 +28,9 @@ const Stack = createStackNavigator();
 
 function TabBar() {
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator initialRouteName="Profile">
       <Tab.Screen name="Workouts" component={WorkoutsPage} />
-      <Tab.Screen name="Home" component={HomePage} />
+      <Tab.Screen name="Profile" component={HomePage} />
       <Tab.Screen name="Activity" component={ActivityPage} />
       <Tab.Screen name="goals" component={GoalsPopUp} />
       <Tab.Screen name="LC" component={LogCaloriesPopUp} />
