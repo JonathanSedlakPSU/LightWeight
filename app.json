@@ -17,9 +17,14 @@
       [
         "react-native-fbsdk-next",
         {
-          "appID": "483119568081830",
-          "clientToken": "bc6c61d06165c4d2e07e6c2f28343b42",
-          "displayName": "Lightweight Facebook Login"
+          "appID": "1105924684264248",
+          "clientToken": "2134cc54bab7b94dcac6e809fe69dac9",
+          "displayName": "Lightweight Facebook Login",
+          "scheme": "fb1105924684264248",
+          "advertiserIDCollectionEnabled": false,
+          "autoLogAppEventsEnabled": false,
+          "isAutoInitEnabled": true,
+          "iosUserTrackingPermission": "This identifier will be used to deliver personalized ads to you."
         }
       ]
     ],

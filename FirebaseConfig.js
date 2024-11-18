@@ -4,7 +4,7 @@ import {
   initializeAuth,
   getReactNativePersistence,
   createUserWithEmailAndPassword,
-  GoogleAuthProvider,
+  FacebookAuthProvider,
   signInWithCredential
 } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -32,17 +32,14 @@ const FIREBASE_DB = getFirestore(FIREBASE_APP);
 
 async function facebookSignin() {
   try {
-    const result = await LoginManager.logInWithPermissions([
-      "public_profile",
-      "email",
-    ]);
+    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+
     if (result.isCancelled) {
       throw "User cancelled the login process";
     }
+
     const data = await AccessToken.getCurrentAccessToken();
-    if (!data) {
-      throw "Something went wrong obtaining access token";
-    }
+   
     const facebookCredential = FacebookAuthProvider.credential(
       data.accessToken
     );
