@@ -9,9 +9,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
-import { facebookSignin, FIREBASE_AUTH } from "../FirebaseConfig";
+import { FIREBASE_AUTH } from "../FirebaseConfig";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { signInWithCredential, GoogleAuthProvider } from "firebase/auth";
+import { LoginManager, AccessToken } from "react-native-fbsdk-next";
+import {
+  signInWithCredential,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+} from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
@@ -32,6 +37,8 @@ const LoginPage = () => {
         userInfo.data?.idToken
       );
       // Sign in with credential from the Google user. Creates a new user if none exists.
+
+      // for database purposes
       const userCredential = await signInWithCredential(
         FIREBASE_AUTH,
         googleCredential
@@ -57,6 +64,53 @@ const LoginPage = () => {
     } catch (e) {
       alert(e.message);
     }
+  }
+
+  async function facebookSignin() {
+    try {
+      const result = await LoginManager.logInWithPermissions([
+        "public_profile",
+        "email",
+      ]);
+
+      if (result.isCancelled) {
+        throw "User cancelled the login process";
+      }
+
+      const data = await AccessToken.getCurrentAccessToken();
+
+      const facebookCredential = FacebookAuthProvider.credential(
+        data.accessToken
+      );
+      await signInWithCredential(FIREBASE_AUTH, facebookCredential);
+
+      /** Database purposes
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${data.accessToken}&fields=id,name,email`
+      );
+  
+      //returns a json with the requested fields
+      const profile = await response.json();
+  
+  
+  
+      await setDoc(doc(FIREBASE_DB, "Users"), {
+        Name: profile.name,
+        Email: profile.email,
+        Username: "",
+        level: 1,
+        strength: 0,
+        speed: 0,
+        stamina: 0,
+        upperBody: 0,
+        lowerBody: 0,
+        calories: 0,
+      });
+  
+      **/
+      console.log("User added!");
+      navigation.navigate("Home");
+    } catch (e) {}
   }
 
   return (
@@ -87,10 +141,11 @@ const LoginPage = () => {
         <Text style={[styles.forgotPassword, styles.loginPagePosition]}>
           Forgot Password?
         </Text>
-        <TouchableOpacity style={[styles.loginPage, styles.loginPagePosition]} onPress={() => navigation.navigate('SignUp')}>
-          <Text style={[styles.loginPage, styles.signUpText]}>
-            Sign Up
-          </Text>
+        <TouchableOpacity
+          style={[styles.loginPage, styles.loginPagePosition]}
+          onPress={() => navigation.navigate("SignUp")}
+        >
+          <Text style={[styles.loginPage, styles.signUpText]}>Sign Up</Text>
         </TouchableOpacity>
         <View style={[styles.loginButtonContainer]}>
           <Button title="Login" style={[styles.loginButton]} />

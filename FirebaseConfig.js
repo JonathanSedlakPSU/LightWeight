@@ -9,7 +9,6 @@ import {
 } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { LoginManager, AccessToken } from "react-native-fbsdk-next";
 
 // Your web app's Firebase configuration
@@ -29,52 +28,6 @@ const FIREBASE_AUTH = initializeAuth(FIREBASE_APP, {
 });
 const FIREBASE_DB = getFirestore(FIREBASE_APP);
 
-
-async function facebookSignin() {
-  try {
-    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-
-    if (result.isCancelled) {
-      throw "User cancelled the login process";
-    }
-
-    const data = await AccessToken.getCurrentAccessToken();
-   
-    const facebookCredential = FacebookAuthProvider.credential(
-      data.accessToken
-    );
-    await signInWithCredential(FIREBASE_AUTH, facebookCredential);
-
-
-    /** 
-    const response = await fetch(
-      `https://graph.facebook.com/me?access_token=${data.accessToken}&fields=id,name,email`
-    );
-
-    //returns a json with the requested fields
-    const profile = await response.json();
-
-
-
-    await setDoc(doc(FIREBASE_DB, "Users"), {
-      Name: profile.name,
-      Email: profile.email,
-      Username: "",
-      level: 1,
-      strength: 0,
-      speed: 0,
-      stamina: 0,
-      upperBody: 0,
-      lowerBody: 0,
-      calories: 0,
-    });
-
-    **/
-    console.log("User added!");
-  } catch (e) {
-    
-  }
-}
 
 // Function to sign in a user with email and password
 async function signIn ()  {
