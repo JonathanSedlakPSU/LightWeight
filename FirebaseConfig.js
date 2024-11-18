@@ -74,4 +74,4 @@ async function addUser(email, password, firstName, lastName, username) {
   }
 }
 
-export { FIREBASE_AUTH, FIREBASE_DB, addUser, facebookSignin, signIn };
+export { FIREBASE_AUTH, FIREBASE_DB, addUser, signIn };
