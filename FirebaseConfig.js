@@ -21,4 +21,4 @@ const FIREBASE_AUTH = initializeAuth(FIREBASE_APP, {
 });
 const FIREBASE_DB = getFirestore(FIREBASE_APP);
 
-export { FIREBASE_AUTH, FIREBASE_DB, signIn };
+export { FIREBASE_AUTH, FIREBASE_DB };
