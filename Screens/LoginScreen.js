@@ -46,7 +46,7 @@ const LoginPage = () => {
       // If user does not exist, add user to Firestore
       if (!userDoc.exists()) {
         await setDoc(userDocRef, {
-          Username: userInfo.data.name,
+          Username: userInfo.data.user.name,
           level: 1,
           strength: 0,
           speed: 0,
@@ -56,7 +56,7 @@ const LoginPage = () => {
           calories: 0,
         });
       }
-      navigation.navigate("Home", { id: userCredential.user.uid });
+      navigation.navigate("Home", { userId: userCredential.user.uid });
       console.log("User added!");
     } catch (e) {
       alert(e.message);
@@ -75,7 +75,7 @@ const LoginPage = () => {
       console.log("User signed in!");
 
       // Navigate to Home screen with user ID
-      navigation.navigate("Home", { id: userCredential.user.uid });
+      navigation.navigate("Home", { userId: userCredential.user.uid });
     } catch (e) {
       // If there is an error, alert the user
       alert(e.message);

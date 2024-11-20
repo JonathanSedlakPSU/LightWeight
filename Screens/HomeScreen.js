@@ -2,12 +2,32 @@ import * as React from "react";
 import { Image, StyleSheet, Text, View, ScrollView } from "react-native";
 import { Color, FontFamily, FontSize, Border, Gap } from "../GlobalStyles";
 import { FIREBASE_DB } from "../FirebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
+import { useNavigation } from "@react-navigation/native";
 
 const HomePage = ({ route }) => {
   const navigation = useNavigation();
-
+  const [userData, setUserData] = React.useState({});
   const { userId } = route.params;
 
+  const fetchUserData = async () => {
+    try {
+      const userDoc = await getDoc(doc(FIREBASE_DB, "users", userId));
+      if (userDoc.exists()) {
+        console.log("User Data:", userDoc.data());
+        setUserData(userDoc.data());
+      } else {
+        console.log("No such document!");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  // Fetch user data at beginning
+  React.useEffect(() => {
+    fetchUserData();
+  }, []);
   return (
     <View style={styles.homePage}>
       <View style={[styles.profileLevelParent, styles.scaledContent]}>

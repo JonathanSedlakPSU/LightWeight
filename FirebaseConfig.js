@@ -1,15 +1,8 @@
 // Import Firebase functions
 import { initializeApp } from "firebase/app";
-import {
-  initializeAuth,
-  getReactNativePersistence,
-  createUserWithEmailAndPassword,
-  FacebookAuthProvider,
-  signInWithCredential
-} from "firebase/auth";
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
-import { LoginManager, AccessToken } from "react-native-fbsdk-next";
+import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -28,50 +21,4 @@ const FIREBASE_AUTH = initializeAuth(FIREBASE_APP, {
 });
 const FIREBASE_DB = getFirestore(FIREBASE_APP);
 
-
-// Function to sign in a user with email and password
-async function signIn ()  {
-  try {
-    //get the response from the firebase
-      await signInWithEmailAndPassword(
-      FIREBASE_AUTH,
-      email,
-      password
-    );
-    //if the response is successful, log the response
-    navigation.navigate("Home");
-  } catch (e) {
-    //if there is an error, alert the user
-    alert(e.message);
-  } 
-}
-
-// Function to add a user to Firestore
-// Function to add a new user document to Firestore
-async function addUser(email, password, firstName, lastName, username) {
-  try {
-    const response = await createUserWithEmailAndPassword(
-      FIREBASE_AUTH,
-      email,
-      password
-    );
-
-    await setDoc(doc(FIREBASE_DB, "/Users", response.user.uid), {
-      FirstName: firstName,
-      LastName: lastName,
-      Username: username,
-      level: 1,
-      strength: 0,
-      speed: 0,
-      stamina: 0,
-      upperBody: 0,
-      lowerBody: 0,
-      calories: 0,
-    });
-    console.log("User added!");
-  } catch (error) {
-    console.error("Error adding user: ", error);
-  }
-}
-
-export { FIREBASE_AUTH, FIREBASE_DB, addUser, signIn };
+export { FIREBASE_AUTH, FIREBASE_DB, signIn };
