@@ -32,17 +32,22 @@ const SignUpPage = () => {
           />
         </View>
         <View style={[styles.Layout1]}>
-          <TextInput onChangeText={(text) => setPassword(text)}
-            placeholder=" Password"style={[styles.passwordTextbox]} />
+          <TextInput
+            onChangeText={(text) => setPassword(text)}
+            placeholder=" Password"
+            style={[styles.passwordTextbox]}
+          />
         </View>
         <View style={[styles.Layout1]}>
-          <TextInput onChangeText={(text) => setPassword(text)}
-            placeholder=" Confirm Password"style={[styles.passwordTextbox]} />
-          
+          <TextInput
+            onChangeText={(text) => setPassword(text)}
+            placeholder=" Confirm Password"
+            style={[styles.passwordTextbox]}
+          />
         </View>
         <View style={[styles.loginButtonContainer]}>
           <View style={[styles.loginButton]} />
-          <Button title="Create Account" style={styles.loginText}/>
+          <Button title="Create Account" style={styles.loginText} />
         </View>
       </View>
     </View>
