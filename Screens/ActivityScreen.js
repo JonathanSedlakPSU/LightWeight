@@ -1,22 +1,41 @@
 import * as React from "react";
-import {StyleSheet, View, Image, Text} from "react-native";
+import {StyleSheet, View, Image, Text, Pressable, Button, Modal} from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
+import GoalsPopUp from "./GoalsPop-Up";
 
 const ActivityPage = () => {
   	
+	// Vairbles to set modal visible
+	const [modalOpen, setModalOpen] = React.useState(false);
+
   	return (
     		<View style={styles.activityPage}>
       			<View style={[styles.goalsParent,styles.scaledContent]}>
 
-        				<View style={[styles.goals, styles.goalsLayout]}>
-          					<View style={styles.goalsChild} />
-          					<Image style={styles.image1Icon} resizeMode="cover" source={require('./Assets/ActivityScreen/Goal.png')} />
-          					<Text style={[styles.goals1, styles.goals1Layout, styles.scaledContent]}>Goals</Text>
-        				</View>
+        				{/* Goals Section */}
+        				<Pressable style={[styles.goals, styles.goalsLayout]} onPress={() => setModalOpen(true)}>
+          				<View style={styles.goalsChild}/>
+          				<Image style={styles.image1Icon} resizeMode="cover" source={require("./Assets/ActivityScreen/Goal.png")}/>
+          				<Text style={[styles.goals1, styles.goals1Layout, styles.scaledContent]}>Goals</Text>
+        				</Pressable>
+
+						{/* Modal with GoalsPopUp */}
+						<Modal visible={modalOpen} animationType="slide" transparent={true} 
+						onRequestClose={() => setModalOpen(false)}>
+
+						<View style={styles.modalOverlay}>
+            			<View style={styles.modalContent}>
+              				<GoalsPopUp />
+              					<View style={styles.closeButton}>
+                					<Button title="Close" onPress={() => setModalOpen(false)} />
+              					</View>
+            			</View>
+          			</View>
+
+        				</Modal>
 
 
-
-
+						{/* Log Calories Section */}
         				<View style={[styles.goals, styles.goalsLayout]}>
           					<View style={styles.goalsChild} />
           					<Image style={[styles.image1Icon, styles.scaledContent1]} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
@@ -49,10 +68,37 @@ const ActivityPage = () => {
           					</View>
         				</View>
       			</View>
+
+
+				
+
+
     		</View>);
 };
 
 const styles = StyleSheet.create({
+	modalOverlay: {
+    flex: 1,
+    alignItems: "center", // Center modal content horizontally
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent black background
+  },
+  modalContent: {
+	top: 150,
+    width: "90%",
+    backgroundColor: "#000", // Black background for modal
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center", // Align content to the center
+  },
+
+	 closeButton: {
+	 justifyContent: 'center',
+    marginTop: 20,
+	 top: 650,
+    padding: 10,
+    borderRadius: 10,
+	 flexDirection: "row",
+  },
   	goalsLayout: {
     		height: 123,
     		width: 240
