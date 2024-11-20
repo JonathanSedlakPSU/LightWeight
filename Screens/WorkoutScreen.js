@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     		position: "relative"
   	},
   	workoutsPage: {
-    		backgroundColor: "#1c0101",
+    		backgroundColor: Color.colorBackground,
     		flex: 1,
     		height: 880,
     		overflow: "visible",

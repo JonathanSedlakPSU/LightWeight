@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   signuppage: {
-    backgroundColor: "#1c0101",
+    backgroundColor: Color.colorBackground,
     flex: 1,
     width: "100%",
     height: 932,

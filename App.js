@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingBottom: 20, // Space for the rounded tab bar
-    backgroundColor: "#1c0101", // Background color outside the tab bar
+    backgroundColor: Color.colorBackground, // Background color outside the tab bar
   },
 });

@@ -369,7 +369,7 @@ const styles = StyleSheet.create({
         position: "relative"
     },
     homePage: {
-        backgroundColor: "#1c0101",
+        backgroundColor: Color.colorBackground,
         flex: 1,
         width: "100%",
         height: 880,
