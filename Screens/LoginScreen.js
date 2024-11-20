@@ -11,12 +11,7 @@ import {
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
 import { FIREBASE_AUTH } from "../FirebaseConfig";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { LoginManager, AccessToken } from "react-native-fbsdk-next";
-import {
-  signInWithCredential,
-  GoogleAuthProvider,
-  FacebookAuthProvider,
-} from "firebase/auth";
+import { signInWithCredential, GoogleAuthProvider } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
@@ -44,73 +39,47 @@ const LoginPage = () => {
         googleCredential
       );
 
-      /**
-      
-      // Get google account's first and last name and add the user to Firestore.
-      await setDoc(doc(FIREBASE_DB, "/Users", userCredential.user.uid), {
-        Username: "",
-        level: 1,
-        strength: 0,
-        speed: 0,
-        stamina: 0,
-        upperBody: 0,
-        lowerBody: 0,
-        calories: 0,
-      });
-  
-      **/
-      navigation.navigate("Home");
+      // Check if user already exists in Firestore before adding
+      const userDocRef = doc(FIREBASE_DB, "Users", userCredential.user.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      // If user does not exist, add user to Firestore
+      if (!userDoc.exists()) {
+        await setDoc(userDocRef, {
+          Username: userInfo.data.name,
+          level: 1,
+          strength: 0,
+          speed: 0,
+          stamina: 0,
+          upperBody: 0,
+          lowerBody: 0,
+          calories: 0,
+        });
+      }
+      navigation.navigate("Home", { id: userCredential.user.uid });
       console.log("User added!");
     } catch (e) {
       alert(e.message);
     }
   }
 
-  async function facebookSignin() {
+  // Function to sign in a user with email and password
+  async function signIn(username, email, password) {
     try {
-      const result = await LoginManager.logInWithPermissions([
-        "public_profile",
-        "email",
-      ]);
-
-      if (result.isCancelled) {
-        throw "User cancelled the login process";
-      }
-
-      const data = await AccessToken.getCurrentAccessToken();
-
-      const facebookCredential = FacebookAuthProvider.credential(
-        data.accessToken
+      // Get the response from Firebase
+      const userCredential = await signInWithEmailAndPassword(
+        FIREBASE_AUTH,
+        email,
+        password
       );
-      await signInWithCredential(FIREBASE_AUTH, facebookCredential);
+      console.log("User signed in!");
 
-      /** Database purposes
-      const response = await fetch(
-        `https://graph.facebook.com/me?access_token=${data.accessToken}&fields=id,name,email`
-      );
-  
-      //returns a json with the requested fields
-      const profile = await response.json();
-  
-  
-  
-      await setDoc(doc(FIREBASE_DB, "Users"), {
-        Name: profile.name,
-        Email: profile.email,
-        Username: "",
-        level: 1,
-        strength: 0,
-        speed: 0,
-        stamina: 0,
-        upperBody: 0,
-        lowerBody: 0,
-        calories: 0,
-      });
-  
-      **/
-      console.log("User added!");
-      navigation.navigate("Home");
-    } catch (e) {}
+      // Navigate to Home screen with user ID
+      navigation.navigate("Home", { id: userCredential.user.uid });
+    } catch (e) {
+      // If there is an error, alert the user
+      alert(e.message);
+    }
   }
 
   return (
@@ -150,13 +119,6 @@ const LoginPage = () => {
         <View style={[styles.loginButtonContainer]}>
           <Button title="Login" style={[styles.loginButton]} />
           <Text style={styles.loginText}>Sign in with</Text>
-        </View>
-        <View style={[styles.facebookSsoContainer]}>
-          <Button
-            title="Facebook"
-            style={[styles.facebookButton]}
-            onPress={facebookSignin}
-          />
         </View>
         <View style={[styles.googleSsoContainer]}>
           <Button

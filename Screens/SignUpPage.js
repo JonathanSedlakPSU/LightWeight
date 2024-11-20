@@ -40,7 +40,7 @@ const SignUpPage = () => {
         </View>
         <View style={[styles.Layout1]}>
           <TextInput
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(text) => setConfirmPassword(text)}
             placeholder=" Confirm Password"
             style={[styles.passwordTextbox]}
           />
