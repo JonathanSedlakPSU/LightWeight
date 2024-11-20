@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 706,
         width: "100%",
-        right: 30,
+        right: 28,
         top: -100,
         //backgroundColor: "#000",
         //borderRadius: Border.br_xl,

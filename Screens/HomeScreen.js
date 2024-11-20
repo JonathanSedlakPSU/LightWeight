@@ -1,9 +1,13 @@
 import * as React from "react";
-import {Image, StyleSheet, Text, View, ScrollView} from "react-native";
+import {Image, StyleSheet, Text, View, ScrollView, Pressable, Button, Modal} from "react-native";
 import { Color, FontFamily, FontSize, Border, Gap } from "../GlobalStyles";
+import DailyQuestPopup from "./DailyQuestPop-Up";
+
 
 const HomePage = () => {
-  	
+    // Vairbles to set modal visible
+    const [modalOpen, setModalOpen] = React.useState(false);
+
   	return (
     		<View style={styles.homePage}>
       			<View style={[styles.profileLevelParent, styles.scaledContent]}>
@@ -17,6 +21,7 @@ const HomePage = () => {
           					<Text style={[styles.level, styles.levelTypo]}> Level</Text>
         				</View>
         				<View style={styles.caloriesBurnedParent}>
+
           					<View style={styles.caloriesBurned}>
             						<View style={styles.caloriesBurnedChild} />
             						<View style={[styles.calories, styles.caloriesPosition]}>
@@ -27,13 +32,31 @@ const HomePage = () => {
               							</View>
             						</View>
           					</View>
-          					<View style={[styles.dailyQuests, styles.dailyLayout1]}>
+
+                            {/* Daily Quests */}
+          					<Pressable style={[styles.dailyQuests, styles.dailyLayout1]} onPress={() => setModalOpen(true)}>
             						<View style={[styles.dailyQuestsChild, styles.dailyLayout1]} />
             						<View style={[styles.dailyQuests1, styles.dailyLayout]}>
               							<Text style={[styles.dailyQuests2, styles.dailyLayout]}>Daily Quests</Text>
               							<Text style={[styles.text2, styles.dailyLayout]}>1/3</Text>
             						</View>
-          					</View>
+          					</Pressable>
+
+                            {/* Daily Quests Modal*/}
+                            <Modal visible={modalOpen} animationType="slide" transparent={true} 
+						    onRequestClose={() => setModalOpen(false)}>
+						    <View style={styles.modalOverlay}>
+            			        <View style={styles.modalContent}>
+              				        <DailyQuestPopup />
+              					    <View style={styles.closeButton}>
+                				        <Button title="Close" onPress={() => setModalOpen(false)} />
+              				        </View>
+            			        </View>
+          			        </View>
+                            </Modal>
+
+
+
           					<View style={[styles.stats, styles.statsPosition]}>
             						<View style={styles.statsChild} />
             						<View style={[styles.stats1, styles.statsPosition]}>
@@ -98,6 +121,35 @@ const HomePage = () => {
 };
 
 const styles = StyleSheet.create({
+
+    modalOverlay: {
+   flex: 1,
+   alignItems: "center", // Center modal content horizontally
+   backgroundColor: "rgba(0, 0, 0, 0.4)", // Semi-transparent black background
+	top: 60,
+	height: 735,
+   width: "100%",
+   position: "absolute",
+  },
+  modalContent: {
+   width: "100%",
+   //backgroundColor: "#000", // Black background for modal
+   alignItems: "center", // Align content to the center
+	top: 100,
+	height: 550,
+   width: "85%",
+	borderRadius: 20,
+  },
+	 closeButton: {
+	 justifyContent: 'center',
+    marginTop: 20,
+	 top: -150,
+    padding: 10,
+    borderRadius: 10,
+	 flexDirection: "row",
+  },
+
+  
     groupChildLayout: {
         height: 85,
         width: 82

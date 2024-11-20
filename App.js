@@ -33,7 +33,7 @@ function TabBar() {
       <Tab.Screen name="Profile" component={HomePage} />
       <Tab.Screen name="Activity" component={ActivityPage} />
       <Tab.Screen name="Goals" component={GoalsPopUp} />
-      <Tab.Screen name="LC" component={LogCaloriesPopUp} />
+      <Tab.Screen name="DC" component={DailyQuestPopup} />
     </Tab.Navigator>
   );
 }

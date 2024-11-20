@@ -7,6 +7,8 @@ const DailyQuestPopup = () => {
   	return (
     		<View style={styles.dailyQuestPopup}>
       			<View style={[styles.questsManager, styles.childPosition]}>
+
+					   {/* Quests Header */}
         				<View style={[styles.questsManager, styles.childPosition]}>
           					<View style={[styles.dailyQuestsChild, styles.childPosition]} />
           					<View style={styles.questManager}>
@@ -16,6 +18,8 @@ const DailyQuestPopup = () => {
             						</View>
           					</View>
         				</View>
+						
+						{/* Daily Quest 1 */}
         				<View style={[styles.groupParent, styles.groupPosition]}>
           					<View style={styles.ellipseParent}>
             						<Image style={[styles.groupChild, styles.childPosition]} resizeMode="cover" source={require('./Assets/DailyQuestPop-Up/Ellipse1.png')} />
@@ -23,6 +27,8 @@ const DailyQuestPopup = () => {
           					</View>
           					<Text style={styles.greetARandomPosition}>Greet a random Person</Text>
         				</View>
+
+						{/* Daily Quest 2 */}
         				<View style={styles.groupContainer}>
           					<View style={styles.ellipseParent}>
             						<Image style={[styles.groupChild, styles.childPosition]} resizeMode="cover" source={require('./Assets/DailyQuestPop-Up/CheckMark.png')} />
@@ -33,6 +39,8 @@ const DailyQuestPopup = () => {
           					</View>
           					<Text style={[styles.complete30Jumping, styles.greetARandomPosition]}>Complete 30 Jumping Jacks under a minute</Text>
         				</View>
+
+						{/* Daily Quest 3 */}
         				<View style={[styles.groupView, styles.groupPosition]}>
           					<View style={styles.ellipseParent}>
             						<Image style={[styles.groupChild, styles.childPosition]} resizeMode="cover" source={require('./Assets/DailyQuestPop-Up/Ellipse1.png')} />
@@ -40,6 +48,7 @@ const DailyQuestPopup = () => {
           					</View>
           					<Text style={styles.greetARandomPosition}>Run up and down some stairs</Text>
         				</View>
+
       			</View>
     		</View>);
 };
@@ -68,7 +77,7 @@ const styles = StyleSheet.create({
     		left: "4.03%",
     		right: "2.35%",
     		width: "93.62%",
-    		height: "12.7%",
+    		height: "16%",
     		position: "absolute"
   	},
   	checkBg: {
@@ -232,7 +241,7 @@ const styles = StyleSheet.create({
     		bottom: "47.05%",
     		left: "3.02%",
     		width: "93.62%",
-    		height: "12.7%",
+    		height: "16%",
     		position: "absolute"
   	},
   	groupView: {
@@ -243,7 +252,7 @@ const styles = StyleSheet.create({
     		flex: 1,
     		height: 504,
     		width: "100%",
-			transform: [{ scale: 0.7 }]
+			transform: [{ scale: 0.8 }]
   	}
 });
 
