@@ -6,16 +6,6 @@ const GoalsPopUp = () => {
   	
   	return (
     		<View style={styles.goalsPopup}>
-      			<View style={styles.goalManager}>
-        				<View style={styles.dailyPosition}>
-          					<View style={[styles.questManager, styles.questManagerPosition]}>
-            						<View style={styles.bar} />
-            						<View style={[styles.questsHeader, styles.questManagerPosition]}>
-              							<Text style={styles.goals}>Goals</Text>
-            						</View>
-          					</View>
-        				</View>
-      			</View>
       			<View style={[styles.bodyweight, styles.bodyweightLayout]}>
         			<View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
         				<Text style={[styles.bodyWeightLbsTypo]}>Body Weight (lbs)</Text>
@@ -159,19 +149,7 @@ const styles = StyleSheet.create({
         top: "3.33%",
         bottom: "86.36%"
     },
-    goalManager: {
-        width: "99.9%",
-        right: "0.1%",
-        left: "0%",
-        bottom: "0%",
-        height: "100%",
-        top: "0%",
-        position: "absolute",
-        backgroundColor: "#000",
-        borderStyle: "solid",
-        borderWidth: 5,
-        borderRadius: Border.br_xl
-    },
+    
     bodyweightChild: {
         top: 0,
         backgroundColor: Color.theme2,
@@ -227,6 +205,10 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 706,
         width: "100%",
+        right: 30,
+        top: -100,
+        //backgroundColor: "#000",
+        //borderRadius: Border.br_xl,
         transform: [{ scale: 0.8 }]
     },
     number1: {

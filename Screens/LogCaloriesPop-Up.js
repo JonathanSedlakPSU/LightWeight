@@ -217,7 +217,9 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 706,
         width: "100%",
-        transform: [{ scale: 0.8 }]
+        top: -70,
+        right: 20,
+        transform: [{ scale: 0.7 }]
     },
     number1: {
         color: Color.colorWhite,

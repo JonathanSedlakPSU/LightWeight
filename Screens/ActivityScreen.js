@@ -2,48 +2,64 @@ import * as React from "react";
 import {StyleSheet, View, Image, Text, Pressable, Button, Modal} from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
 import GoalsPopUp from "./GoalsPop-Up";
+import LogCaloriesPopUp from "./LogCaloriesPop-Up";
+
 
 const ActivityPage = () => {
   	
 	// Vairbles to set modal visible
-	const [modalOpen, setModalOpen] = React.useState(false);
+	const [modal1Open, setModal1Open] = React.useState(false);
+	const [modal2Open, setModal2Open] = React.useState(false);
 
   	return (
     		<View style={styles.activityPage}>
       			<View style={[styles.goalsParent,styles.scaledContent]}>
 
         				{/* Goals Section */}
-        				<Pressable style={[styles.goals, styles.goalsLayout]} onPress={() => setModalOpen(true)}>
+        				<Pressable style={[styles.goals, styles.goalsLayout]} onPress={() => setModal1Open(true)}>
           				<View style={styles.goalsChild}/>
           				<Image style={styles.image1Icon} resizeMode="cover" source={require("./Assets/ActivityScreen/Goal.png")}/>
           				<Text style={[styles.goals1, styles.goals1Layout, styles.scaledContent]}>Goals</Text>
         				</Pressable>
 
-						{/* Modal with GoalsPopUp */}
-						<Modal visible={modalOpen} animationType="slide" transparent={true} 
-						onRequestClose={() => setModalOpen(false)}>
-
-						<View style={styles.modalOverlay}>
+						{/* Modal with Goals */}
+						<Modal visible={modal1Open} animationType="slide" transparent={true} 
+						onRequestClose={() => setModal1Open(false)}>
+						<View style={styles.modalOverlay1}>
             			<View style={styles.modalContent}>
               				<GoalsPopUp />
-              					<View style={styles.closeButton}>
-                					<Button title="Close" onPress={() => setModalOpen(false)} />
+              					<View style={styles.closeButton1}>
+                					<Button title="Close" onPress={() => setModal1Open(false)} />
               					</View>
             			</View>
           			</View>
-
         				</Modal>
 
 
 						{/* Log Calories Section */}
-        				<View style={[styles.goals, styles.goalsLayout]}>
+        				<Pressable style={[styles.goals, styles.goalsLayout]} onPress={() => setModal2Open(true)}>
           					<View style={styles.goalsChild} />
           					<Image style={[styles.image1Icon, styles.scaledContent1]} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
 								
           					<Text style={[styles.goals1, styles.logCalories2, styles.scaledContent]}>Log</Text>
 								<Text style={[styles.goals1, styles.logCalories1, styles.scaledContent]}>Calories</Text>
-        				</View>
+        				</Pressable>
 
+						{/* Modal with Log Calories Pop-Up */}
+						<Modal visible={modal2Open} animationType="slide" transparent={true} 
+						onRequestClose={() => setModal2Open(false)}>
+						<View style={styles.modalOverlay2}>
+            			<View style={styles.modalContent}>
+              				<LogCaloriesPopUp />
+              					<View style={styles.closeButton2}>
+                					<Button title="Close" onPress={() => setModal2Open(false)} />
+              					</View>
+            			</View>
+          			</View>
+        				</Modal>
+
+
+						{/* Activity Levels */}
         				<View style={styles.activityLevels}>
           					<View style={[styles.outterLayer, styles.outterLayerPosition]} />
           					<View style={styles.days}>
@@ -77,24 +93,55 @@ const ActivityPage = () => {
 };
 
 const styles = StyleSheet.create({
-	modalOverlay: {
-    flex: 1,
-    alignItems: "center", // Center modal content horizontally
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent black background
+	//Back
+	modalOverlay1: {
+   flex: 1,
+   alignItems: "center", // Center modal content horizontally
+   backgroundColor: "rgba(0, 0, 0, 0.4)", // Semi-transparent black background
+	top: 60,
+	height: 735,
+   width: "100%",
+   position: "absolute",
   },
-  modalContent: {
-	top: 150,
-    width: "90%",
-    backgroundColor: "#000", // Black background for modal
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center", // Align content to the center
+  modalContent1: {
+   width: "100%",
+   backgroundColor: "#000", // Black background for modal
+   alignItems: "center", // Align content to the center
+	top: 30,
+	height: 550,
+   width: "85%",
+	borderRadius: 20,
   },
-
-	 closeButton: {
+	 closeButton1: {
 	 justifyContent: 'center',
     marginTop: 20,
-	 top: 650,
+	 top: -10,
+    padding: 10,
+    borderRadius: 10,
+	 flexDirection: "row",
+  },
+  modalOverlay2: {
+   flex: 1,
+   alignItems: "center", // Center modal content horizontally
+   backgroundColor: "rgba(0, 0, 0, 0.4)", // Semi-transparent black background
+	top: 60,
+	height: 735,
+   width: "100%",
+   position: "absolute",
+  },
+  modalContent: {
+   width: "100%",
+   backgroundColor: "#000", // Black background for modal
+   alignItems: "center", // Align content to the center
+	top: 30,
+	height: 550,
+   width: "85%",
+	borderRadius: 20,
+  },
+	 closeButton2: {
+	 justifyContent: 'center',
+    marginTop: 20,
+	 top: -10,
     padding: 10,
     borderRadius: 10,
 	 flexDirection: "row",
