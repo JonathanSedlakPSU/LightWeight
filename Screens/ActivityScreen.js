@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
 	 closeButton2: {
 	 justifyContent: 'center',
     marginTop: 20,
-	 top: -10,
+	 top: -5,
     padding: 10,
     borderRadius: 10,
 	 flexDirection: "row",

@@ -10,7 +10,7 @@ import DailyQuestPopup from "./DailyQuestPop-Up";
 const HomePage = ({ userId }) => {
   const navigation = useNavigation();
   const [userData, setUserData] = React.useState({});
-
+  const [modalOpen, setModalOpen] = React.useState(false);
 
   const fetchUserData = async () => {
     try {
@@ -33,6 +33,8 @@ const HomePage = ({ userId }) => {
   return (
     <View style={styles.homePage}>
       <View style={[styles.profileLevelParent, styles.scaledContent]}>
+
+        {/*Profile Level*/}
         <View style={styles.profileLevel}>
           <View style={[styles.ellipseParent, styles.groupChildLayout]}>
             <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
@@ -40,14 +42,12 @@ const HomePage = ({ userId }) => {
             </Svg>
             <Text style={[styles.text, styles.textTypo]}>5</Text>
           </View>
-          <Image
-            style={[styles.image1Icon, styles.groupPosition]}
-            resizeMode="cover"
-            source={require("./Assets/HomeScreen/ProfilePic.png")}
-          />
+          <Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={require("./Assets/HomeScreen/ProfilePic.png")}/>
           <Text style={[styles.jonyLiftz, styles.levelTypo]}>Jony Liftz</Text>
           <Text style={[styles.level, styles.levelTypo]}> Level</Text>
         </View>
+
+        {/* Calories Burned*/}
         <View style={styles.caloriesBurnedParent}>
           <View style={styles.caloriesBurned}>
             <View style={styles.caloriesBurnedChild} />
@@ -63,7 +63,9 @@ const HomePage = ({ userId }) => {
               </View>
             </View>
           </View>
-          <View style={[styles.dailyQuests, styles.dailyLayout1]}>
+
+          {/* Daily Quests*/}
+          <Pressable style={[styles.dailyQuests, styles.dailyLayout1]} onPress={() => setModalOpen(true)}>
             <View style={[styles.dailyQuestsChild, styles.dailyLayout1]} />
             <View style={[styles.dailyQuests1, styles.dailyLayout]}>
               <Text style={[styles.dailyQuests2, styles.dailyLayout]}>
@@ -71,94 +73,101 @@ const HomePage = ({ userId }) => {
               </Text>
               <Text style={[styles.text2, styles.dailyLayout]}>1/3</Text>
             </View>
-          </View>
+          </Pressable>
+
+
           <View style={[styles.stats, styles.statsPosition]}>
             <View style={styles.statsChild} />
             <View style={[styles.stats1, styles.statsPosition]}>
+
+              {/* Strength */}
               <View style={styles.strength}>
                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
                   <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
+                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
                   </Svg>
                   <Text style={[styles.ellipsenumber, styles.textTypo]}>3</Text>
                 </View>
                 <View style={[styles.strength1, styles.groupPosition]}>
-                  <Image
-                    style={styles.groupLayout}
-                    resizeMode="cover"
-                    source={require("./Assets/HomeScreen/Strength.png")}
-                  />
-                  <Text
-                    style={[styles.strength2, styles.levelTypo]}
-                  >{`Strength`}</Text>
+                  <Image style={styles.groupLayout} resizeMode="cover" source={require("./Assets/HomeScreen/Strength.png")}/>
+                  <Text style={[styles.strength2, styles.levelTypo]}>{`Strength`}</Text>
                 </View>
               </View>
+
+              {/* Speed */}
               <View style={styles.strength}>
                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
                   <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
+                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
                   </Svg>
                   <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
                 </View>
                 <View style={[styles.strength1, styles.groupPosition]}>
-                  <Image
-                    style={styles.groupLayout}
-                    resizeMode="cover"
-                    source={require("./Assets/HomeScreen/Speed.png")}
-                  />
-                  <Text style={[styles.strength2, styles.levelTypo]}>
-                    Speed
-                  </Text>
+                  <Image style={styles.groupLayout} resizeMode="cover" source={require("./Assets/HomeScreen/Speed.png")}/>
+                  <Text style={[styles.strength2, styles.levelTypo]}> Speed</Text>
                 </View>
               </View>
+
+              {/*Stamina */}
               <View style={styles.strength}>
                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
                   <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
+                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
                   </Svg>
                   <Text style={[styles.ellipsenumber, styles.textTypo]}>1</Text>
                 </View>
                 <View style={[styles.strength1, styles.groupPosition]}>
-                  <Image
-                    style={styles.groupLayout}
-                    resizeMode="cover"
-                    source={require("./Assets/HomeScreen/Stamina.png")}
-                  />
+                  <Image style={styles.groupLayout}  resizeMode="cover" source={require("./Assets/HomeScreen/Stamina.png")}/>
                   <Text style={[styles.strength2, styles.levelTypo]}>{`Stamina`}</Text>
-                                </View>
-                            </View>
-                            <View style={styles.strength}>
-                                <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                                  <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                                    <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
-                                  </Svg>
-                                    <Text style={[styles.ellipsenumber, styles.textTypo]}>6</Text>
-                                </View>
-                                <View style={[styles.strength1, styles.groupPosition]}>
-                                    <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/UpperBody.png')} />
-                  									<Text style={[styles.strength2, styles.levelTypo]}>{`Upper Body
-                  									`}</Text>
                 </View>
               </View>
+          
+              {/* Upper Body */}
               <View style={styles.strength}>
                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                  <Image
-                    style={[styles.ellipse, styles.groupLayout]}
-                    resizeMode="cover"
-                    source={require("./Assets/HomeScreen/Ellipse1.png")}
-                  />
+                  <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
+                  </Svg>
+                  <Text style={[styles.ellipsenumber, styles.textTypo]}>6</Text>
+                </View>
+                <View style={[styles.strength1, styles.groupPosition]}>
+                  <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/UpperBody.png')} />
+                  <Text style={[styles.strength2, styles.levelTypo]}>{`Upper Body`}</Text>
+                </View>
+              </View>
+
+              {/* Lower Body */}
+              <View style={styles.strength}>
+                <View style={[styles.ellipseGroup, styles.groupLayout]}>
+                  <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
+                  </Svg>
                   <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
                 </View>
                 <View style={[styles.strength1, styles.groupPosition]}>
-                  <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
-                  </Svg>
-                  <Text
-                    style={[styles.strength2, styles.levelTypo]}
-                  >{`Lower Body
-                  									`}</Text>
+                  <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/LowerBody.png')} />
+                  <Text style={[styles.strength2, styles.levelTypo]}>{`Lower Body`}</Text>
                 </View>
               </View>
+
+
+
+
+            {/* Modal with Daily Quests Pop-Up */}
+						<Modal visible={modalOpen} animationType="slide" transparent={true} 
+						onRequestClose={() => setModalOpen(false)}>
+						<View style={styles.modalOverlay}>
+            	<View style={styles.modalContent}>
+              		<DailyQuestPopup />
+              		<View style={styles.closeButton}>
+                		<Button title="Close" onPress={() => setModalOpen(false)} />
+              		</View>
+            		</View>
+          		</View>
+        		</Modal>
+
+
+
             </View>
           </View>
         </View>
@@ -170,33 +179,31 @@ const HomePage = ({ userId }) => {
 const styles = StyleSheet.create({
 
     modalOverlay: {
-   flex: 1,
-   alignItems: "center", // Center modal content horizontally
-   backgroundColor: "rgba(0, 0, 0, 0.4)", // Semi-transparent black background
-	top: 60,
-	height: 735,
-   width: "100%",
-   position: "absolute",
-  },
-  modalContent: {
-   width: "100%",
-   //backgroundColor: "#000", // Black background for modal
-   alignItems: "center", // Align content to the center
-	top: 100,
-	height: 550,
-   width: "85%",
-	borderRadius: 20,
-  },
-	 closeButton: {
-	 justifyContent: 'center',
-    marginTop: 20,
-	 top: -150,
-    padding: 10,
-    borderRadius: 10,
-	 flexDirection: "row",
-  },
-
-  
+        flex: 1,
+        alignItems: "center", // Center modal content horizontally
+        backgroundColor: "rgba(0, 0, 0, 0.6)", // Semi-transparent black background
+	      top: 60,
+	      height: 735,
+        width: "100%",
+        position: "absolute",
+    },
+    modalContent: {
+        width: "100%",
+        //backgroundColor: "#000", // Black background for modal
+        alignItems: "center", // Align content to the center
+	      top: 100,
+	      height: 550,
+        width: "85%",
+	      borderRadius: 20,
+    },
+	  closeButton: {
+	      justifyContent: 'center',
+        marginTop: 20,
+	      top: -150,
+        padding: 10,
+        borderRadius: 10,
+	      flexDirection: "row",
+    },
     groupChildLayout: {
         height: 85,
         width: 82
