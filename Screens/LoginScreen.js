@@ -9,9 +9,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
-import { FIREBASE_AUTH } from "../FirebaseConfig";
+import { FIREBASE_AUTH, FIREBASE_DB } from "../FirebaseConfig";
+import {doc, getDoc, setDoc} from "firebase/firestore";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { signInWithCredential, GoogleAuthProvider } from "firebase/auth";
+import { signInWithCredential, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
@@ -23,48 +24,42 @@ const LoginPage = () => {
       webClientId:
         "137780388240-trbugevp7c2spgu8h6upqt6qkb103puk.apps.googleusercontent.com",
     });
+    // Get the user info
+    const userInfo = await GoogleSignin.signIn();
+    // Create a Google credential with the token
+    const googleCredential = GoogleAuthProvider.credential(
+      userInfo.data.idToken
+    );
+    const userCredential = await signInWithCredential(
+      FIREBASE_AUTH,
+      googleCredential
+    );
+    // Check if user already exists in Firestore
+    const userDocRef = doc(FIREBASE_DB, "Users", userCredential.user.uid);
+    const userDoc = await getDoc(userDocRef);
 
-    try {
-      // Get the user info
-      const userInfo = await GoogleSignin.signIn();
-      // Create a Google credential with the token
-      const googleCredential = GoogleAuthProvider.credential(
-        userInfo.data?.idToken
-      );
-      // Sign in with credential from the Google user. Creates a new user if none exists.
-
-      // for database purposes
-      const userCredential = await signInWithCredential(
-        FIREBASE_AUTH,
-        googleCredential
-      );
-
-      // Check if user already exists in Firestore before adding
-      const userDocRef = doc(FIREBASE_DB, "Users", userCredential.user.uid);
-      const userDoc = await getDoc(userDocRef);
-
-      // If user does not exist, add user to Firestore
-      if (!userDoc.exists()) {
-        await setDoc(userDocRef, {
-          Username: userInfo.data.user.name,
-          level: 1,
-          strength: 0,
-          speed: 0,
-          stamina: 0,
-          upperBody: 0,
-          lowerBody: 0,
-          calories: 0,
-        });
-      }
-      navigation.navigate("Home", { userId: userCredential.user.uid });
+    // If user does not exist, add user to Firestore
+    if (!userDoc.exists()) {
+      await setDoc(userDocRef, {
+        Username: userInfo.data.user.name,
+        level: 1,
+        strength: 0,
+        speed: 0,
+        stamina: 0,
+        upperBody: 0,
+        lowerBody: 0,
+        calories: 0,
+      });
+      
       console.log("User added!");
-    } catch (e) {
-      alert(e.message);
+    } else {
+      console.log("User already exists!");
     }
+      navigation.navigate("Home", { userId: userCredential.user.uid });
   }
 
   // Function to sign in a user with email and password
-  async function signIn(username, email, password) {
+  async function signIn() {
     try {
       // Get the response from Firebase
       const userCredential = await signInWithEmailAndPassword(
@@ -117,7 +112,7 @@ const LoginPage = () => {
           <Text style={[styles.loginPage, styles.signUpText]}>Sign Up</Text>
         </TouchableOpacity>
         <View style={[styles.loginButtonContainer]}>
-          <Button title="Login" style={[styles.loginButton]} />
+          <Button title="Login" style={[styles.loginButton]} onPress={signIn}/>
           <Text style={styles.loginText}>Sign in with</Text>
         </View>
         <View style={[styles.googleSsoContainer]}>
@@ -282,26 +277,7 @@ const styles = StyleSheet.create({
     width: 300,
     position: "absolute",
   },
-  facebookButton: {
-    backgroundColor: "#0095ff",
-    borderRadius: Border.br_xl,
-    top: 5,
-    left: 0,
-    width: 145,
-    height: 35,
-    position: "relative",
-  },
-  facebookText: {
-    left: 12,
-  },
-  facebookSsoContainer: {
-    top: 270,
-    width: 125,
-    left: 18,
-    width: 145,
-    height: 35,
-    position: "absolute",
-  },
+  
   googleButton: {
     backgroundColor: "#09c312",
     borderRadius: Border.br_xl,
@@ -315,9 +291,9 @@ const styles = StyleSheet.create({
     left: 29,
   },
   googleSsoContainer: {
-    left: 176,
+    left: 27,
     top: 270,
-    width: 145,
+    width: 290,
     height: 35,
     position: "absolute",
   },

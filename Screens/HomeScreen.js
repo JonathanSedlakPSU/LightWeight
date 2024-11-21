@@ -5,14 +5,14 @@ import { FIREBASE_DB } from "../FirebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 
-const HomePage = ({ route }) => {
+const HomePage = ({ userId }) => {
   const navigation = useNavigation();
   const [userData, setUserData] = React.useState({});
-  const { userId } = route.params;
+
 
   const fetchUserData = async () => {
     try {
-      const userDoc = await getDoc(doc(FIREBASE_DB, "users", userId));
+      const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
       if (userDoc.exists()) {
         console.log("User Data:", userDoc.data());
         setUserData(userDoc.data());
