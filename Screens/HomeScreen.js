@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Image, StyleSheet, Text, View, ScrollView , Pressable, Button, Modal} from "react-native";
 import { Color, FontFamily, FontSize, Border, Gap } from "../GlobalStyles";
-import { FIREBASE_DB } from "../FirebaseConfig";
+import { FIREBASE_AUTH, FIREBASE_DB } from "../FirebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import Svg, { Circle } from "react-native-svg";
@@ -16,7 +16,6 @@ const HomePage = ({ userId }) => {
     try {
       const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
       if (userDoc.exists()) {
-        console.log("User Data:", userDoc.data());
         setUserData(userDoc.data());
       } else {
         console.log("No such document!");
@@ -40,10 +39,10 @@ const HomePage = ({ userId }) => {
             <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
               <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
             </Svg>
-            <Text style={[styles.text, styles.textTypo]}>5</Text>
+            <Text style={[styles.text, styles.textTypo]}>{userData.level}</Text>
           </View>
-          <Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={require("./Assets/HomeScreen/ProfilePic.png")}/>
-          <Text style={[styles.jonyLiftz, styles.levelTypo]}>Jony Liftz</Text>
+          <Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={FIREBASE_AUTH.currentUser.photoURL ? { uri: FIREBASE_AUTH.currentUser.photoURL } : require("../assets/default_avatar.png")}/>
+          <Text style={[styles.jonyLiftz, styles.levelTypo]}>{userData.Username}</Text>
           <Text style={[styles.level, styles.levelTypo]}> Level</Text>
         </View>
 
@@ -59,7 +58,7 @@ const HomePage = ({ userId }) => {
                   source={require("./Assets/HomeScreen/Fire.png")}
                 />
                 <Text style={styles.calories2}>Calories</Text>
-                <Text style={[styles.text1, styles.textLayout]}>105</Text>
+                <Text style={[styles.text1, styles.textLayout]}>{userData.calories}</Text>
               </View>
             </View>
           </View>
@@ -86,7 +85,7 @@ const HomePage = ({ userId }) => {
                   <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
                     <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
                   </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>3</Text>
+                  <Text style={[styles.ellipsenumber, styles.textTypo]}>{userData.strength}</Text>
                 </View>
                 <View style={[styles.strength1, styles.groupPosition]}>
                   <Image style={styles.groupLayout} resizeMode="cover" source={require("./Assets/HomeScreen/Strength.png")}/>
@@ -100,7 +99,7 @@ const HomePage = ({ userId }) => {
                   <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
                     <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
                   </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
+                  <Text style={[styles.ellipsenumber, styles.textTypo]}>{userData.speed}</Text>
                 </View>
                 <View style={[styles.strength1, styles.groupPosition]}>
                   <Image style={styles.groupLayout} resizeMode="cover" source={require("./Assets/HomeScreen/Speed.png")}/>
@@ -114,7 +113,7 @@ const HomePage = ({ userId }) => {
                   <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
                     <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
                   </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>1</Text>
+                  <Text style={[styles.ellipsenumber, styles.textTypo]}>{userData.stamina}</Text>
                 </View>
                 <View style={[styles.strength1, styles.groupPosition]}>
                   <Image style={styles.groupLayout}  resizeMode="cover" source={require("./Assets/HomeScreen/Stamina.png")}/>
@@ -128,7 +127,7 @@ const HomePage = ({ userId }) => {
                   <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
                     <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
                   </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>6</Text>
+                  <Text style={[styles.ellipsenumber, styles.textTypo]}>{userData.upperBody}</Text>
                 </View>
                 <View style={[styles.strength1, styles.groupPosition]}>
                   <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/UpperBody.png')} />
@@ -142,7 +141,7 @@ const HomePage = ({ userId }) => {
                   <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
                     <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
                   </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
+                  <Text style={[styles.ellipsenumber, styles.textTypo]}>{userData.lowerBody}</Text>
                 </View>
                 <View style={[styles.strength1, styles.groupPosition]}>
                   <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/LowerBody.png')} />
