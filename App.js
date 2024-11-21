@@ -26,13 +26,19 @@ import LogCaloriesPopUp from "./Screens/LogCaloriesPop-Up";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-// Home Screen After Login
-function TabBar() {
+function TabBar({route}) {
+
+  // Get the userId from the route in stack
+  const { userId } = route.params;
+
   return (
+    
     <Tab.Navigator initialRouteName="Profile">
       <Tab.Screen name="Workouts" component={WorkoutsPage} />
-      <Tab.Screen name="Profile" component={HomePage} />
-      <Tab.Screen name="Activity" component={ActivityPage} />
+      <Tab.Screen name="Profile">
+        {(props) => <HomePage {...props} userId={userId} />}
+      </Tab.Screen>    
+        <Tab.Screen name="Activity" component={ActivityPage} />
     </Tab.Navigator>
   );
 }

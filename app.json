@@ -12,22 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "plugins": [
-      "@react-native-google-signin/google-signin",
-      [
-        "react-native-fbsdk-next",
-        {
-          "appID": "1105924684264248",
-          "clientToken": "2134cc54bab7b94dcac6e809fe69dac9",
-          "displayName": "Lightweight Facebook Login",
-          "scheme": "fb1105924684264248",
-          "advertiserIDCollectionEnabled": false,
-          "autoLogAppEventsEnabled": false,
-          "isAutoInitEnabled": true,
-          "iosUserTrackingPermission": "This identifier will be used to deliver personalized ads to you."
-        }
-      ]
-    ],
+    "plugins": ["@react-native-google-signin/google-signin"],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -48,9 +33,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.psu.lightweight",
-      "permissions": [
-        "android.permission.INTERNET"
-      ]
+      "permissions": ["android.permission.INTERNET"]
     },
     "web": {
       "favicon": "./assets/favicon.png"

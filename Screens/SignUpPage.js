@@ -1,12 +1,57 @@
 import * as React from "react";
 import { StyleSheet, View, Text, Image, TextInput, Button } from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { FIREBASE_AUTH, FIREBASE_DB } from "../FirebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
+import { Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const SignUpPage = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
+
+  const addUser = async () => {
+    if (password !== confirmPassword) {
+      Alert.alert("Error", "Passwords do not match");
+      return;
+    }
+
+    try {
+      const response = await createUserWithEmailAndPassword(
+        FIREBASE_AUTH,
+        email,
+        password
+      );
+
+      // Set user's profile picture to default
+      const defaultProfilePic = require("../assets/default_avatar.png");
+      await updateProfile(response.user, {
+        photoURL: defaultProfilePic,
+      });
+
+      //add user to database
+      await setDoc(doc(FIREBASE_DB, "Users", response.user.uid), {
+        Username: username,
+        level: 1,
+        strength: 0,
+        speed: 0,
+        stamina: 0,
+        upperBody: 0,
+        lowerBody: 0,
+        calories: 0,
+      });
+
+      console.log("User added!");
+      navigation.navigate("Home", { userId: response.user.uid });
+    } catch (error) {
+      console.error("Error adding user: ", error);
+      Alert.alert("Error", error.message);
+    }
+  };
   return (
     <View style={styles.signuppage}>
       <View style={[styles.header]}>
@@ -32,17 +77,22 @@ const SignUpPage = () => {
           />
         </View>
         <View style={[styles.Layout1]}>
-          <TextInput onChangeText={(text) => setPassword(text)}
-            placeholder=" Password"style={[styles.passwordTextbox]} />
+          <TextInput
+            onChangeText={(text) => setPassword(text)}
+            placeholder=" Password"
+            style={[styles.passwordTextbox]}
+          />
         </View>
         <View style={[styles.Layout1]}>
-          <TextInput onChangeText={(text) => setPassword(text)}
-            placeholder=" Confirm Password"style={[styles.passwordTextbox]} />
-          
+          <TextInput
+            onChangeText={(text) => setConfirmPassword(text)}
+            placeholder=" Confirm Password"
+            style={[styles.passwordTextbox]}
+          />
         </View>
         <View style={[styles.loginButtonContainer]}>
           <View style={[styles.loginButton]} />
-          <Button title="Create Account" style={styles.loginText}/>
+          <Button title="Create Account" style={styles.loginText} onPress={addUser}/>
         </View>
       </View>
     </View>
