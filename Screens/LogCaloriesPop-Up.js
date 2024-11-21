@@ -6,34 +6,40 @@ const LogCaloriesPopUp = () => {
   	
   	return (
     		<View style={styles.LogCaloriesPopUp}>
+
+                {/* Breakfast */}
       			<View style={styles.goalManager}/>
       			<View style={[styles.boxPosition1, styles.boxPositionLayout]}>
         			<View style={[styles.colorbackground, styles.boxPositionLayout]} />
-        				<Text style={[styles.title]}>Breakfast</Text>
-        				<Text style={[styles.cal]}>{`240 cal`}</Text>
-                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+        			<Text style={[styles.title]}>Breakfast</Text>
+        			<Text style={[styles.cal]}>{`240 cal`}</Text>
+                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
+
+                {/* Lunch */}
                 <View style={[styles.boxPosition2, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
-                        <Text style={[styles.title]}>Lunch</Text>
-                        <Text style={[styles.cal]}>{`300 cal`}</Text>
-                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
-
+                    <Text style={[styles.title]}>Lunch</Text>
+                    <Text style={[styles.cal]}>{`300 cal`}</Text>
+                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
+
+                {/* Dinner */}
                 <View style={[styles.boxPosition3, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
-                        <Text style={[styles.title]}>Dinner</Text>
-        				<Text style={[styles.cal]}>{`0 cal`}</Text>
-                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
-
+                    <Text style={[styles.title]}>Dinner</Text>
+        			<Text style={[styles.cal]}>{`0 cal`}</Text>
+                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
+
+                {/* Snacks */}
                 <View style={[styles.boxPosition4, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
-                        <Text style={[styles.title]}>Snacks</Text>
-        				<Text style={[styles.cal]}>{`0 cal`}</Text>
-                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
-
+                    <Text style={[styles.title]}>Snacks</Text>
+        			<Text style={[styles.cal]}>{`0 cal`}</Text>
+                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
+
         </View>);
 };
 
@@ -55,7 +61,8 @@ const styles = StyleSheet.create({
     boxPositionLayout: {
         height: 125,
         width: 365,
-        position: "absolute"
+        position: "absolute",
+        left: 13,
     },
     title: {
         height: 53,
@@ -66,7 +73,7 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         lineHeight: 30,
         letterSpacing: 0,
-        fontSize: '29px',
+        fontSize: 29,
         position: "relative",
         left: "-5%",
         width: 310,
@@ -84,7 +91,7 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         lineHeight: 45,
         letterSpacing: 0,
-        fontSize: '20px',
+        fontSize: 20,
         position: "relative",
         left: "-12%",
         //Stroke
@@ -188,7 +195,6 @@ const styles = StyleSheet.create({
     },
     boxPosition1: {
         top: 50,
-        left: 20,
         width: 365
     },
     boxPosition2Days: {
@@ -199,34 +205,33 @@ const styles = StyleSheet.create({
         width: 92
     },
     boxPosition2: {
-        top: 200,
-        left: 20,
+        top: 220,
         width: 365
     },
     goal2100Cal: {
         width: 108
     },
     boxPosition3: {
-        top: 350,
-        left: 20,
+        top: 390,
         width: 365
     },
     boxPosition4: {
-        top: 500,
-        left: 20,
+        top: 560,
         width: 365
     },
     LogCaloriesPopUp: {
         flex: 1,
         height: 706,
         width: "100%",
-        transform: [{ scale: 0.8 }]
+        top: -70,
+        right: 20,
+        transform: [{ scale: 0.7 }]
     },
     number1: {
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
         lineHeight: 35,
-        fontSize: '17px',
+        fontSize: 17,
         position: "relative",
         marginLeft: -52.5,
         width: 106,
@@ -238,7 +243,7 @@ const styles = StyleSheet.create({
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
         lineHeight: 35,
-        fontSize: '17px',
+        fontSize: 17,
         position: "relative",
         marginLeft: 70,
         width: 106,
@@ -250,7 +255,7 @@ const styles = StyleSheet.create({
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
         lineHeight: 35,
-        fontSize: '17px',
+        fontSize: 17,
         position: "relative",
         marginLeft: 210,
         width: 106,

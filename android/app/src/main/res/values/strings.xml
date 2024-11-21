@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">LightWeight</string>
+  <string name="expo_splash_screen_resize_mode" translatable="false">contain</string>
+  <string name="expo_splash_screen_status_bar_translucent" translatable="false">false</string>
+  <string name="facebook_app_id">1105924684264248</string>
+  <string name="facebook_client_token">2134cc54bab7b94dcac6e809fe69dac9</string>
+  <string name="fb_login_protocol_scheme">fb1105924684264248</string>
+</resources>

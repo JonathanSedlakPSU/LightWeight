@@ -8,6 +8,8 @@ const WorkoutsPage = () => {
     		<View style={styles.workoutsPage}>
       			<View style={[styles.upperBodyParent, styles.scaledContent]}>
         				<View style={styles.upperBody}>
+
+								{/* Push */}
           					<View style={[styles.push, styles.pushLayout]}>
             						<View style={styles.pushChild} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
@@ -15,6 +17,8 @@ const WorkoutsPage = () => {
               							<Image style={[styles.pushIcon, styles.iconLayout]} resizeMode="cover" source={require('./Assets/WorkoutScreen/Push.png')}/>
             						</View>
           					</View>
+
+								{/* Pull */}
           					<View style={[styles.pull, styles.pushLayout]}>
             						<View style={styles.pushChild} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
@@ -22,6 +26,8 @@ const WorkoutsPage = () => {
               							<Image style={[styles.pullIcon, styles.iconLayout]} resizeMode="cover" source={require('./Assets/WorkoutScreen/Pull.png')} />
             						</View>
           					</View>
+
+								{/* Upper Body */}
           					<View style={[styles.ub, styles.ubLayout]}>
             						<View style={[styles.ubChild, styles.ubItemBorder]} />
             						<View style={[styles.profileLevel2, styles.profilePosition]}>
@@ -29,7 +35,11 @@ const WorkoutsPage = () => {
             						</View>
           					</View>
         				</View>
+
+
         				<View style={styles.upperBody}>
+
+								{/* Core */}
           					<View style={[styles.core, styles.corePosition]}>
             						<View style={[styles.coreChild, styles.childPosition]} />
             						<View style={[styles.profileLevel3, styles.pushLayout]}>
@@ -37,6 +47,8 @@ const WorkoutsPage = () => {
               							<Text style={[styles.push1, styles.bodyTypo]}>Core</Text>
             						</View>
           					</View>
+
+								{/* Legs */}
           					<View style={[styles.legs, styles.corePosition]}>
             						<View style={styles.pushChild} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
@@ -44,14 +56,19 @@ const WorkoutsPage = () => {
               							<Text style={[styles.push1, styles.bodyTypo]}>Legs</Text>
             						</View>
           					</View>
+
+								{/* Lower Body */}
           					<View style={[styles.ub1, styles.ub1Position]}>
             						<View style={[styles.ubItem, styles.ubItemBorder]} />
             						<View style={[styles.profileLevel5, styles.ub1Position]}>
               							<Text style={[styles.lowerBody1, styles.ub1Position]}>Lower Body</Text>
             						</View>
           					</View>
+
         				</View>
         				<View style={styles.cardioSwarmUps}>
+
+								{/* Cardio */}
           					<View style={[styles.cardio, styles.pushLayout]}>
             						<View style={[styles.cardioChild, styles.childPosition]} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
@@ -59,6 +76,8 @@ const WorkoutsPage = () => {
               							<Image style={styles.cardioIcon} resizeMode="cover" source={require('./Assets/WorkoutScreen/Cardio.png')} />
             						</View>
           					</View>
+
+								{/* Warm-Ups */}
           					<View style={[styles.warmUps, styles.pushLayout]}>
             						<View style={[styles.cardioChild, styles.childPosition]} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
@@ -66,6 +85,7 @@ const WorkoutsPage = () => {
               							<Image style={styles.warmUpsIcon} resizeMode="cover" source={require('./Assets/WorkoutScreen/Warm-Ups.png')} />
             						</View>
           					</View>
+
         				</View>
       			</View>
     		</View>);
@@ -311,7 +331,7 @@ const styles = StyleSheet.create({
     		position: "relative"
   	},
   	workoutsPage: {
-    		backgroundColor: "#1c0101",
+    		backgroundColor: Color.colorBackground,
     		flex: 1,
     		height: 880,
     		overflow: "visible",

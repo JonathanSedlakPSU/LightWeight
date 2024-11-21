@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState} from "react";
 import {StyleSheet, View, Text} from "react-native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
@@ -6,47 +6,44 @@ const GoalsPopUp = () => {
   	
   	return (
     		<View style={styles.goalsPopup}>
-      			<View style={styles.goalManager}>
-        				<View style={styles.dailyPosition}>
-          					<View style={[styles.questManager, styles.questManagerPosition]}>
-            						<View style={styles.bar} />
-            						<View style={[styles.questsHeader, styles.questManagerPosition]}>
-              							<Text style={styles.goals}>Goals</Text>
-            						</View>
-          					</View>
-        				</View>
-      			</View>
-      			<View style={[styles.bodyweight, styles.bodyweightLayout]}>
+                
+                {/* Body Weight */}
+      		    <View style={[styles.bodyweight, styles.bodyweightLayout]}>
         			<View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
-        				<Text style={[styles.bodyWeightLbsTypo]}>Body Weight (lbs)</Text>
-        				<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
-        				<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
-        				<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
-                        <Text style={[styles.number1, ]}>{`165`}</Text>
-        				<Text style={[styles.number2, ]}>{`198`}</Text>
-        				<Text style={[styles.number3, ]}>{`200`}</Text>
-                    </View>
+        			<Text style={[styles.bodyWeightLbsTypo]}>Body Weight (lbs)</Text>
+        			<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
+        			<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
+        			<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
+                    <Text style={[styles.number1, ]}>{`165`}</Text>
+        			<Text style={[styles.number2, ]}>{`198`}</Text>
+        			<Text style={[styles.number3, ]}>{`200`}</Text>
+                </View>
+
+                {/* Weekly Workouts */}
                 <View style={[styles.weeklyworkouts, styles.bodyweightLayout]}>
                     <View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
-                        <Text style={[styles.bodyWeightLbsTypo]}>Weekly Workouts (days)</Text>
-                        <Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
-        				<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
-        				<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
-                        <Text style={[styles.number1, ]}>{`165`}</Text>
-        				<Text style={[styles.number2, ]}>{`198`}</Text>
-        				<Text style={[styles.number3, ]}>{`200`}</Text>
-                    </View>
+                    <Text style={[styles.bodyWeightLbsTypo]}>Weekly Workouts (days)</Text>
+                    <Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
+        			<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
+        			<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
+                    <Text style={[styles.number1, ]}>{`165`}</Text>
+        			<Text style={[styles.number2, ]}>{`198`}</Text>
+        			<Text style={[styles.number3, ]}>{`200`}</Text>
+                </View>
+
+                {/* Daily Calories */}
                 <View style={[styles.calories, styles.bodyweightLayout]}>
                     <View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
-                        <Text style={[styles.bodyWeightLbsTypo]}>Daily Calories (cal)</Text>
-        				<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
-        				<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
-        				<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
-                        <Text style={[styles.number1, ]}>{`165`}</Text>
-        				<Text style={[styles.number2, ]}>{`198`}</Text>
-        				<Text style={[styles.number3, ]}>{`200`}</Text>
-            </View>
-        </View>);
+                    <Text style={[styles.bodyWeightLbsTypo]}>Daily Calories (cal)</Text>
+        			<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
+        			<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
+        			<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
+                    <Text style={[styles.number1, ]}>{`165`}</Text>
+        			<Text style={[styles.number2, ]}>{`198`}</Text>
+        			<Text style={[styles.number3, ]}>{`200`}</Text>
+                </View>
+                
+            </View>);
 };
 
 const styles = StyleSheet.create({
@@ -67,7 +64,8 @@ const styles = StyleSheet.create({
     bodyweightLayout: {
         height: 146,
         width: 365,
-        position: "absolute"
+        position: "absolute",
+        left: 13
     },
     bodyWeightLbsTypo: {
         height: 53,
@@ -78,9 +76,9 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         lineHeight: 30,
         letterSpacing: 0,
-        fontSize: '20px',
+        fontSize: 20,
         position: "relative",
-        left: "5%",
+        left: "10%",
         width: 310,
         //Stroke
         textShadowColor: "#000", // Outline color
@@ -96,7 +94,7 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         lineHeight: 35,
         letterSpacing: 0,
-        fontSize: '17px',
+        fontSize: 17,
         position: "absolute",
         //Stroke
         textShadowColor: "#000", // Outline color
@@ -158,34 +156,22 @@ const styles = StyleSheet.create({
         top: "3.33%",
         bottom: "86.36%"
     },
-    goalManager: {
-        width: "99.9%",
-        right: "0.1%",
-        left: "0%",
-        bottom: "0%",
-        height: "100%",
-        top: "0%",
-        position: "absolute",
-        backgroundColor: "#000",
-        borderStyle: "solid",
-        borderWidth: 5,
-        borderRadius: Border.br_xl
-    },
+    
     bodyweightChild: {
         top: 0,
         backgroundColor: Color.theme2,
         alignItems: "center",
-        left: -5,
+        left: 0,
         borderRadius: Border.br_xl,
     },
     goal: {
         width: 92,
-        right: 18,
+        right: 0,
         height: 42,
         top: 63
     },
     current: {
-        marginLeft: -52.5,
+        marginLeft: -45.5,
         width: 106,
         height: 42,
         top: 63,
@@ -195,7 +181,7 @@ const styles = StyleSheet.create({
         width: 116,
         height: 42,
         top: 63,
-        left: 0
+        left: 10
     },
     bodyweight: {
         top: 122,
@@ -226,15 +212,19 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 706,
         width: "100%",
+        right: 28,
+        top: -100,
+        //backgroundColor: "#000",
+        //borderRadius: Border.br_xl,
         transform: [{ scale: 0.8 }]
     },
     number1: {
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
         lineHeight: 35,
-        fontSize: '17px',
+        fontSize: 17,
         position: "relative",
-        marginLeft: -52.5,
+        marginLeft: -40,
         width: 106,
         height: 42,
         top: 40,
@@ -248,9 +238,9 @@ const styles = StyleSheet.create({
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
         lineHeight: 35,
-        fontSize: '17px',
+        fontSize: 17,
         position: "relative",
-        marginLeft: 70,
+        marginLeft: 85,
         width: 106,
         height: 42,
         top: -3,
@@ -264,9 +254,9 @@ const styles = StyleSheet.create({
         color: Color.colorWhite,
         fontFamily: FontFamily.interBold,
         lineHeight: 35,
-        fontSize: '17px',
+        fontSize: 17,
         position: "relative",
-        marginLeft: 210,
+        marginLeft: 233,
         width: 106,
         height: 42,
         top: -45,

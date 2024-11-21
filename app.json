@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "RNExpoFirebase",
-    "slug": "RNExpoFirebase",
+    "name": "LightWeight",
+    "slug": "lightweight",
     "version": "1.0.0",
+    "owner": "psulightweight",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,23 +12,35 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": ["@react-native-google-signin/google-signin"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "LightWeight"
+      "infoPlist": {
+        "SKAdNetworkItems": [
+          {
+            "SKAdNetworkIdentifier": "v9wttpbfk9.skadnetwork"
+          },
+          {
+            "SKAdNetworkIdentifier": "n38lu8286q.skadnetwork"
+          }
+        ]
+      }
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.jonathansedlakpsu.RNExpoFirebase"
+      "package": "com.psu.lightweight",
+      "permissions": ["android.permission.INTERNET"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "eb52cdbe-64da-46fd-a164-ac58ff2b6427"
+        "projectId": "64217525-fabc-4d5d-84b1-771a2f2c513d"
       }
     }
   }
