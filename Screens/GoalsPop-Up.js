@@ -6,37 +6,44 @@ const GoalsPopUp = () => {
   	
   	return (
     		<View style={styles.goalsPopup}>
-      			<View style={[styles.bodyweight, styles.bodyweightLayout]}>
+                
+                {/* Body Weight */}
+      		    <View style={[styles.bodyweight, styles.bodyweightLayout]}>
         			<View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
-        				<Text style={[styles.bodyWeightLbsTypo]}>Body Weight (lbs)</Text>
-        				<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
-        				<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
-        				<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
-                        <Text style={[styles.number1, ]}>{`165`}</Text>
-        				<Text style={[styles.number2, ]}>{`198`}</Text>
-        				<Text style={[styles.number3, ]}>{`200`}</Text>
-                    </View>
+        			<Text style={[styles.bodyWeightLbsTypo]}>Body Weight (lbs)</Text>
+        			<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
+        			<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
+        			<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
+                    <Text style={[styles.number1, ]}>{`165`}</Text>
+        			<Text style={[styles.number2, ]}>{`198`}</Text>
+        			<Text style={[styles.number3, ]}>{`200`}</Text>
+                </View>
+
+                {/* Weekly Workouts */}
                 <View style={[styles.weeklyworkouts, styles.bodyweightLayout]}>
                     <View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
-                        <Text style={[styles.bodyWeightLbsTypo]}>Weekly Workouts (days)</Text>
-                        <Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
-        				<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
-        				<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
-                        <Text style={[styles.number1, ]}>{`165`}</Text>
-        				<Text style={[styles.number2, ]}>{`198`}</Text>
-        				<Text style={[styles.number3, ]}>{`200`}</Text>
-                    </View>
+                    <Text style={[styles.bodyWeightLbsTypo]}>Weekly Workouts (days)</Text>
+                    <Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
+        			<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
+        			<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
+                    <Text style={[styles.number1, ]}>{`165`}</Text>
+        			<Text style={[styles.number2, ]}>{`198`}</Text>
+        			<Text style={[styles.number3, ]}>{`200`}</Text>
+                </View>
+
+                {/* Daily Calories */}
                 <View style={[styles.calories, styles.bodyweightLayout]}>
                     <View style={[styles.bodyweightChild, styles.bodyweightLayout]} />
-                        <Text style={[styles.bodyWeightLbsTypo]}>Daily Calories (cal)</Text>
-        				<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
-        				<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
-        				<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
-                        <Text style={[styles.number1, ]}>{`165`}</Text>
-        				<Text style={[styles.number2, ]}>{`198`}</Text>
-        				<Text style={[styles.number3, ]}>{`200`}</Text>
-            </View>
-        </View>);
+                    <Text style={[styles.bodyWeightLbsTypo]}>Daily Calories (cal)</Text>
+        			<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
+        			<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
+        			<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
+                    <Text style={[styles.number1, ]}>{`165`}</Text>
+        			<Text style={[styles.number2, ]}>{`198`}</Text>
+        			<Text style={[styles.number3, ]}>{`200`}</Text>
+                </View>
+                
+            </View>);
 };
 
 const styles = StyleSheet.create({

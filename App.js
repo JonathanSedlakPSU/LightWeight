@@ -26,6 +26,7 @@ import LogCaloriesPopUp from "./Screens/LogCaloriesPop-Up";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+// Home Screen After Login
 function TabBar() {
   return (
     <Tab.Navigator initialRouteName="Profile">
@@ -37,6 +38,7 @@ function TabBar() {
 }
 
 // Main Function to start app
+// Login / Signup Screen
 export default function App() {
   return (
     <View style={styles.container}>

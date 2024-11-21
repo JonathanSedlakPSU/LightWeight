@@ -6,34 +6,40 @@ const LogCaloriesPopUp = () => {
   	
   	return (
     		<View style={styles.LogCaloriesPopUp}>
+
+                {/* Breakfast */}
       			<View style={styles.goalManager}/>
       			<View style={[styles.boxPosition1, styles.boxPositionLayout]}>
         			<View style={[styles.colorbackground, styles.boxPositionLayout]} />
-        				<Text style={[styles.title]}>Breakfast</Text>
-        				<Text style={[styles.cal]}>{`240 cal`}</Text>
-                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+        			<Text style={[styles.title]}>Breakfast</Text>
+        			<Text style={[styles.cal]}>{`240 cal`}</Text>
+                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
+
+                {/* Lunch */}
                 <View style={[styles.boxPosition2, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
-                        <Text style={[styles.title]}>Lunch</Text>
-                        <Text style={[styles.cal]}>{`300 cal`}</Text>
-                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
-
+                    <Text style={[styles.title]}>Lunch</Text>
+                    <Text style={[styles.cal]}>{`300 cal`}</Text>
+                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
+
+                {/* Dinner */}
                 <View style={[styles.boxPosition3, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
-                        <Text style={[styles.title]}>Dinner</Text>
-        				<Text style={[styles.cal]}>{`0 cal`}</Text>
-                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
-
+                    <Text style={[styles.title]}>Dinner</Text>
+        			<Text style={[styles.cal]}>{`0 cal`}</Text>
+                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
+
+                {/* Snacks */}
                 <View style={[styles.boxPosition4, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
-                        <Text style={[styles.title]}>Snacks</Text>
-        				<Text style={[styles.cal]}>{`0 cal`}</Text>
-                        <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
-
+                    <Text style={[styles.title]}>Snacks</Text>
+        			<Text style={[styles.cal]}>{`0 cal`}</Text>
+                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
+
         </View>);
 };
 
