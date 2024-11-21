@@ -1,5 +1,6 @@
 import * as React from "react";
 import {StyleSheet, View, Text, Image} from "react-native";
+import Svg, { Circle } from "react-native-svg";
 import { Color, FontFamily, FontSize } from "../GlobalStyles";
 
 const DailyQuestPopup = () => {
@@ -10,44 +11,52 @@ const DailyQuestPopup = () => {
 
 					   {/* Quests Header */}
         				<View style={[styles.questsManager, styles.childPosition]}>
-          					<View style={[styles.dailyQuestsChild, styles.childPosition]} />
-          					<View style={styles.questManager}>
-            						<View style={styles.bar} />
-            						<View style={styles.questsHeader}>
-              							<Text style={[ styles.textTypo]}>Quests</Text>
-            						</View>
-          					</View>
+          				<View style={[styles.dailyQuestsChild, styles.childPosition]} />
+          				<View style={styles.questManager}>
+            				<View style={styles.bar} />
+            				<View style={styles.questsHeader}>
+              					<Text style={[ styles.textTypo]}>Quests</Text>
+            				</View>
+          				</View>
         				</View>
 						
 						{/* Daily Quest 1 */}
         				<View style={[styles.groupParent, styles.groupPosition]}>
-          					<View style={styles.ellipseParent}>
-            						<Image style={[styles.groupChild, styles.childPosition]} resizeMode="cover" source={require('./Assets/DailyQuestPop-Up/Ellipse1.png')} />
-            						<Text style={styles.text1}>1</Text>
-          					</View>
-          					<Text style={styles.greetARandomPosition}>Greet a random Person</Text>
+          				<View style={styles.ellipseParent}>
+								<Svg width="55" height="55" viewBox="0 0 70 70" fill="none">
+                           <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
+                        </Svg>
+            				<Text style={styles.text1}>1</Text>
+          				</View>
+          				<Text style={styles.greetARandomPosition}>Greet a random Person</Text>
         				</View>
 
 						{/* Daily Quest 2 */}
         				<View style={styles.groupContainer}>
           					<View style={styles.ellipseParent}>
-            						<Image style={[styles.groupChild, styles.childPosition]} resizeMode="cover" source={require('./Assets/DailyQuestPop-Up/CheckMark.png')} />
-            						<View style={styles.checkMark}>
-              							<View style={[styles.checkMarkChild, styles.checkBg]} />
-              							<View style={[styles.checkMarkItem, styles.checkBg]} />
-            						</View>
+								 	<Svg width="55" height="55" viewBox="0 0 70 70" fill="none">
+                              <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
+                           </Svg>
+									<Text style={styles.text1}>2</Text>
+            					<View style={styles.checkMark}>
+              						<View style={[styles.checkMarkChild, styles.checkBg]} />
+              						<View style={[styles.checkMarkItem, styles.checkBg]} />
+            					</View>
           					</View>
-          					<Text style={[styles.complete30Jumping, styles.greetARandomPosition]}>Complete 30 Jumping Jacks under a minute</Text>
+          					<Text style={[styles.greetARandomPosition]}>Complete 30 Jumping Jacks under a minute</Text>
         				</View>
 
 						{/* Daily Quest 3 */}
         				<View style={[styles.groupView, styles.groupPosition]}>
-          					<View style={styles.ellipseParent}>
-            						<Image style={[styles.groupChild, styles.childPosition]} resizeMode="cover" source={require('./Assets/DailyQuestPop-Up/Ellipse1.png')} />
-            						<Text style={styles.text1}>3</Text>
-          					</View>
-          					<Text style={styles.greetARandomPosition}>Run up and down some stairs</Text>
+          				<View style={styles.ellipseParent}>
+								<Svg width="55" height="55" viewBox="0 0 70 70" fill="none">
+                           <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
+                        </Svg>
+            				<Text style={styles.text1}>3</Text>
+          				</View>
+          				<Text style={styles.greetARandomPosition}>Run up and down some stairs</Text>
         				</View>
+
 
       			</View>
     		</View>);
@@ -174,7 +183,7 @@ const styles = StyleSheet.create({
   	text1: {
     		height: "38%",
     		width: "63.94%",
-    		top: "32%",
+    		top: "30%",
     		left: "18%",
     		lineHeight: 23,
     		fontSize: FontSize.size_lg,
@@ -232,7 +241,7 @@ const styles = StyleSheet.create({
     		left: "21.44%",
     		position: "absolute"
   	},
-  	complete30Jumping: {
+  	blurr: {
     		opacity: 0.5
   	},
   	groupContainer: {

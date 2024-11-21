@@ -1,6 +1,7 @@
 import * as React from "react";
 import {Image, StyleSheet, Text, View, ScrollView, Pressable, Button, Modal} from "react-native";
 import { Color, FontFamily, FontSize, Border, Gap } from "../GlobalStyles";
+import Svg, { Circle } from "react-native-svg";
 import DailyQuestPopup from "./DailyQuestPop-Up";
 
 
@@ -13,7 +14,9 @@ const HomePage = () => {
       			<View style={[styles.profileLevelParent, styles.scaledContent]}>
         				<View style={styles.profileLevel}>
           					<View style={[styles.ellipseParent, styles.groupChildLayout]}>
-            						<Image style={[styles.groupChild, styles.groupPosition]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                                    <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
+                                </Svg>
             						<Text style={[styles.text, styles.textTypo]}>5</Text>
           					</View>
           					<Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={require('./Assets/HomeScreen/ProfilePic.png')} />
@@ -56,23 +59,31 @@ const HomePage = () => {
                             </Modal>
 
 
-
+                           
           					<View style={[styles.stats, styles.statsPosition]}>
             						<View style={styles.statsChild} />
             						<View style={[styles.stats1, styles.statsPosition]}>
-              							<View style={styles.strength}>
-                								<View style={[styles.ellipseGroup, styles.groupLayout]}>
-                  									<Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
-                  									<Text style={[styles.ellipsenumber, styles.textTypo]}>3</Text>
-                								</View>
-                								<View style={[styles.strength1, styles.groupPosition]}>
-                  									<Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/Strength.png')} />
-                  									<Text style={[styles.strength2, styles.levelTypo]}>{`Strength`}</Text>
+
+                            {/* Strength*/}
+              				<View style={styles.strength}>
+                				<View style={[styles.ellipseGroup, styles.groupLayout]}>	
+                                    <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                                        <Circle cx="24" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
+                                    </Svg>
+                  					<Text style={[styles.ellipsenumber, styles.textTypo]}>3</Text>
+                				</View>
+                				<View style={[styles.strength1, styles.groupPosition]}>
+                  					<Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/Strength.png')} />
+                  					<Text style={[styles.strength2, styles.levelTypo]}>{`Strength`}</Text>
                                 </View>
                             </View>
+
+                            {/* Speed*/}
                             <View style={styles.strength}>
                                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                                        <Circle cx="24" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
+                                    </Svg>
                                     <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
                                 </View>
                                 <View style={[styles.strength1, styles.groupPosition]}>
@@ -80,9 +91,13 @@ const HomePage = () => {
                                     <Text style={[styles.strength2, styles.levelTypo]}>Speed</Text>
                                 </View>
                             </View>
+
+                            {/* Stamina*/}
                             <View style={styles.strength}>
                                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                                        <Circle cx="24" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
+                                    </Svg>
                                     <Text style={[styles.ellipsenumber, styles.textTypo]}>1</Text>
                                 </View>
                                 <View style={[styles.strength1, styles.groupPosition]}>
@@ -91,9 +106,13 @@ const HomePage = () => {
                   									`}</Text>
                                 </View>
                             </View>
+
+                            {/* Upper Body*/}
                             <View style={styles.strength}>
                                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                                        <Circle cx="24" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
+                                    </Svg>
                                     <Text style={[styles.ellipsenumber, styles.textTypo]}>6</Text>
                                 </View>
                                 <View style={[styles.strength1, styles.groupPosition]}>
@@ -102,9 +121,13 @@ const HomePage = () => {
                   									`}</Text>
                                 </View>
                             </View>
+
+                            {/* Lower Body*/}
                             <View style={styles.strength}>
                                 <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                                        <Circle cx="24" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
+                                    </Svg>
                                     <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
                                 </View>
                                 <View style={[styles.strength1, styles.groupPosition]}>
@@ -113,6 +136,8 @@ const HomePage = () => {
                   									`}</Text>
                                 </View>
                             </View>
+
+
                         </View>
                     </View>
                 </View>
@@ -216,7 +241,7 @@ const styles = StyleSheet.create({
     },
     text: {
         top: 25,
-        left: 18,
+        left: 20,
         fontSize: 30,
         width: 30,
         height: 30
@@ -242,7 +267,7 @@ const styles = StyleSheet.create({
     },
     level: {
         top: 70,
-        left: 146,
+        left: 165,
         fontSize: 22,
         width: 92,
         height: 44,
@@ -368,15 +393,15 @@ const styles = StyleSheet.create({
     },
     ellipsenumber: {
         top: 9,
-        left: 20,
+        left: 10,
         fontSize: FontSize.size_lg,
         width: 32,
         height: 30
     },
     ellipseGroup: {
-        left: 153,
+        left: 143,
         top: 0,
-        position: "absolute"
+        position: "relative"
     },
     strength2: {
         fontSize: FontSize.size_sm,

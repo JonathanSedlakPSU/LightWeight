@@ -12,6 +12,7 @@ npm install react-native-svg@15.2.0
 npm install react-native-linear-gradient
 npm install expo@51.0.39
 npm install @react-native-google-signin/google-signin
+npm install react-native-svg
 
 
 # Install expo dev: 
