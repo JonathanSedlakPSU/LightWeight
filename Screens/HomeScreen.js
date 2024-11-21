@@ -1,209 +1,103 @@
 import * as React from "react";
-import { Image, StyleSheet, Text, View, ScrollView , Pressable, Button, Modal} from "react-native";
+import {Image, StyleSheet, Text, View, ScrollView} from "react-native";
 import { Color, FontFamily, FontSize, Border, Gap } from "../GlobalStyles";
-import { FIREBASE_DB } from "../FirebaseConfig";
-import { doc, getDoc } from "firebase/firestore";
-import { useNavigation } from "@react-navigation/native";
-import Svg, { Circle } from "react-native-svg";
-import DailyQuestPopup from "./DailyQuestPop-Up";
 
-const HomePage = ({ userId }) => {
-  const navigation = useNavigation();
-  const [userData, setUserData] = React.useState({});
-  const [modalOpen, setModalOpen] = React.useState(false);
-
-  const fetchUserData = async () => {
-    try {
-      const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
-      if (userDoc.exists()) {
-        console.log("User Data:", userDoc.data());
-        setUserData(userDoc.data());
-      } else {
-        console.log("No such document!");
-      }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    }
-  };
-
-  // Fetch user data at beginning
-  React.useEffect(() => {
-    fetchUserData();
-  }, []);
-  return (
-    <View style={styles.homePage}>
-      <View style={[styles.profileLevelParent, styles.scaledContent]}>
-
-        {/*Profile Level*/}
-        <View style={styles.profileLevel}>
-          <View style={[styles.ellipseParent, styles.groupChildLayout]}>
-            <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-              <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
-            </Svg>
-            <Text style={[styles.text, styles.textTypo]}>5</Text>
-          </View>
-          <Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={require("./Assets/HomeScreen/ProfilePic.png")}/>
-          <Text style={[styles.jonyLiftz, styles.levelTypo]}>Jony Liftz</Text>
-          <Text style={[styles.level, styles.levelTypo]}> Level</Text>
-        </View>
-
-        {/* Calories Burned*/}
-        <View style={styles.caloriesBurnedParent}>
-          <View style={styles.caloriesBurned}>
-            <View style={styles.caloriesBurnedChild} />
-            <View style={[styles.calories, styles.caloriesPosition]}>
-              <View style={[styles.calories1, styles.caloriesPosition]}>
-                <Image
-                  style={styles.fireIcon}
-                  resizeMode="cover"
-                  source={require("./Assets/HomeScreen/Fire.png")}
-                />
-                <Text style={styles.calories2}>Calories</Text>
-                <Text style={[styles.text1, styles.textLayout]}>105</Text>
-              </View>
+const HomePage = () => {
+  	
+  	return (
+    		<View style={styles.homePage}>
+      			<View style={[styles.profileLevelParent, styles.scaledContent]}>
+        				<View style={styles.profileLevel}>
+          					<View style={[styles.ellipseParent, styles.groupChildLayout]}>
+            						<Image style={[styles.groupChild, styles.groupPosition]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+            						<Text style={[styles.text, styles.textTypo]}>5</Text>
+          					</View>
+          					<Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={require('./Assets/HomeScreen/ProfilePic.png')} />
+          					<Text style={[styles.jonyLiftz, styles.levelTypo]}>Jony Liftz</Text>
+          					<Text style={[styles.level, styles.levelTypo]}> Level</Text>
+        				</View>
+        				<View style={styles.caloriesBurnedParent}>
+          					<View style={styles.caloriesBurned}>
+            						<View style={styles.caloriesBurnedChild} />
+            						<View style={[styles.calories, styles.caloriesPosition]}>
+              							<View style={[styles.calories1, styles.caloriesPosition]}>
+                								<Image style={styles.fireIcon} resizeMode="cover" source={require('./Assets/HomeScreen/Fire.png')} />
+                								<Text style={styles.calories2}>Calories</Text>
+                								<Text style={[styles.text1, styles.textLayout]}>105</Text>
+              							</View>
+            						</View>
+          					</View>
+          					<View style={[styles.dailyQuests, styles.dailyLayout1]}>
+            						<View style={[styles.dailyQuestsChild, styles.dailyLayout1]} />
+            						<View style={[styles.dailyQuests1, styles.dailyLayout]}>
+              							<Text style={[styles.dailyQuests2, styles.dailyLayout]}>Daily Quests</Text>
+              							<Text style={[styles.text2, styles.dailyLayout]}>1/3</Text>
+            						</View>
+          					</View>
+          					<View style={[styles.stats, styles.statsPosition]}>
+            						<View style={styles.statsChild} />
+            						<View style={[styles.stats1, styles.statsPosition]}>
+              							<View style={styles.strength}>
+                								<View style={[styles.ellipseGroup, styles.groupLayout]}>
+                  									<Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                  									<Text style={[styles.ellipsenumber, styles.textTypo]}>3</Text>
+                								</View>
+                								<View style={[styles.strength1, styles.groupPosition]}>
+                  									<Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/Strength.png')} />
+                  									<Text style={[styles.strength2, styles.levelTypo]}>{`Strength`}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.strength}>
+                                <View style={[styles.ellipseGroup, styles.groupLayout]}>
+                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
+                                </View>
+                                <View style={[styles.strength1, styles.groupPosition]}>
+                                    <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/Speed.png')} />
+                                    <Text style={[styles.strength2, styles.levelTypo]}>Speed</Text>
+                                </View>
+                            </View>
+                            <View style={styles.strength}>
+                                <View style={[styles.ellipseGroup, styles.groupLayout]}>
+                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Text style={[styles.ellipsenumber, styles.textTypo]}>1</Text>
+                                </View>
+                                <View style={[styles.strength1, styles.groupPosition]}>
+                                    <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/Stamina.png')} />
+                  									<Text style={[styles.strength2, styles.levelTypo]}>{`Stamina
+                  									`}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.strength}>
+                                <View style={[styles.ellipseGroup, styles.groupLayout]}>
+                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Text style={[styles.ellipsenumber, styles.textTypo]}>6</Text>
+                                </View>
+                                <View style={[styles.strength1, styles.groupPosition]}>
+                                    <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/UpperBody.png')} />
+                  									<Text style={[styles.strength2, styles.levelTypo]}>{`Upper Body
+                  									`}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.strength}>
+                                <View style={[styles.ellipseGroup, styles.groupLayout]}>
+                                    <Image style={[styles.ellipse, styles.groupLayout]} resizeMode="cover" source={require('./Assets/HomeScreen/Ellipse1.png')} />
+                                    <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
+                                </View>
+                                <View style={[styles.strength1, styles.groupPosition]}>
+                                    <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/LowerBody.png')} />
+                  									<Text style={[styles.strength2, styles.levelTypo]}>{`Lower Body
+                  									`}</Text>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+                </View>
             </View>
-          </View>
-
-          {/* Daily Quests*/}
-          <Pressable style={[styles.dailyQuests, styles.dailyLayout1]} onPress={() => setModalOpen(true)}>
-            <View style={[styles.dailyQuestsChild, styles.dailyLayout1]} />
-            <View style={[styles.dailyQuests1, styles.dailyLayout]}>
-              <Text style={[styles.dailyQuests2, styles.dailyLayout]}>
-                Daily Quests
-              </Text>
-              <Text style={[styles.text2, styles.dailyLayout]}>1/3</Text>
-            </View>
-          </Pressable>
-
-
-          <View style={[styles.stats, styles.statsPosition]}>
-            <View style={styles.statsChild} />
-            <View style={[styles.stats1, styles.statsPosition]}>
-
-              {/* Strength */}
-              <View style={styles.strength}>
-                <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                  <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
-                  </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>3</Text>
-                </View>
-                <View style={[styles.strength1, styles.groupPosition]}>
-                  <Image style={styles.groupLayout} resizeMode="cover" source={require("./Assets/HomeScreen/Strength.png")}/>
-                  <Text style={[styles.strength2, styles.levelTypo]}>{`Strength`}</Text>
-                </View>
-              </View>
-
-              {/* Speed */}
-              <View style={styles.strength}>
-                <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                  <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
-                  </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
-                </View>
-                <View style={[styles.strength1, styles.groupPosition]}>
-                  <Image style={styles.groupLayout} resizeMode="cover" source={require("./Assets/HomeScreen/Speed.png")}/>
-                  <Text style={[styles.strength2, styles.levelTypo]}> Speed</Text>
-                </View>
-              </View>
-
-              {/*Stamina */}
-              <View style={styles.strength}>
-                <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                  <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
-                  </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>1</Text>
-                </View>
-                <View style={[styles.strength1, styles.groupPosition]}>
-                  <Image style={styles.groupLayout}  resizeMode="cover" source={require("./Assets/HomeScreen/Stamina.png")}/>
-                  <Text style={[styles.strength2, styles.levelTypo]}>{`Stamina`}</Text>
-                </View>
-              </View>
-          
-              {/* Upper Body */}
-              <View style={styles.strength}>
-                <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                  <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
-                  </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>6</Text>
-                </View>
-                <View style={[styles.strength1, styles.groupPosition]}>
-                  <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/UpperBody.png')} />
-                  <Text style={[styles.strength2, styles.levelTypo]}>{`Upper Body`}</Text>
-                </View>
-              </View>
-
-              {/* Lower Body */}
-              <View style={styles.strength}>
-                <View style={[styles.ellipseGroup, styles.groupLayout]}>
-                  <Svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <Circle cx="25" cy="25" r="20" stroke={Color.theme2} strokeWidth="5"/>
-                  </Svg>
-                  <Text style={[styles.ellipsenumber, styles.textTypo]}>2</Text>
-                </View>
-                <View style={[styles.strength1, styles.groupPosition]}>
-                  <Image style={styles.groupLayout} resizeMode="cover" source={require('./Assets/HomeScreen/LowerBody.png')} />
-                  <Text style={[styles.strength2, styles.levelTypo]}>{`Lower Body`}</Text>
-                </View>
-              </View>
-
-
-
-
-            {/* Modal with Daily Quests Pop-Up */}
-						<Modal visible={modalOpen} animationType="slide" transparent={true} 
-						onRequestClose={() => setModalOpen(false)}>
-						<View style={styles.modalOverlay}>
-            	<View style={styles.modalContent}>
-              		<DailyQuestPopup />
-              		<View style={styles.closeButton}>
-                		<Button title="Close" onPress={() => setModalOpen(false)} />
-              		</View>
-            		</View>
-          		</View>
-        		</Modal>
-
-
-
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-  );
+        </View>);
 };
 
 const styles = StyleSheet.create({
-
-    modalOverlay: {
-        flex: 1,
-        alignItems: "center", // Center modal content horizontally
-        backgroundColor: "rgba(0, 0, 0, 0.6)", // Semi-transparent black background
-	      top: 60,
-	      height: 735,
-        width: "100%",
-        position: "absolute",
-    },
-    modalContent: {
-        width: "100%",
-        //backgroundColor: "#000", // Black background for modal
-        alignItems: "center", // Align content to the center
-	      top: 100,
-	      height: 550,
-        width: "85%",
-	      borderRadius: 20,
-    },
-	  closeButton: {
-	      justifyContent: 'center',
-        marginTop: 20,
-	      top: -150,
-        padding: 10,
-        borderRadius: 10,
-	      flexDirection: "row",
-    },
     groupChildLayout: {
         height: 85,
         width: 82
@@ -270,7 +164,7 @@ const styles = StyleSheet.create({
     },
     text: {
         top: 25,
-        left: 20,
+        left: 18,
         fontSize: 30,
         width: 30,
         height: 30
@@ -296,7 +190,7 @@ const styles = StyleSheet.create({
     },
     level: {
         top: 70,
-        left: 165,
+        left: 146,
         fontSize: 22,
         width: 92,
         height: 44,
@@ -422,15 +316,15 @@ const styles = StyleSheet.create({
     },
     ellipsenumber: {
         top: 9,
-        left: 10,
+        left: 20,
         fontSize: FontSize.size_lg,
         width: 32,
         height: 30
     },
     ellipseGroup: {
-        left: 143,
+        left: 153,
         top: 0,
-        position: "relative"
+        position: "absolute"
     },
     strength2: {
         fontSize: FontSize.size_sm,
@@ -475,7 +369,7 @@ const styles = StyleSheet.create({
         position: "relative"
     },
     homePage: {
-        backgroundColor: Color.colorBackground,
+        backgroundColor: "#1c0101",
         flex: 1,
         width: "100%",
         height: 880,

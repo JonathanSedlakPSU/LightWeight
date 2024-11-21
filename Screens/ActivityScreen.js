@@ -1,65 +1,28 @@
 import * as React from "react";
-import {StyleSheet, View, Image, Text, Pressable, Button, Modal} from "react-native";
+import {StyleSheet, View, Image, Text} from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
-import GoalsPopUp from "./GoalsPop-Up";
-import LogCaloriesPopUp from "./LogCaloriesPop-Up";
-
 
 const ActivityPage = () => {
   	
-	// Vairbles to set modal visible
-	const [modal1Open, setModal1Open] = React.useState(false);
-	const [modal2Open, setModal2Open] = React.useState(false);
-
   	return (
     		<View style={styles.activityPage}>
       			<View style={[styles.goalsParent,styles.scaledContent]}>
-
-        				{/* Goals Section */}
-        				<Pressable style={[styles.goals, styles.goalsLayout]} onPress={() => setModal1Open(true)}>
-          				<View style={styles.goalsChild}/>
-          				<Image style={styles.image1Icon} resizeMode="cover" source={require("./Assets/ActivityScreen/Goal.png")}/>
-          				<Text style={[styles.goals1, styles.goals1Layout, styles.scaledContent]}>Goals</Text>
-        				</Pressable>
-
-						{/* Modal with Goals */}
-						<Modal visible={modal1Open} animationType="slide" transparent={true} 
-						onRequestClose={() => setModal1Open(false)}>
-						<View style={styles.modalOverlay1}>
-            			<View style={styles.modalContent}>
-              				<GoalsPopUp />
-              					<View style={styles.closeButton1}>
-                					<Button title="Close" onPress={() => setModal1Open(false)} />
-              					</View>
-            			</View>
-          			</View>
-        				</Modal>
-
-
-						{/* Log Calories Section */}
-        				<Pressable style={[styles.goals, styles.goalsLayout]} onPress={() => setModal2Open(true)}>
+        				<View style={[styles.goals, styles.goalsLayout]}>
           					<View style={styles.goalsChild} />
-          					<Image style={[styles.image1Icon, styles.scaledContent1]} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
-								
-          					<Text style={[styles.goals1, styles.logCalories2, styles.scaledContent]}>Log</Text>
-								<Text style={[styles.goals1, styles.logCalories1, styles.scaledContent]}>Calories</Text>
-        				</Pressable>
-
-						{/* Modal with Log Calories Pop-Up */}
-						<Modal visible={modal2Open} animationType="slide" transparent={true} 
-						onRequestClose={() => setModal2Open(false)}>
-						<View style={styles.modalOverlay2}>
-            			<View style={styles.modalContent}>
-              				<LogCaloriesPopUp />
-              					<View style={styles.closeButton2}>
-                					<Button title="Close" onPress={() => setModal2Open(false)} />
-              					</View>
-            			</View>
-          			</View>
-        				</Modal>
-
-
-						{/* Activity Levels */}
+          					<Image style={styles.image1Icon} resizeMode="cover" source={require('./Assets/ActivityScreen/Goal.png')} />
+          					<Text style={[styles.goals1, styles.goals1Layout, styles.scaledContent]}>Goals</Text>
+        				</View>
+        				<View style={styles.goalsLayout}>
+          					<View style={styles.goalsChild} />
+          					<View style={styles.logCalories1}>
+            						<View style={[styles.plus, styles.plusLayout, ]}>
+              							<Image style={[styles.circleIcon, styles.plusLayout]} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+              							
+            						</View>
+            						<Text style={[styles.logCalories2, styles.calTypo, styles.scaledContent1]}>Log Calories</Text>
+            						<Text style={[styles.cal, styles.calTypo, styles.scaledContent1]}>1,525 cal</Text>
+          					</View>
+        				</View>
         				<View style={styles.activityLevels}>
           					<View style={[styles.outterLayer, styles.outterLayerPosition]} />
           					<View style={styles.days}>
@@ -84,86 +47,28 @@ const ActivityPage = () => {
           					</View>
         				</View>
       			</View>
-
-
-				
-
-
     		</View>);
 };
 
 const styles = StyleSheet.create({
-	//Back
-	modalOverlay1: {
-   flex: 1,
-   alignItems: "center", // Center modal content horizontally
-   backgroundColor: "rgba(0, 0, 0, 0.4)", // Semi-transparent black background
-	top: 60,
-	height: 735,
-   width: "100%",
-   position: "absolute",
-  },
-  modalContent1: {
-   width: "100%",
-   backgroundColor: "#000", // Black background for modal
-   alignItems: "center", // Align content to the center
-	top: 30,
-	height: 550,
-   width: "85%",
-	borderRadius: 20,
-  },
-	 closeButton1: {
-	 justifyContent: 'center',
-    marginTop: 20,
-	 top: -10,
-    padding: 10,
-    borderRadius: 10,
-	 flexDirection: "row",
-  },
-  modalOverlay2: {
-   flex: 1,
-   alignItems: "center", // Center modal content horizontally
-   backgroundColor: "rgba(0, 0, 0, 0.4)", // Semi-transparent black background
-	top: 60,
-	height: 735,
-   width: "100%",
-   position: "absolute",
-  },
-  modalContent: {
-   width: "100%",
-   backgroundColor: "#000", // Black background for modal
-   alignItems: "center", // Align content to the center
-	top: 30,
-	height: 550,
-   width: "85%",
-	borderRadius: 20,
-  },
-	 closeButton2: {
-	 justifyContent: 'center',
-    marginTop: 20,
-	 top: -5,
-    padding: 10,
-    borderRadius: 10,
-	 flexDirection: "row",
-  },
   	goalsLayout: {
     		height: 123,
     		width: 240
   	},
   	goals1Layout: {
     		height: 33,
-    		position: "relative"
+    		position: "absolute"
   	},
   	plusLayout: {
     		height: 60,
     		width: 60,
     		top: 0,
-    		position: "relative"
+    		position: "absolute"
   	},
   	plusBg: {
     		backgroundColor: Color.colorBlack,
     		borderRadius: Border.br_3xs,
-    		position: "relative"
+    		position: "absolute"
   	},
   	calTypo: {
     		fontSize: FontSize.size_5xl,
@@ -210,7 +115,7 @@ const styles = StyleSheet.create({
   	},
   	image1Icon: {
     		top: 15,
-    		right: 10,
+    		right: 17,
     		width: 100,
     		height: 100,
     		position: "absolute"
@@ -226,7 +131,7 @@ const styles = StyleSheet.create({
     		fontWeight: "700",
     		lineHeight: 33,
     		letterSpacing: 0,
-    		height: 63
+    		height: 33
   	},
   	goals: {
     		overflow: "hidden"
@@ -239,6 +144,17 @@ const styles = StyleSheet.create({
     		width: 10,
     		height: 45,
     		top: 0
+  	},
+  	plusItem: {
+    		top: 28,
+    		width: 11,
+    		transform: [
+      			{
+        				rotate: "-90deg"
+      			}
+    		],
+    		height: 39,
+    		left: 0
   	},
   	plus1: {
     		top: 8,
@@ -255,21 +171,21 @@ const styles = StyleSheet.create({
     		height: 40,
     		position: "absolute",
     		left: 0,
-    		top: 25
+    		top: 0
   	},
   	cal: {
     		top: 36,
     		left: 29,
     		width: 133,
     		height: 35,
-    		position: "relative"
+    		position: "absolute"
   	},
   	logCalories1: {
-    		top: 60,
+    		top: 31,
     		width: 226,
     		height: 62,
-    		left: -30,
-    		position: "relative"
+    		left: 0,
+    		position: "absolute"
   	},
   	outterLayer: {
     		borderStyle: "solid",
@@ -308,7 +224,7 @@ const styles = StyleSheet.create({
     		height: 28,
     		marginLeft: -177.5,
     		left: "50%",
-    		position: "relative"
+    		position: "absolute"
   	},
   	activityLevelsChild: {
     		top: 263,
@@ -388,7 +304,7 @@ const styles = StyleSheet.create({
     		position: "absolute"
   	},
   	activityPage: {
-    		backgroundColor: Color.colorBackground,
+    		backgroundColor: "#1c0101",
     		flex: 1,
     		width: "100%",
     		height: 932,
@@ -398,7 +314,7 @@ const styles = StyleSheet.create({
       transform: [{ scale: 0.9 }],  // Adjust scale factor as needed
  },
  scaledContent1: {
-      transform: [{ scale: 0.7 }],  // Adjust scale factor as needed
+      transform: [{ scale: 0.8 }],  // Adjust scale factor as needed
  },
 });
 

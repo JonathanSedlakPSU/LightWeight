@@ -1,7 +1,8 @@
 LightWeight is a mobile fitness app.
 
+#####
 
-# Install dependencies:
+Install dependencies:
 npm install
 npm install @react-native-async-storage/async-storage@1.23.1
 npm install react-native-safe-area-context@4.10.5
@@ -11,30 +12,21 @@ npm install @expo/vector-icons
 npm install react-native-svg@15.2.0
 npm install react-native-linear-gradient
 npm install expo@51.0.39
-npm install @react-native-google-signin/google-signin
-npm install react-native-svg
-
-
-# Install expo dev: 
-npm install -g eas-cli
-eas build --profile development --platform android
-eas init --id 64217525-fabc-4d5d-84b1-771a2f2c513d
+npm install eas-cli -g
+expo install expo-dev-client
 
 #####
 
 To run the app with Expo:
 npx expo start
-Press 'a' to open android
 
-# To clear cache:
+To clear cache:
 npx expo start --clear
 
-# eas commands
-eas whoami
-eas build --profile development --platform android
-eas logout
-eas login
-eas project:info
-eas project:unlink
-eas project:init
 
+
+eas build --profile development --platform android
+To Run with Expo Dev:
+   
+   npx expo start
+#####
