@@ -120,8 +120,8 @@ export default function App() {
     <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="Login" component={LoginPage} />
-          <Stack.Screen name="SignUp" component={SignUpPage} />
+          <Stack.Screen name="Login" component={LoginPage} options={{ headerShown:false }} />
+          <Stack.Screen name="SignUp" component={SignUpPage} options={{ title:"",headerStyle: {backgroundColor: Color.theme1}}} />
           <Stack.Screen
             name="Home"
             component={TabBar}
