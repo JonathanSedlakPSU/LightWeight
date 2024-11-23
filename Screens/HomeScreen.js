@@ -181,8 +181,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center", // Center modal content horizontally
         backgroundColor: "rgba(0, 0, 0, 0.6)", // Semi-transparent black background
-	      top: 60,
-	      height: 735,
+	      top: 55,
+	      height: 820,
         width: "100%",
         position: "absolute",
     },
