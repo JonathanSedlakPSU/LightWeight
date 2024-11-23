@@ -133,13 +133,16 @@ const styles = StyleSheet.create({
   },
   tabBarStyle: {
     backgroundColor: Color.theme1,
-    borderRadius: 20, // Rounded top-left corner
-    position: "absolute", // Position to allow elevation above screen
-    left: 40, // Slightly inset from the sides
+    borderRadius: 20, // Rounded corners for the tab bar
+    position: "absolute", // Ensure it floats above content
+    left: 40,
     right: 40,
-    bottom: 10, // Elevated above the screen bottom
-    height: 50, // Adjust height as necessary
-  },
+    bottom: 10,
+    height: 50,
+    elevation: 0, // Remove shadow on Android
+    shadowColor: "transparent", // Remove shadow on iOS
+    borderTopWidth: 0, // Remove top border on iOS
+},
   headerStyle: {
     backgroundColor: Color.theme1,
   },
