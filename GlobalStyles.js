@@ -7,7 +7,7 @@ export const FontFamily = {
 };
 /* font sizes */
 export const FontSize = {
-   size_sm: 14,
+   size_sm: 15,
    size_lg: 18,
    size_xl: 21,
    size_5xl: 24,
@@ -17,12 +17,12 @@ export const Color = {
    colorWhite: "#fff",
    theme1: "#4f04b3",
    theme2: "#4104ba",
+   colorBackground: "#1c1a21",
    colorBlack: "#000",
    colorLimegreen: "#09c312",
    orange: "#ff3d00",
    colorDarkgray: "#a3a3a3",
    colorGainsboro: "#d9d9d9",
-   colorBackground: "#1c1a21",
 
    // Red = ff0000
    // Orange = ff3d00

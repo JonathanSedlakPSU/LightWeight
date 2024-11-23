@@ -10,7 +10,7 @@ import DailyQuestPopup from "./DailyQuestPop-Up";
 const HomePage = ({ userId }) => {
   const navigation = useNavigation();
   const [userData, setUserData] = React.useState({});
-  const [modalOpen, setModalOpen] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false); // Daily Quest popup
 
   const fetchUserData = async () => {
     try {
@@ -427,8 +427,8 @@ const styles = StyleSheet.create({
         height: 30
     },
     ellipseGroup: {
-        left: 143,
-        top: 0,
+        left: 150,
+        top: 15,
         position: "relative"
     },
     strength2: {
