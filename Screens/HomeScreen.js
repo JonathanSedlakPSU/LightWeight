@@ -73,7 +73,7 @@ const HomePage = ({ userId }) => {
               <Text style={[styles.dailyQuests2, styles.dailyLayout]}>
                 Daily Quests
               </Text>
-              <Text style={[styles.text2, styles.dailyLayout]}>1/3</Text>
+              <Text style={[styles.text2, styles.dailyLayout]}>0/3</Text>
             </View>
           </Pressable>
 
