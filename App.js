@@ -33,7 +33,7 @@ function TabBar({ route }) {
     <Tab.Navigator
       initialRouteName="Profile"
       screenOptions={{
-        tabBarStyle: { backgroundColor: Color.theme1 },
+        tabBarStyle: styles.tabBarStyle,
         tabBarActiveTintColor: Color.colorWhite,
         tabBarInactiveTintColor: Color.colorDarkgray,
       }}
@@ -45,17 +45,11 @@ function TabBar({ route }) {
           tabBarIcon: ({ color, size }) => (
             <FontAwesome6 name="dumbbell" size={size} color={color} />
           ),
-          headerStyle: {
-            backgroundColor: Color.theme1,
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
+          headerStyle: styles.headerStyle,
+          headerTintColor: Color.colorWhite,
+          headerTitleStyle: styles.headerTitleStyle,
           headerLeft: () => (
-            <TouchableOpacity
-              style={{ marginLeft: 10 }}
-            >
+            <TouchableOpacity style={styles.headerLeft}>
               <FontAwesome name="bars" size={24} color="white" />
             </TouchableOpacity>
           ),
@@ -67,17 +61,11 @@ function TabBar({ route }) {
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="user" size={size} color={color} />
           ),
-          headerStyle: {
-            backgroundColor: Color.theme1,
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
+          headerStyle: styles.headerStyle,
+          headerTintColor: Color.colorWhite,
+          headerTitleStyle: styles.headerTitleStyle,
           headerLeft: () => (
-            <TouchableOpacity
-              style={{ marginLeft: 10 }}
-            >
+            <TouchableOpacity style={styles.headerLeft}>
               <FontAwesome name="bars" size={24} color="white" />
             </TouchableOpacity>
           ),
@@ -91,19 +79,12 @@ function TabBar({ route }) {
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="bar-chart-o" size={size} color={color} />
-            
           ),
-          headerStyle: {
-            backgroundColor: Color.theme1,
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
+          headerStyle: styles.headerStyle,
+          headerTintColor: Color.colorWhite,
+          headerTitleStyle: styles.headerTitleStyle,
           headerLeft: () => (
-            <TouchableOpacity
-              style={{ marginLeft: 10 }}
-            >
+            <TouchableOpacity style={styles.headerLeft}>
               <FontAwesome name="bars" size={24} color="white" />
             </TouchableOpacity>
           ),
@@ -120,8 +101,19 @@ export default function App() {
     <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="Login" component={LoginPage} options={{ headerShown:false }} />
-          <Stack.Screen name="SignUp" component={SignUpPage} options={{ title:"",headerStyle: {backgroundColor: Color.theme1}}} />
+          <Stack.Screen
+            name="Login"
+            component={LoginPage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUpPage}
+            options={{
+              title: "",
+              headerStyle: styles.headerStyle,
+            }}
+          />
           <Stack.Screen
             name="Home"
             component={TabBar}
@@ -138,5 +130,23 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 20, // Space for the rounded tab bar
     backgroundColor: Color.colorBackground, // Background color outside the tab bar
+  },
+  tabBarStyle: {
+    backgroundColor: Color.theme1,
+    borderRadius: 20, // Rounded top-left corner
+    position: "absolute", // Position to allow elevation above screen
+    left: 40, // Slightly inset from the sides
+    right: 40,
+    bottom: 10, // Elevated above the screen bottom
+    height: 50, // Adjust height as necessary
+  },
+  headerStyle: {
+    backgroundColor: Color.theme1,
+  },
+  headerTitleStyle: {
+    fontWeight: "bold",
+  },
+  headerLeft: {
+    marginLeft: 20,
   },
 });
