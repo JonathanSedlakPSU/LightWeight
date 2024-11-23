@@ -6,6 +6,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import Svg, { Circle } from "react-native-svg";
 import DailyQuestPopup from "./DailyQuestPop-Up";
+import { collection, getDocs, setDoc } from "firebase/firestore";
 
 let userProfilePicture = "./Assets/HomeScreen/ProfilePic.png";
 
@@ -13,6 +14,7 @@ const HomePage = ({ userId }) => {
   const navigation = useNavigation();
   const [userData, setUserData] = React.useState({});
   const [modalOpen, setModalOpen] = React.useState(false); // Daily Quest popup
+  const [dailyQuests, setDailyQuests] = React.useState([]);
 
   const fetchUserData = async () => {
     try {
@@ -28,10 +30,59 @@ const HomePage = ({ userId }) => {
 
   };
 
+  const fetchRandomQuests = async () => {
+    try {
+      const questsCollection = collection(FIREBASE_DB, "Quests");
+      const questsSnapshot = await getDocs(questsCollection);
+      const questsList = questsSnapshot.docs.map(doc => doc.data());
+
+      // Shuffle the quests list and select the first 3
+      const shuffledQuests = questsList.sort(() => 0.5 - Math.random());
+      const selectedQuests = shuffledQuests.slice(0, 3);
+
+      // Store the selected quests in the user's document
+      await setDoc(doc(FIREBASE_DB, "Users", userId), {
+        dailyQuests: selectedQuests,
+        lastRefresh: new Date().toISOString(),
+      }, { merge: true });
+
+      setDailyQuests(selectedQuests);
+    } catch (error) {
+      console.error("Error fetching quests:", error);
+    }
+  };
+
+  const checkAndRefreshQuests = async () => {
+    try {
+      const userDocRef = doc(FIREBASE_DB, "Users", userId);
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        // Check last refresh date
+        const lastRefresh = userData.lastRefresh ? new Date(userData.lastRefresh) : null;
+        const now = new Date();
+
+        // Check if the last refresh was on a different day
+        if (!lastRefresh || (now - lastRefresh) >= 24 * 60 * 60 * 1000) 
+          {
+          await fetchRandomQuests();
+        } else {
+          setDailyQuests(userData.dailyQuests || []);
+        }
+      }
+    } catch (error) {
+      console.error("Error checking and refreshing quests:", error);
+    }
+  };
+
   // Fetch user data at beginning
   React.useEffect(() => {
     fetchUserData();
+    checkAndRefreshQuests();
   }, []);
+
+
   return (
     <View style={styles.homePage}>
       <View style={[styles.profileLevelParent, styles.scaledContent]}>
@@ -44,7 +95,7 @@ const HomePage = ({ userId }) => {
             </Svg>
             <Text style={[styles.text, styles.textTypo]}>{userData.level}</Text>
           </View>
-          <Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={ require("./Assets/HomeScreen/ProfilePic.png")}/>
+          <Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={ FIREBASE_AUTH.currentUser.photoURL ? { uri: FIREBASE_AUTH.currentUser.photoURL } : require("../assets/default_avatar.png")}/>
           <Text style={[styles.jonyLiftz, styles.levelTypo]}>{userData.Username}</Text>
           <Text style={[styles.level, styles.levelTypo]}> Level</Text>
         </View>
@@ -73,7 +124,7 @@ const HomePage = ({ userId }) => {
               <Text style={[styles.dailyQuests2, styles.dailyLayout]}>
                 Daily Quests
               </Text>
-              <Text style={[styles.text2, styles.dailyLayout]}>1/3</Text>
+              <Text style={[styles.text2, styles.dailyLayout]}>0/3</Text>
             </View>
           </Pressable>
 
@@ -154,13 +205,12 @@ const HomePage = ({ userId }) => {
 
 
 
-
             {/* Modal with Daily Quests Pop-Up */}
 						<Modal visible={modalOpen} animationType="slide" transparent={true} 
 						onRequestClose={() => setModalOpen(false)}>
 						<View style={styles.modalOverlay}>
             	<View style={styles.modalContent}>
-              		<DailyQuestPopup />
+              		<DailyQuestPopup dailyQuests={dailyQuests}/>
               		<View style={styles.closeButton}>
                 		<Button title="Close" onPress={() => setModalOpen(false)} />
               		</View>

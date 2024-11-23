@@ -27,12 +27,6 @@ const SignUpPage = () => {
         password
       );
 
-      // Set user's profile picture to default
-      const defaultProfilePic = require("../assets/default_avatar.png");
-      await updateProfile(response.user, {
-        photoURL: defaultProfilePic,
-      });
-
       //add user to database
       await setDoc(doc(FIREBASE_DB, "Users", response.user.uid), {
         Username: username,
@@ -81,6 +75,7 @@ const SignUpPage = () => {
             onChangeText={(text) => setPassword(text)}
             placeholder=" Password"
             style={[styles.passwordTextbox]}
+            secureTextEntry={true}
           />
         </View>
         <View style={[styles.Layout1]}>
@@ -88,6 +83,7 @@ const SignUpPage = () => {
             onChangeText={(text) => setConfirmPassword(text)}
             placeholder=" Confirm Password"
             style={[styles.passwordTextbox]}
+            secureTextEntry={true}
           />
         </View>
         <View style={[styles.loginButtonContainer]}>

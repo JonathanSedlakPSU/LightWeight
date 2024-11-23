@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, Image} from "react-native";
 import Svg, { Circle } from "react-native-svg";
 import { Color, FontFamily, FontSize } from "../GlobalStyles";
 
-const DailyQuestPopup = () => {
+const DailyQuestPopup = ({dailyQuests}) => {
   	
   	return (
     		<View style={styles.dailyQuestPopup}>
@@ -28,7 +28,8 @@ const DailyQuestPopup = () => {
                         </Svg>
             				<Text style={styles.text1}>1</Text>
           				</View>
-          				<Text style={styles.greetARandomPosition}>Greet a random Person</Text>
+          				<Text style={styles.greetARandomPosition}>{dailyQuests[0].description} 
+						</Text>
         				</View>
 
 						{/* Daily Quest 2 */}
@@ -43,7 +44,7 @@ const DailyQuestPopup = () => {
               						<View style={[styles.checkMarkItem, styles.checkBg]} />
             					</View>
           					</View>
-          					<Text style={[styles.greetARandomPosition]}>Complete 30 Jumping Jacks under a minute</Text>
+          					<Text style={[styles.greetARandomPosition]}>{dailyQuests[1].description}</Text>
         				</View>
 
 						{/* Daily Quest 3 */}
@@ -54,7 +55,7 @@ const DailyQuestPopup = () => {
                         </Svg>
             				<Text style={styles.text1}>3</Text>
           				</View>
-          				<Text style={styles.greetARandomPosition}>Run up and down some stairs</Text>
+          				<Text style={styles.greetARandomPosition}>{dailyQuests[2].description}</Text>
         				</View>
 
 
