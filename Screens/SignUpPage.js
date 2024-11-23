@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   bar: {
     top: 63,
     left: 20,
-    borderRadius: 5,
+    borderRadius: Border.br_3xs,
     backgroundColor: "#d9d9d9",
     width: 350,
     height: 2,

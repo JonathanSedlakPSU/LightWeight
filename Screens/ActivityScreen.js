@@ -7,7 +7,7 @@ import LogCaloriesPopUp from "./LogCaloriesPop-Up";
 
 const ActivityPage = () => {
   	
-	// Vairbles to set modal visible
+	// Variables to set modal visible
 	const [modal1Open, setModal1Open] = React.useState(false);
 	const [modal2Open, setModal2Open] = React.useState(false);
 
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
 	 top: -10,
     padding: 10,
-    borderRadius: 10,
+    borderRadius: Border.br_xl,
 	 flexDirection: "row",
   },
   modalOverlay2: {
@@ -136,14 +136,14 @@ const styles = StyleSheet.create({
 	top: 30,
 	height: 550,
    width: "85%",
-	borderRadius: 20,
+	borderRadius: Border.br_xl,
   },
 	 closeButton2: {
 	 justifyContent: 'center',
     marginTop: 20,
 	 top: -5,
     padding: 10,
-    borderRadius: 10,
+    borderRadius: br_3xs,
 	 flexDirection: "row",
   },
   	goalsLayout: {
@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
   	activityLevelsChild: {
     		top: 263,
     		left: 16,
-    		borderRadius: 5,
+    		borderRadius: Border.br_3xs,
     		backgroundColor: "#d9d9d9",
     		width: 330,
     		height: 2,

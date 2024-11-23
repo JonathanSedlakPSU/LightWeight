@@ -7,6 +7,8 @@ import { useNavigation } from "@react-navigation/native";
 import Svg, { Circle } from "react-native-svg";
 import DailyQuestPopup from "./DailyQuestPop-Up";
 
+let userProfilePicture = "./Assets/HomeScreen/ProfilePic.png";
+
 const HomePage = ({ userId }) => {
   const navigation = useNavigation();
   const [userData, setUserData] = React.useState({});
@@ -23,6 +25,7 @@ const HomePage = ({ userId }) => {
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
+
   };
 
   // Fetch user data at beginning
@@ -41,7 +44,7 @@ const HomePage = ({ userId }) => {
             </Svg>
             <Text style={[styles.text, styles.textTypo]}>{userData.level}</Text>
           </View>
-          <Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={FIREBASE_AUTH.currentUser.photoURL ? { uri: FIREBASE_AUTH.currentUser.photoURL } : require("../assets/default_avatar.png")}/>
+          <Image style={[styles.image1Icon, styles.groupPosition]} resizeMode="cover" source={ require("./Assets/HomeScreen/ProfilePic.png")}/>
           <Text style={[styles.jonyLiftz, styles.levelTypo]}>{userData.Username}</Text>
           <Text style={[styles.level, styles.levelTypo]}> Level</Text>
         </View>
@@ -287,7 +290,7 @@ const styles = StyleSheet.create({
     jonyLiftz: {
         top: 4,
         left: 152,
-        width: 152,
+        width: 400,
         height: 41,
         fontSize: FontSize.size_5xl,
         textAlign: "left",
