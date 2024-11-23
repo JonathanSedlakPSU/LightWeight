@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
 	 top: -5,
     padding: 10,
-    borderRadius: br_3xs,
+    borderRadius: Border.br_3xs,
 	 flexDirection: "row",
   },
   	goalsLayout: {
