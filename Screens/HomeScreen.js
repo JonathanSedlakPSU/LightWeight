@@ -218,8 +218,6 @@ const HomePage = ({ userId }) => {
           		</View>
         		</Modal>
 
-
-
             </View>
           </View>
         </View>
