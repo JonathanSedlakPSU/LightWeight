@@ -1,18 +1,26 @@
 import * as React from "react";
-import {StyleSheet, View, Text, Image} from "react-native";
+import {StyleSheet, View, Text, Image, TextInput} from "react-native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const LogCaloriesPopUp = () => {
+    const [cal1, setCal1] = React.useState("");
+    const [cal2, setCal2] = React.useState("");
+    const [cal3, setCal3] = React.useState("");
+    const [cal4, setCal4] = React.useState("");
   	
   	return (
     		<View style={styles.LogCaloriesPopUp}>
 
                 {/* Breakfast */}
-      			<View style={styles.goalManager}/>
+      			<View style={styles.calManager}/>
       			<View style={[styles.boxPosition1, styles.boxPositionLayout]}>
         			<View style={[styles.colorbackground, styles.boxPositionLayout]} />
         			<Text style={[styles.title]}>Breakfast</Text>
-        			<Text style={[styles.cal]}>{`240 cal`}</Text>
+        			<TextInput 
+                        onChangeText={(text) => setCal1(text)}
+                        placeholder="0"
+                        style={styles.cal}
+                    />
                     <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
 
@@ -20,7 +28,11 @@ const LogCaloriesPopUp = () => {
                 <View style={[styles.boxPosition2, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
                     <Text style={[styles.title]}>Lunch</Text>
-                    <Text style={[styles.cal]}>{`300 cal`}</Text>
+                    <TextInput 
+                        onChangeText={(text) => setCal2(text)}
+                        placeholder="0"
+                        style={styles.cal}
+                    />
                     <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
 
@@ -28,7 +40,11 @@ const LogCaloriesPopUp = () => {
                 <View style={[styles.boxPosition3, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
                     <Text style={[styles.title]}>Dinner</Text>
-        			<Text style={[styles.cal]}>{`0 cal`}</Text>
+        			<TextInput 
+                        onChangeText={(text) => setCal3(text)}
+                        placeholder="0"
+                        style={styles.cal}
+                    />
                     <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
 
@@ -36,7 +52,11 @@ const LogCaloriesPopUp = () => {
                 <View style={[styles.boxPosition4, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
                     <Text style={[styles.title]}>Snacks</Text>
-        			<Text style={[styles.cal]}>{`0 cal`}</Text>
+        			<TextInput 
+                        onChangeText={(text) => setCal4(text)}
+                        placeholder="0"
+                        style={styles.cal}
+                    />
                     <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
                 </View>
 
@@ -100,7 +120,25 @@ const styles = StyleSheet.create({
         textShadowRadius: 1,
 
     },
-    goal5DaysTypo: {
+    cal1: {
+        height: 40,
+        top: -100,
+        textAlign: "center",
+        color: Color.colorWhite,
+        fontFamily: FontFamily.interBold,
+        fontWeight: "700",
+        lineHeight: 45,
+        letterSpacing: 0,
+        fontSize: 20,
+        position: "relative",
+        left: "0%",
+        //Stroke
+        textShadowColor: "#000", // Outline color
+        textShadowOffset: { width: 2, height: 2 }, // Controls outline width
+        textShadowRadius: 1,
+
+    },
+    cal5DaysTypo: {
         top: 64,
         height: 42,
         right: 0,
@@ -131,7 +169,7 @@ const styles = StyleSheet.create({
         borderRadius: Border.br_xl,
         position: "absolute"
     },
-    goals: {
+    cals: {
         width: 149,
         height: 33,
         textAlign: "center",
@@ -161,7 +199,7 @@ const styles = StyleSheet.create({
         top: "3.33%",
         bottom: "86.36%"
     },
-    goalManager: {
+    calManager: {
         width: "99.9%",
         right: "0.1%",
         left: "0%",
@@ -201,14 +239,14 @@ const styles = StyleSheet.create({
         marginLeft: -144.5,
         width: 310
     },
-    goal5Days: {
+    cal5Days: {
         width: 92
     },
     boxPosition2: {
         top: 220,
         width: 365
     },
-    goal2100Cal: {
+    cal2100Cal: {
         width: 108
     },
     boxPosition3: {

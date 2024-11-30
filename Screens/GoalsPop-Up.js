@@ -1,8 +1,20 @@
 import React, {useState} from "react";
-import {StyleSheet, View, Text} from "react-native";
+import {StyleSheet, View, Text, TextInput} from "react-native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const GoalsPopUp = () => {
+    const [bodyWeight1, setBodyWeight1] = React.useState("");
+    const [bodyWeight2, setBodyWeight2] = React.useState("");
+    const [bodyWeight3, setBodyWeight3] = React.useState("");
+
+    const [workouts1, setWorkout1 ] = React.useState("");
+    const [workouts2, setWorkout2 ] = React.useState("");
+    const [workouts3, setWorkout3 ] = React.useState("");
+
+    const [cal1, setCal1] = React.useState("");
+    const [cal2, setCal2] = React.useState("");
+    const [cal3, setCal3] = React.useState("");
+
   	
   	return (
     		<View style={styles.goalsPopup}>
@@ -14,9 +26,21 @@ const GoalsPopUp = () => {
         			<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
         			<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
         			<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
-                    <Text style={[styles.number1, ]}>{`165`}</Text>
-        			<Text style={[styles.number2, ]}>{`198`}</Text>
-        			<Text style={[styles.number3, ]}>{`200`}</Text>
+                    <TextInput 
+                        onChangeText={(text) => setBodyWeight1(text)}
+                        placeholder="0"
+                        style={styles.number1}
+                    />
+        			<TextInput 
+                        onChangeText={(text) => setBodyWeight2(text)}
+                        placeholder="0"
+                        style={styles.number2}
+                    />
+        			<TextInput 
+                        onChangeText={(text) => setBodyWeight3(text)}
+                        placeholder="0"
+                        style={styles.number3}
+                    />
                 </View>
 
                 {/* Weekly Workouts */}
@@ -26,9 +50,21 @@ const GoalsPopUp = () => {
                     <Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
         			<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
         			<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
-                    <Text style={[styles.number1, ]}>{`165`}</Text>
-        			<Text style={[styles.number2, ]}>{`198`}</Text>
-        			<Text style={[styles.number3, ]}>{`200`}</Text>
+                    <TextInput 
+                        onChangeText={(text) => setWorkout1(text)}
+                        placeholder="0"
+                        style={styles.number1}
+                    />
+        			<TextInput 
+                        onChangeText={(text) => setWorkout2(text)}
+                        placeholder="0"
+                        style={styles.number2}
+                    />
+        			<TextInput 
+                        onChangeText={(text) => setWorkout3(text)}
+                        placeholder="0"
+                        style={styles.number3}
+                    />
                 </View>
 
                 {/* Daily Calories */}
@@ -38,9 +74,21 @@ const GoalsPopUp = () => {
         			<Text style={[styles.goal, styles.lbsTypo]}>{`Goal`}</Text>
         			<Text style={[styles.current, styles.lbsTypo]}>{`Current`}</Text>
         			<Text style={[styles.starting, styles.lbsTypo]}>{`Starting`}</Text>
-                    <Text style={[styles.number1, ]}>{`165`}</Text>
-        			<Text style={[styles.number2, ]}>{`198`}</Text>
-        			<Text style={[styles.number3, ]}>{`200`}</Text>
+                    <TextInput 
+                        onChangeText={(text) => setCal1(text)}
+                        placeholder="0"
+                        style={styles.number1}
+                    />
+        			<TextInput 
+                        onChangeText={(text) => setCal2(text)}
+                        placeholder="0"
+                        style={styles.number2}
+                    />
+        			<TextInput 
+                        onChangeText={(text) => setCal3(text)}
+                        placeholder="0"
+                        style={styles.number3}
+                    />
                 </View>
                 
             </View>);

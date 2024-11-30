@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
   	text1: {
     		height: "38%",
     		width: "63.94%",
-    		top: "30%",
+    		top: "28%",
     		left: "18%",
     		lineHeight: 23,
     		fontSize: FontSize.size_lg,
