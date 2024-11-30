@@ -1,9 +1,23 @@
-import * as React from "react";
-import {StyleSheet, View, Text, Image} from "react-native";
+import React, { useState } from "react";
+import {StyleSheet, View, Text, Image, Pressable} from "react-native";
 import Svg, { Circle } from "react-native-svg";
 import { Color, FontFamily, FontSize } from "../GlobalStyles";
 
 const DailyQuestPopup = ({dailyQuests}) => {
+	const [isImage1, setIsImage1] = useState(false);
+	const [isImage2, setIsImage2] = useState(false);
+	const [isImage3, setIsImage3] = useState(false);
+
+   const handlePress1 = () => {
+   	setIsImage1(!isImage1); // Toggle between SVG and PNG
+   };
+	const handlePress2 = () => {
+   	setIsImage2(!isImage2); // Toggle between SVG and PNG
+   };
+	const handlePress3 = () => {
+   	setIsImage3(!isImage3); // Toggle between SVG and PNG
+   };
+
   	
   	return (
     		<View style={styles.dailyQuestPopup}>
@@ -22,43 +36,86 @@ const DailyQuestPopup = ({dailyQuests}) => {
 						
 						{/* Daily Quest 1 */}
         				<View style={[styles.groupParent, styles.groupPosition]}>
-          				<View style={styles.ellipseParent}>
-								<Svg width="55" height="55" viewBox="0 0 70 70" fill="none">
-                           <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
-                        </Svg>
-            				<Text style={styles.text1}>1</Text>
-          				</View>
-          				<Text style={styles.greetARandomPosition}>{dailyQuests[0].description} 
-						</Text>
+							<Pressable onPress={handlePress1} style={styles.ellipseParent}>
+    							<View style={styles.svgContainer}>
+      							{isImage1 ? (
+									// Checkmark if clicked
+        							<Image
+          							source={require('./Assets/DailyQuestPop-Up/CheckMark.png')}
+          							style={{ width: 55, height: 55 }}
+        							/>
+      							) : ( //else
+									// SVG + number 
+        							<> 
+          						<Svg width="55" height="55" viewBox="0 0 70 70" fill="none">
+            						<Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5" />
+          						</Svg>
+          						<Text style={styles.text1}>1</Text>
+        							</>
+      							)}
+    							</View>
+  							</Pressable>
+							{/* Change text if clicked */}
+          				<Text style={[styles.greetARandomPosition, isImage1 && { color: '#696868' }]}>
+								{dailyQuests[0].description}
+							</Text>
         				</View>
 
 						{/* Daily Quest 2 */}
         				<View style={styles.groupContainer}>
-          					<View style={styles.ellipseParent}>
-								 	<Svg width="55" height="55" viewBox="0 0 70 70" fill="none">
-                              <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
-                           </Svg>
-									<Text style={styles.text1}>2</Text>
-            					<View style={styles.checkMark}>
-              						<View style={[styles.checkMarkChild, styles.checkBg]} />
-              						<View style={[styles.checkMarkItem, styles.checkBg]} />
-            					</View>
-          					</View>
-          					<Text style={[styles.greetARandomPosition]}>{dailyQuests[1].description}</Text>
+          				<Pressable onPress={handlePress2} style={styles.ellipseParent}>
+    							<View style={styles.svgContainer}>
+      							{isImage2 ? (
+									// Checkmark if clicked
+        							<Image
+          							source={require('./Assets/DailyQuestPop-Up/CheckMark.png')}
+          							style={{ width: 55, height: 55 }}
+        							/>
+      							) : ( // else
+									// SVG + number
+        							<>
+          						<Svg width="55" height="55" viewBox="0 0 70 70" fill="none">
+            						<Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5" />
+          						</Svg>
+          						<Text style={styles.text1}>2</Text>
+        							</>
+      							)}
+    							</View>
+  							</Pressable>
+							{/* Change text if clicked */}
+							<Text style={[styles.greetARandomPosition, isImage2 && { color: '#696868' }]}>
+								{dailyQuests[1].description}
+							</Text>
         				</View>
 
 						{/* Daily Quest 3 */}
         				<View style={[styles.groupView, styles.groupPosition]}>
-          				<View style={styles.ellipseParent}>
-								<Svg width="55" height="55" viewBox="0 0 70 70" fill="none">
-                           <Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5"/>
-                        </Svg>
-            				<Text style={styles.text1}>3</Text>
-          				</View>
-          				<Text style={styles.greetARandomPosition}>{dailyQuests[2].description}</Text>
+							<Pressable onPress={handlePress3} style={styles.ellipseParent}>
+    							<View style={styles.svgContainer}>
+      							{isImage3 ? (
+									// Checkmark if clicked
+        							<Image
+          							source={require('./Assets/DailyQuestPop-Up/CheckMark.png')}
+          							style={{ width: 55, height: 55 }}
+        							/>
+      							) : ( // else
+									// SVG + number
+        							<>
+          						<Svg width="55" height="55" viewBox="0 0 70 70" fill="none">
+            						<Circle cx="35" cy="35" r="30" stroke={Color.theme2} strokeWidth="5" />
+          						</Svg>
+          						<Text style={styles.text1}>3</Text>
+        							</>
+      							)}
+    							</View>
+  							</Pressable>
+							{/* Change text if clicked */}
+						  <Text style={[styles.greetARandomPosition, isImage3 && { color: '#696868' }]}>
+								{dailyQuests[2].description}
+							</Text>
         				</View>
 
-
+						
       			</View>
     		</View>);
 };
