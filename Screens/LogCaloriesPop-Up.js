@@ -15,7 +15,7 @@ const LogCaloriesPopUp = () => {
       			<View style={styles.calManager}/>
       			<View style={[styles.boxPosition1, styles.boxPositionLayout]}>
         			<View style={[styles.colorbackground, styles.boxPositionLayout]} />
-        			<Text style={[styles.title]}>Breakfast</Text>
+        			<Text style={[styles.title]}>Breakfast (cal)</Text>
         			<TextInput 
                         onChangeText={(text) => setCal1(text)}
                         placeholder="0"
@@ -27,7 +27,7 @@ const LogCaloriesPopUp = () => {
                 {/* Lunch */}
                 <View style={[styles.boxPosition2, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
-                    <Text style={[styles.title]}>Lunch</Text>
+                    <Text style={[styles.title]}>Lunch (cal)</Text>
                     <TextInput 
                         onChangeText={(text) => setCal2(text)}
                         placeholder="0"
@@ -39,7 +39,7 @@ const LogCaloriesPopUp = () => {
                 {/* Dinner */}
                 <View style={[styles.boxPosition3, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
-                    <Text style={[styles.title]}>Dinner</Text>
+                    <Text style={[styles.title]}>Dinner (cal)</Text>
         			<TextInput 
                         onChangeText={(text) => setCal3(text)}
                         placeholder="0"
@@ -51,7 +51,7 @@ const LogCaloriesPopUp = () => {
                 {/* Snacks */}
                 <View style={[styles.boxPosition4, styles.boxPositionLayout]}>
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
-                    <Text style={[styles.title]}>Snacks</Text>
+                    <Text style={[styles.title]}>Snacks (cal)</Text>
         			<TextInput 
                         onChangeText={(text) => setCal4(text)}
                         placeholder="0"
