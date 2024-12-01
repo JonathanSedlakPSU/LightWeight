@@ -17,9 +17,9 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
       const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
       if (userDoc.exists()) {
         setUserData(userDoc.data());
-		setIsImage1(userData.completedQuest1 || false);
-        setIsImage2(userData.completedQuest2 || false);
-        setIsImage3(userData.completedQuest3 || false);
+		setIsImage1(userData.completedQuest1 );
+        setIsImage2(userData.completedQuest2 );
+        setIsImage3(userData.completedQuest3 );
       }
     };
     loadCompletionStates();
@@ -65,6 +65,9 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
             <View style={styles.bar} />
             <View style={styles.questsHeader}>
               <Text style={[styles.textTypo]}>Quests</Text>
+			  <View>
+    
+    </View>
             </View>
           </View>
         </View>
