@@ -8,7 +8,6 @@ import Svg, { Circle } from "react-native-svg";
 import DailyQuestPopup from "./DailyQuestPop-Up";
 import { collection, getDocs, setDoc } from "firebase/firestore";
 
-let userProfilePicture = "./Assets/HomeScreen/ProfilePic.png";
 
 const HomePage = ({ userId }) => {
   const navigation = useNavigation();
@@ -44,6 +43,10 @@ const HomePage = ({ userId }) => {
       await setDoc(doc(FIREBASE_DB, "Users", userId), {
         dailyQuests: selectedQuests,
         lastRefresh: new Date().toISOString(),
+        completedQuest1: false,
+        completedQuest2: false,
+        completedQuest3: false
+
       }, { merge: true });
 
       setDailyQuests(selectedQuests);
@@ -63,8 +66,13 @@ const HomePage = ({ userId }) => {
         const lastRefresh = userData.lastRefresh ? new Date(userData.lastRefresh) : null;
         const now = new Date();
 
+        // Convert to EST timezone 
+        const estNow = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+        // Set to midnight
+        estNow.setHours(0, 0, 0, 0);
+
         // Check if the last refresh was on a different day
-        if (!lastRefresh || (now - lastRefresh) >= 24 * 60 * 60 * 1000) 
+        if (!lastRefresh || lastRefresh < estNow) 
           {
           await fetchRandomQuests();
         } else {
@@ -210,7 +218,7 @@ const HomePage = ({ userId }) => {
 						onRequestClose={() => setModalOpen(false)}>
 						<View style={styles.modalOverlay}>
             	<View style={styles.modalContent}>
-              		<DailyQuestPopup dailyQuests={dailyQuests}/>
+              		<DailyQuestPopup userId={userId} dailyQuests={dailyQuests}/>
               		<View style={styles.closeButton}>
                 		<Button title="Close" onPress={() => setModalOpen(false)} />
               		</View>
