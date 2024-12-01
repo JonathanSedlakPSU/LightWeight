@@ -45,7 +45,8 @@ const HomePage = ({ userId }) => {
         lastRefresh: new Date().toISOString(),
         completedQuest1: false,
         completedQuest2: false,
-        completedQuest3: false
+        completedQuest3: false,
+        questsCompleted: 0
 
       }, { merge: true });
 
@@ -71,7 +72,7 @@ const HomePage = ({ userId }) => {
         // Set to midnight
         estNow.setHours(0, 0, 0, 0);
 
-        // Check if the last refresh was on a different day
+        // Check if the last refresh was before midnight
         if (!lastRefresh || lastRefresh < estNow) 
           {
           await fetchRandomQuests();
@@ -132,7 +133,7 @@ const HomePage = ({ userId }) => {
               <Text style={[styles.dailyQuests2, styles.dailyLayout]}>
                 Daily Quests
               </Text>
-              <Text style={[styles.text2, styles.dailyLayout]}>0/3</Text>
+              <Text style={[styles.text2, styles.dailyLayout]}>{userData.questsCompleted}/3</Text>
             </View>
           </Pressable>
 

@@ -17,9 +17,6 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
       const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
       if (userDoc.exists()) {
         setUserData(userDoc.data());
-		setIsImage1(userData.completedQuest1 );
-        setIsImage2(userData.completedQuest2 );
-        setIsImage3(userData.completedQuest3 );
       }
     };
     loadCompletionStates();
@@ -30,7 +27,9 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
       const userRef = doc(FIREBASE_DB, "Users", userId);
       await updateDoc(userRef, {
         [`completedQuest${questNumber}`]: isCompleted,
-      });
+		questsCompleted: userData.questsCompleted + 1,
+	});
+
     } catch (error) {
       console.error(`Error updating quest ${questNumber}:`, error);
     }
@@ -76,7 +75,7 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
         <View style={[styles.groupParent, styles.groupPosition]}>
           <Pressable onPress={handlePress1} style={styles.ellipseParent}>
             <View style={styles.svgContainer}>
-              {isImage1 ? (
+              {userData.completedQuest1 ? (
                 // Checkmark if clicked
                 <Image
                   source={require("./Assets/DailyQuestPop-Up/CheckMark.png")}
@@ -104,7 +103,7 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
           <Text
             style={[
               styles.greetARandomPosition,
-              isImage1 && { color: "#696868" },
+              userData.completedQuest1  && { color: "#696868" },
             ]}
           >
             {dailyQuests[0].description}
@@ -115,7 +114,7 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
         <View style={styles.groupContainer}>
           <Pressable onPress={handlePress2} style={styles.ellipseParent}>
             <View style={styles.svgContainer}>
-              {isImage2 ? (
+              {userData.completedQuest2 ? (
                 // Checkmark if clicked
                 <Image
                   source={require("./Assets/DailyQuestPop-Up/CheckMark.png")}
@@ -143,7 +142,7 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
           <Text
             style={[
               styles.greetARandomPosition,
-              isImage2 && { color: "#696868" },
+              userData.completedQuest2 && { color: "#696868" },
             ]}
           >
             {dailyQuests[1].description}
@@ -154,7 +153,7 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
         <View style={[styles.groupView, styles.groupPosition]}>
           <Pressable onPress={handlePress3} style={styles.ellipseParent}>
             <View style={styles.svgContainer}>
-              {isImage3 ? (
+              {userData.completedQuest3 ? (
                 // Checkmark if clicked
                 <Image
                   source={require("./Assets/DailyQuestPop-Up/CheckMark.png")}
@@ -182,7 +181,7 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
           <Text
             style={[
               styles.greetARandomPosition,
-              isImage3 && { color: "#696868" },
+              userData.completedQuest3 && { color: "#696868" },
             ]}
           >
             {dailyQuests[2].description}
