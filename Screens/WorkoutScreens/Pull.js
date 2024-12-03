@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
    paddingBottom: 50
  },
  header: {
-   backgroundColor: "#6200ea",
-   paddingVertical: 15,
+  backgroundColor: Color.theme2,
+  paddingVertical: 15,
    paddingHorizontal: 20,
    alignItems: "center",
  },
@@ -98,12 +98,12 @@ const styles = StyleSheet.create({
    flex: 0,
  },
  itemTitle: {
-   fontSize: 18,
+   fontSize: 22,
    fontWeight: "600",
    color: Color.colorWhite,
  },
  itemSubtitle: {
-   fontSize: 14,
+   fontSize: 15,
    color: Color.colorWhite,
    marginTop: 5,
  },

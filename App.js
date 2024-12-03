@@ -20,6 +20,9 @@ import ActivityPage from "./Screens/ActivityScreen";
 import PushWorkout from "./Screens/WorkoutScreens/Push";
 import PullWorkout from "./Screens/WorkoutScreens/Pull";
 import LegWorkout from "./Screens/WorkoutScreens/Legs";
+import CoreWorkout from "./Screens/WorkoutScreens/Core";
+import CardioWorkout from "./Screens/WorkoutScreens/Cardio";
+import WarmUpsWorkout from "./Screens/WorkoutScreens/Warm-Ups";
 
 // Import Icons
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -45,8 +48,8 @@ function TabBar({ route }) {
     >
 
       <Tab.Screen
-        name="Legs"
-        component={LegWorkout}
+        name="Warm-Ups"
+        component={WarmUpsWorkout}
       />
 
 

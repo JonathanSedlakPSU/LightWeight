@@ -10,7 +10,7 @@ const LegWorkout = () => {
       { id: 1, name: "Squats", reps: "4 x 8", level: "Intermediate", 
          image: require("../Assets/Legs/Squats_1.png"), },
 
-      { id: 2, name: "Romanian Deadlifts", reps: "3 x 6", level: "Advanced", 
+      { id: 2, name: "Romanian Deadlifts", reps: "3 x 6", level: "Intermediate", 
          image: require("../Assets/Legs/RomanianDeadlift_1.png"), },
 
       { id: 3, name: "Leg Curls", reps: "3 x 10", level: "Beginner", 
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
    paddingBottom: 50
  },
  header: {
-   backgroundColor: "#6200ea",
-   paddingVertical: 15,
+  backgroundColor: Color.theme2,
+  paddingVertical: 15,
    paddingHorizontal: 20,
    alignItems: "center",
  },
@@ -94,12 +94,12 @@ const styles = StyleSheet.create({
    flex: 0,
  },
  itemTitle: {
-   fontSize: 18,
+   fontSize: 22,
    fontWeight: "600",
    color: Color.colorWhite,
  },
  itemSubtitle: {
-   fontSize: 14,
+   fontSize: 15,
    color: Color.colorWhite,
    marginTop: 5,
  },
