@@ -66,15 +66,27 @@ const HomePage = ({ userId }) => {
         // Check last refresh date
         const lastRefresh = userData.lastRefresh ? new Date(userData.lastRefresh) : null;
         const now = new Date();
+      
+             // Convert current time to EST at midnight
+      const estFormatter = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+      });
 
-        // Convert to EST timezone 
-        const estNow = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
-        // Set to midnight
-        estNow.setHours(0, 0, 0, 0);
+      // Get EST date string and create a new Date object at midnight
+      const estDateParts = estFormatter.formatToParts(now);
+      const estNow = new Date(
+        `${estDateParts.find((p) => p.type === "year").value}-${
+          estDateParts.find((p) => p.type === "month").value.padStart(2, "0")
+        }-${estDateParts.find((p) => p.type === "day").value.padStart(2, "0")}T00:00:00`
+      );
+
+      estNow.setDate(estNow.getDate() + 1); // Add 1 day to get the next midnight
 
         // Check if the last refresh was before midnight
-        if (!lastRefresh || lastRefresh < estNow) 
-          {
+        if (!lastRefresh || lastRefresh < estNow) {
           await fetchRandomQuests();
         } else {
           setDailyQuests(userData.dailyQuests || []);
