@@ -1,10 +1,10 @@
 // Import React libraries / functions
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
+import { StyleSheet, View} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Color, Border, FontSize, FontFamily } from "./GlobalStyles";
+import { Color} from "./GlobalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 // Import Firebase Configuration
 import { FIREBASE_AUTH, FIREBASE_DB, addUser } from "./FirebaseConfig";
@@ -15,6 +15,11 @@ import SignUpPage from "./Screens/SignUpPage";
 import HomePage from "./Screens/HomeScreen";
 import WorkoutsPage from "./Screens/WorkoutScreen";
 import ActivityPage from "./Screens/ActivityScreen";
+
+// Temporary Workot Screens
+import PushWorkout from "./Screens/WorkoutScreens/Push";
+import PullWorkout from "./Screens/WorkoutScreens/Pull";
+import LegWorkout from "./Screens/WorkoutScreens/Legs";
 
 // Import Icons
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -38,6 +43,13 @@ function TabBar({ route }) {
         tabBarInactiveTintColor: Color.colorDarkgray,
       }}
     >
+
+      <Tab.Screen
+        name="Legs"
+        component={LegWorkout}
+      />
+
+
       <Tab.Screen
         name="Workouts"
         component={WorkoutsPage}
@@ -90,6 +102,10 @@ function TabBar({ route }) {
           ),
         }}
       />
+
+      
+
+
     </Tab.Navigator>
   );
 }

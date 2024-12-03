@@ -21,6 +21,7 @@ export const Color = {
    theme1: "#4f04b3",
    theme2: "#4104ba",
    colorBackground: "#1c1a21",
+   colorBackground2: "#343238",
    colorBlack: "#000",
    colorLimegreen: "#09c312",
    orange: "#ff3d00",
