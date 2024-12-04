@@ -1,8 +1,11 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity  } from "react-native";
 import { Color} from "../../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
 
 const CoreWorkout = () => {
+  const navigation = useNavigation();
+
    const workoutList = [
       // Level: Beginner, Intermediate, Advanced
 
@@ -34,7 +37,10 @@ const CoreWorkout = () => {
    <View style={styles.container}>
      {/* Fixed Header */}
      <View style={styles.header}>
-       <Text style={styles.headerText}>Core</Text>
+         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Text style={styles.backArrow}>{"<--"}</Text>
+         </TouchableOpacity>
+         <Text style={styles.headerText}>Core</Text>
      </View>
 
      {/* Scrollable List */}
@@ -56,59 +62,75 @@ const CoreWorkout = () => {
 };
 
 const styles = StyleSheet.create({
- container: {
-   flex: 1,
-   backgroundColor: Color.colorBackground,
-   paddingBottom: 50,
-   
- },
- header: {
-  backgroundColor: Color.theme2,
-  paddingVertical: 15,
-   alignItems: "center",
- },
- headerText: {
-   color: "#fff",
-   fontSize: 20,
-   fontWeight: "bold",
- },
- scrollContainer: {
-   padding: 20,
-   alignItems: "center",
- },
- listItem: {
-   width: "90%",
-   backgroundColor: Color.colorBackground2,
-   padding: 20,
-   marginVertical: 10,
-   borderRadius: 10,
-   shadowColor: "#000",
-   shadowOffset: { width: 0, height: 2 },
-   shadowOpacity: 0.1,
-   shadowRadius: 4,
-   elevation: 3,
-   flexDirection: "row",
-   alignItems: "center",
- },
- image: {
-   width: 100,
-   height: 100,
-   marginRight: 15,
-   borderRadius: 10,
- },
- textContainer: {
-   flex: 0,
- },
- itemTitle: {
-   fontSize: 22,
-   fontWeight: "600",
-   color: Color.colorWhite,
- },
- itemSubtitle: {
-   fontSize: 15,
-   color: Color.colorWhite,
-   marginTop: 5,
- },
+  container: {
+    flex: 1,
+    backgroundColor: Color.colorBackground,
+    paddingBottom: 70,
+  },
+  header: {
+    backgroundColor: Color.theme2,
+    flexDirection: "row",
+    paddingVertical: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    marginTop: 10,
+    marginBottom: 10,
+    width: "90%",
+  },
+  backButton: {
+    position: "absolute",
+    left: 15,
+  },
+  backArrow: {
+    fontSize: 20,
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  headerText: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  scrollContainer: {
+    padding: 20,
+    alignItems: "center",
+  },
+  listItem: {
+    width: "90%",
+    backgroundColor: Color.colorBackground2,
+    padding: 20,
+    marginVertical: 10,
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginRight: 15,
+    borderRadius: 10,
+  },
+  textContainer: {
+    flex: 1, // Allow the container to take up remaining space
+  },
+  itemTitle: {
+    fontSize: 22,
+    fontWeight: "600",
+    color: Color.colorWhite,
+    flexWrap: "wrap", // Allow text to wrap within the container
+  },
+  itemSubtitle: {
+    fontSize: 15,
+    color: Color.colorWhite,
+    marginTop: 5,
+    flexWrap: "wrap", // Allow text to wrap within the container
+  },
 });
 
 export default CoreWorkout;

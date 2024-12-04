@@ -1,8 +1,12 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity  } from "react-native";
 import { Color} from "../../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+
 
 const CardioWorkout = () => {
+   const navigation = useNavigation();
+
    const workoutList = [
       // Level: Beginner, Intermediate, Advanced
 
@@ -38,7 +42,10 @@ const CardioWorkout = () => {
    <View style={styles.container}>
      {/* Fixed Header */}
      <View style={styles.header}>
-       <Text style={styles.headerText}>Cardio</Text>
+         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Text style={styles.backArrow}>{"<--"}</Text>
+         </TouchableOpacity>
+         <Text style={styles.headerText}>Cardio</Text>
      </View>
 
      {/* Scrollable List */}
@@ -63,13 +70,28 @@ const styles = StyleSheet.create({
    container: {
      flex: 1,
      backgroundColor: Color.colorBackground,
-     paddingBottom: 50,
+     paddingBottom: 70,
    },
    header: {
-      backgroundColor: Color.theme2,
-      paddingVertical: 15,
+     backgroundColor: Color.theme2,
+     flexDirection: "row", // Arrange items in a row
+     paddingVertical: 15,
      alignItems: "center",
+     justifyContent: "center",
+     alignSelf: "center", // Ensures the container itself is centered
+     marginTop: 10,
+     marginBottom:10,
+     width: "90%"
    },
+   backButton: {
+    position: "absolute", // Position it independently of the title
+    left: 15, // Push to the far left
+  },
+  backArrow: {
+    fontSize: 20,
+    color: "#fff",
+    fontWeight: "bold",
+  },
    headerText: {
      color: "#fff",
      fontSize: 20,
@@ -109,11 +131,17 @@ const styles = StyleSheet.create({
      fontSize: 20,
      fontWeight: "600",
      color: Color.colorWhite,
+     flexWrap: "wrap", // Allow text to wrap within the container
+     textAlign: "center", // Center-align text if needed
+     width: "100%", // Ensure text respects the container width
    },
    itemSubtitle: {
      fontSize: 17,
      color: Color.colorWhite,
      marginTop: 5,
+     flexWrap: "wrap", // Allow text to wrap within the container
+     textAlign: "center", // Center-align text if needed
+     width: "100%", // Ensure text respects the container width
    },
  });
  

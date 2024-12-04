@@ -1,8 +1,12 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { Color} from "../../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+
 
 const WarmUpsWorkout = () => {
+   const navigation = useNavigation();
+
    const LowerBody = [
       /* Lower Body */
       { id: 1, name: "Figure-4", reps: "3 x 60sec",  
@@ -11,10 +15,10 @@ const WarmUpsWorkout = () => {
       { id: 2, name: "Leg Holds", reps: "10min", 
          image: require("../Assets/Warm-Ups/LB-LegHolds.png"), },
 
-      { id: 3, name: "Lung", reps: "10min", 
+      { id: 3, name: "Deep Lung", reps: "10min", 
          image: require("../Assets/Warm-Ups/LB-Lung.png"),},
       
-      { id: 4, name: "Side Legs", reps: "2 x 10", 
+      { id: 4, name: "Hip Popper", reps: "2 x 10", 
          image: require("../Assets/Warm-Ups/LB-SideLegs.png"), },
 
       { id: 5, name: "Toe Touches", reps: "2 x 30sec",  
@@ -23,19 +27,19 @@ const WarmUpsWorkout = () => {
 
   const UpperBody = [
       /* Upper Body */
-      { id: 1, name: "Back", reps: "3 x 60sec",  
+      { id: 1, name: "Back Popper", reps: "3 x 60sec",  
          image: require("../Assets/Warm-Ups/UB-Back.png"), },
 
       { id: 2, name: "Bring It Around", reps: "10min", 
          image: require("../Assets/Warm-Ups/UB-BringItAround.png"), },
 
-      { id: 3, name: "Lat", reps: "10min", 
+      { id: 3, name: "Lat-Opener", reps: "10min", 
          image: require("../Assets/Warm-Ups/UB-Lat.png"),},
    
-      { id: 4, name: "Rotator Cuff", reps: "2 x 10", 
+      { id: 4, name: "Cuff Rotator", reps: "2 x 10", 
          image: require("../Assets/Warm-Ups/UB-RotatorCuff.png"), },
 
-      { id: 5, name: "Shoulder", reps: "2 x 30sec",  
+      { id: 5, name: "The Classic", reps: "2 x 30sec",  
          image: require("../Assets/Warm-Ups/UB-Shoulder.png"), },
 
       { id: 6, name: "T-Pose", reps: "2 x 30sec",  
@@ -46,14 +50,17 @@ const WarmUpsWorkout = () => {
   return (
    <View style={styles.container}>
      {/* Fixed Header */}
-     <View style={styles.header}>
-       <Text style={styles.headerText}>Warm-Ups</Text>
+      <View style={styles.header}>
+         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Text style={styles.backArrow}>{"<--"}</Text>
+         </TouchableOpacity>
+         <Text style={styles.headerText}>Warm-Ups</Text>
      </View>
 
      {/* Scrollable List */}
       <ScrollView contentContainerStyle={styles.scrollContainer}>
          <View style={styles.header1}>
-            <Text style={styles.headerText1}>Lower Body</Text>
+            <Text style={styles.headerText1}>-- Lower Body --</Text>
          </View>
          <View style={styles.gridContainer}>
             {LowerBody.map((workout) => (
@@ -68,7 +75,7 @@ const WarmUpsWorkout = () => {
          </View>
 
          <View style={styles.header1}>
-            <Text style={styles.headerText1}>Upper Body</Text>
+            <Text style={styles.headerText1}>-- Upper Body --</Text>
          </View>
          <View style={styles.gridContainer}>
             {UpperBody.map((workout) => (
@@ -90,13 +97,28 @@ const styles = StyleSheet.create({
    container: {
      flex: 1,
      backgroundColor: Color.colorBackground,
-     paddingBottom: 50,
+     paddingBottom: 70,
    },
    header: {
      backgroundColor: Color.theme2,
+     flexDirection: "row", // Arrange items in a row
      paddingVertical: 15,
      alignItems: "center",
+     justifyContent: "center",
+     alignSelf: "center", // Ensures the container itself is centered
+     marginTop: 10,
+     marginBottom:10,
+     width: "90%"
    },
+   backButton: {
+    position: "absolute", // Position it independently of the title
+    left: 15, // Push to the far left
+  },
+  backArrow: {
+    fontSize: 20,
+    color: "#fff",
+    fontWeight: "bold",
+  },
    header1: {
      backgroundColor: Color.theme1,
      paddingVertical: 15,
@@ -111,6 +133,7 @@ const styles = StyleSheet.create({
      fontSize: 20,
      fontWeight: "bold",
    },
+  
    headerText1: {
      color: Color.colorWhite,
      fontSize: 20,
@@ -151,11 +174,17 @@ const styles = StyleSheet.create({
      fontSize: 20,
      fontWeight: "600",
      color: Color.colorWhite,
+     flexWrap: "wrap", // Allow text to wrap within the container
+     textAlign: "center", // Center-align text if needed
+     width: "100%", // Ensure text respects the container width
    },
    itemSubtitle: {
      fontSize: 17,
      color: Color.colorWhite,
      marginTop: 5,
+     flexWrap: "wrap", // Allow text to wrap within the container
+     textAlign: "center", // Center-align text if needed
+     width: "100%", // Ensure text respects the container width
    },
  });
  

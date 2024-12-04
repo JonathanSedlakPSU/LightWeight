@@ -32,7 +32,38 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 // Create a TabBar at bottom of screen
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const WorkoutStack = createStackNavigator();
 
+
+
+// Workouts Screens navigation
+function WorkoutStackNavigator() {
+  return (
+    <WorkoutStack.Navigator initialRouteName="WorkoutsPage">
+      <WorkoutStack.Screen
+        name="WorkoutsPage"
+        component={WorkoutsPage}
+        options={{ headerShown: false }}
+      />
+      <WorkoutStack.Screen name="Warm-Ups" component={WarmUpsWorkout} 
+      options={{ headerShown: false }} />
+      <WorkoutStack.Screen name="Push" component={PushWorkout}
+      options={{ headerShown: false }} />
+      <WorkoutStack.Screen name="Pull" component={PullWorkout}
+      options={{ headerShown: false }} />
+      <WorkoutStack.Screen name="Legs" component={LegWorkout}
+      options={{ headerShown: false }} />
+      <WorkoutStack.Screen name="Core" component={CoreWorkout}
+      options={{ headerShown: false }} />
+      <WorkoutStack.Screen name="Cardio" component={CardioWorkout}
+      options={{ headerShown: false }} />
+    </WorkoutStack.Navigator>
+  );
+}
+
+
+
+// Home Page
 function TabBar({ route }) {
   // Get the userId from the route in stack
   const { userId } = route.params;
@@ -48,14 +79,8 @@ function TabBar({ route }) {
     >
 
       <Tab.Screen
-        name="Warm-Ups"
-        component={WarmUpsWorkout}
-      />
-
-
-      <Tab.Screen
         name="Workouts"
-        component={WorkoutsPage}
+        component={WorkoutStackNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome6 name="dumbbell" size={size} color={color} />
@@ -105,11 +130,11 @@ function TabBar({ route }) {
           ),
         }}
       />
-
-      
-
-
     </Tab.Navigator>
+
+    // Workout Screens
+
+    
   );
 }
 

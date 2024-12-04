@@ -1,31 +1,45 @@
 import * as React from "react";
 import {StyleSheet, View, Text, Image, ScrollView} from "react-native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native"; // Import navigation hook
+
+
+// Import Workot Screens
+import PushWorkout from "./WorkoutScreens/Push";
+import PullWorkout from "./WorkoutScreens/Pull";
+import LegWorkout from "./WorkoutScreens/Legs";
+import CoreWorkout from "./WorkoutScreens/Core";
+import CardioWorkout from "./WorkoutScreens/Cardio";
+import WarmUpsWorkout from "./WorkoutScreens/Warm-Ups";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const WorkoutsPage = () => {
-  	
+	const navigation = useNavigation();
+
   	return (
     		<View style={styles.workoutsPage}>
       			<View style={[styles.upperBodyParent, styles.scaledContent]}>
         				<View style={styles.upperBody}>
 
 								{/* Push */}
-          					<View style={[styles.push, styles.pushLayout]}>
+          					<TouchableOpacity style={[styles.push, styles.pushLayout]} 
+								onPress={() => navigation.navigate("Push")}>
             						<View style={styles.pushChild} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
               							<Text style={[styles.push1, styles.bodyTypo]}>Push</Text>
               							<Image style={[styles.pushIcon, styles.iconLayout]} resizeMode="cover" source={require('./Assets/WorkoutScreen/Push.png')}/>
             						</View>
-          					</View>
+          					</TouchableOpacity>
 
 								{/* Pull */}
-          					<View style={[styles.pull, styles.pushLayout]}>
+          					<TouchableOpacity style={[styles.pull, styles.pushLayout]}
+								onPress={() => navigation.navigate("Pull")}>
             						<View style={styles.pushChild} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
               							<Text style={[styles.push1, styles.bodyTypo]}>Pull</Text>
               							<Image style={[styles.pullIcon, styles.iconLayout]} resizeMode="cover" source={require('./Assets/WorkoutScreen/Pull.png')} />
             						</View>
-          					</View>
+          					</TouchableOpacity>
 
 								{/* Upper Body */}
           					<View style={[styles.ub, styles.ubLayout]}>
@@ -40,22 +54,24 @@ const WorkoutsPage = () => {
         				<View style={styles.upperBody}>
 
 								{/* Core */}
-          					<View style={[styles.core, styles.corePosition]}>
+          					<TouchableOpacity style={[styles.core, styles.corePosition]}
+								onPress={() => navigation.navigate("Core")}>
             						<View style={[styles.coreChild, styles.childPosition]} />
             						<View style={[styles.profileLevel3, styles.pushLayout]}>
               							<Image style={[styles.coreIcon, styles.iconPosition]} resizeMode="cover" source={require('./Assets/WorkoutScreen/Core.png')} />
               							<Text style={[styles.push1, styles.bodyTypo]}>Core</Text>
             						</View>
-          					</View>
+          					</TouchableOpacity>
 
 								{/* Legs */}
-          					<View style={[styles.legs, styles.corePosition]}>
+          					<TouchableOpacity style={[styles.legs, styles.corePosition]}
+								onPress={() => navigation.navigate("Legs")}>
             						<View style={styles.pushChild} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
               							<Image style={[styles.legsIcon, styles.iconPosition]} resizeMode="cover" source={require('./Assets/WorkoutScreen/Legs.png')} />
               							<Text style={[styles.push1, styles.bodyTypo]}>Legs</Text>
             						</View>
-          					</View>
+          					</TouchableOpacity>
 
 								{/* Lower Body */}
           					<View style={[styles.ub1, styles.ub1Position]}>
@@ -69,22 +85,24 @@ const WorkoutsPage = () => {
         				<View style={styles.cardioSwarmUps}>
 
 								{/* Cardio */}
-          					<View style={[styles.cardio, styles.pushLayout]}>
+          					<TouchableOpacity style={[styles.cardio, styles.pushLayout]}
+								onPress={() => navigation.navigate("Cardio")}>
             						<View style={[styles.cardioChild, styles.childPosition]} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
               							<Text style={[styles.push1, styles.bodyTypo]}>Cardio</Text>
               							<Image style={styles.cardioIcon} resizeMode="cover" source={require('./Assets/WorkoutScreen/Cardio.png')} />
             						</View>
-          					</View>
+          					</TouchableOpacity>
 
 								{/* Warm-Ups */}
-          					<View style={[styles.warmUps, styles.pushLayout]}>
+          					<TouchableOpacity style={[styles.warmUps, styles.pushLayout]}
+								onPress={() => navigation.navigate("Warm-Ups")}>
             						<View style={[styles.cardioChild, styles.childPosition]} />
             						<View style={[styles.profileLevel, styles.push1Layout]}>
               							<Text style={[styles.push1, styles.bodyTypo]}>Warm-Ups</Text>
               							<Image style={styles.warmUpsIcon} resizeMode="cover" source={require('./Assets/WorkoutScreen/Warm-Ups.png')} />
             						</View>
-          					</View>
+          					</TouchableOpacity>
 
         				</View>
       			</View>
