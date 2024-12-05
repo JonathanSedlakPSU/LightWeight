@@ -52,9 +52,7 @@ const LoginPage = () => {
       });
       
       console.log("User added!");
-    } else {
-      console.log("User already exists!");
-    }
+    } 
       navigation.navigate("Home", { userId: userCredential.user.uid });
   }
 
