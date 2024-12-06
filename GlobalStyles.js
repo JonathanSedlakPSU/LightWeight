@@ -45,3 +45,9 @@ export const Border = {
    br_xl: FontFamily.border_default + 5, //20
    br_6xl: FontFamily.border_default + 10, //25
 };
+/*Alignment*/
+export const AlignStyles = {
+    workoutButtonWidth: 298,
+    workoutButtonHeight: 153,
+    workoutButtonTop: 0,
+};

@@ -1,6 +1,6 @@
 import * as React from "react";
 import {StyleSheet, View, Text, Image, ScrollView} from "react-native";
-import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+import { Color, FontFamily, FontSize, Border, AlignStyles } from "../GlobalStyles";
 import { useNavigation } from "@react-navigation/native"; // Import navigation hook
 
 
@@ -111,13 +111,13 @@ const WorkoutsPage = () => {
 
 const styles = StyleSheet.create({
   	pushLayout: {
-    		width: 298,
+    		width: AlignStyles.workoutButtonWidth,
     		position: "absolute"
   	},
   	push1Layout: {
-    		height: 145,
+    		height: AlignStyles.workoutButtonHeight - 8,
     		left: 0,
-    		width: 298,
+    		width: AlignStyles.workoutButtonWidth,
     		position: "absolute"
   	},
   	bodyTypo: {
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     		lineHeight: 30,
     		letterSpacing: 0,
     		fontSize: FontSize.size_xl,
-    		top: 0
+    		top: AlignStyles.workoutButtonTop
   	},
   	iconLayout: {
     		height: 80,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   	},
   	ubLayout: {
     		height: 43,
-    		top: 18
+    		top: AlignStyles.workoutButtonTop + 18
   	},
   	ubItemBorder: {
     		height: 42,
@@ -146,11 +146,11 @@ const styles = StyleSheet.create({
     		borderRadius: Border.br_3xs,
     		borderWidth: 2,
     		borderStyle: "solid",
-    		top: 0,
+    		top: AlignStyles.workoutButtonTop,
     		position: "absolute"
   	},
   	profilePosition: {
-    		top: 2,
+    		top: AlignStyles.workoutButtonTop + 2,
     		height: 41
   	},
   	ubLayout1: {
@@ -158,21 +158,21 @@ const styles = StyleSheet.create({
     		position: "relative"
   	},
   	corePosition: {
-    		top: 75,
-    		width: 298,
+    		top: AlignStyles.workoutButtonTop + 75,
+    		width: AlignStyles.workoutButtonWidth,
     		position: "absolute"
   	},
   	childPosition: {
     		left: 70,
-    		height: 148,
-    		width: 158,
+    		height: AlignStyles.workoutButtonHeight - 5,
+    		width: AlignStyles.workoutButtonWidth - 140,
     		borderColor: Color.theme1,
     		borderStyle: "solid",
-    		top: 0,
+    		top: AlignStyles.workoutButtonTop,
     		position: "relative"
   	},
   	iconPosition: {
-    		top: 56,
+    		top: AlignStyles.workoutButtonTop + 56,
     		position: "relative"
   	},
   	ub1Position: {
@@ -182,33 +182,33 @@ const styles = StyleSheet.create({
   	},
   	pushChild: {
     		left: 63,
-    		height: 148,
+    		height: AlignStyles.workoutButtonHeight - 5,
     		width: 158,
     		borderWidth: 2,
     		borderColor: Color.theme1,
     		borderStyle: "solid",
-    		top: 0,
+    		top: AlignStyles.workoutButtonTop,
     		position: "relative"
   	},
   	push1: {
     		height: 145,
     		left: 0,
-    		width: 298,
+    		width: AlignStyles.workoutButtonWidth,
     		position: "absolute",
 			
   	},
   	pushIcon: {
     		left: 75,
-    		top: 48
+    		top: AlignStyles.workoutButtonTop + 48
   	},
   	profileLevel: {
     		top: 8
   	},
   	push: {
     		left: -55,
-    		height: 153,
+    		height: AlignStyles.workoutButtonHeight,
     		top: 73,
-    		width: 298
+    		width: AlignStyles.workoutButtonWidth
   	},
   	pullIcon: {
     		top: 52,
@@ -216,9 +216,9 @@ const styles = StyleSheet.create({
   	},
   	pull: {
     		left: 125,
-    		height: 153,
+    		height: AlignStyles.workoutButtonHeight,
     		top: 73,
-    		width: 298
+    		width: AlignStyles.workoutButtonWidth
   	},
   	ubChild: {
     		left: 83,
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     		lineHeight: 30,
     		letterSpacing: 0,
     		fontSize: FontSize.size_5xl,
-    		top: 0,
+    		top: AlignStyles.workoutButtonTop,
     		left: 0
   	},
   	profileLevel2: {
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
   	profileLevel3: {
     		height: 130,
     		left: 0,
-    		top: 8
+    		top: AlignStyles.workoutButtonTop + 8
   	},
   	core: {
     		left: 120,
@@ -280,11 +280,11 @@ const styles = StyleSheet.create({
   	},
   	legs: {
     		left: -55,
-    		height: 153
+    		height: AlignStyles.workoutButtonHeight
   	},
   	ubItem: {
     		left: 84,
-    		width: 190
+    		width: AlignStyles.workoutButtonWidth - 108
   	},
   	lowerBody1: {
     		height: 41,
@@ -295,15 +295,15 @@ const styles = StyleSheet.create({
     		lineHeight: 30,
     		letterSpacing: 0,
     		fontSize: FontSize.size_5xl,
-    		top: 0
+    		top: AlignStyles.workoutButtonTop
   	},
   	profileLevel5: {
     		height: 41,
-    		top: 2
+    		top: AlignStyles.workoutButtonTop + 2
   	},
   	ub1: {
     		height: 43,
-    		top: 18
+    		top: AlignStyles.workoutButtonTop + 18
   	},
   	cardioChild: {
     		borderRadius: Border.br_3xs,
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     		borderWidth: 4
   	},
   	cardioIcon: {
-    		top: 37,
+    		top: AlignStyles.workoutButtonTop + 37,
     		left: 109,
     		width: 80,
     		height: 89,
@@ -319,24 +319,24 @@ const styles = StyleSheet.create({
   	},
   	cardio: {
     		left: 0,
-    		height: 153,
-    		top: 0
+    		height: AlignStyles.workoutButtonHeight,
+    		top: AlignStyles.workoutButtonTop
   	},
   	warmUpsIcon: {
     		left: 100,
-    		width: 98,
-    		height: 67,
-    		top: 48,
+    		width: AlignStyles.workoutButtonWidth - 200,
+    		height: AlignStyles.workoutButtonHeight - 86,
+    		top: AlignStyles.workoutButtonTop + 48,
     		position: "absolute"
   	},
   	warmUps: {
     		left: 188,
-    		height: 153,
-    		top: 0
+    		height: AlignStyles.workoutButtonHeight,
+    		top: AlignStyles.workoutButtonTop
   	},
   	cardioSwarmUps: {
-    		width: 486,
-    		height: 153
+    		width: AlignStyles.workoutButtonWidth + 188,
+    		height: AlignStyles.workoutButtonHeight
   	},
   	upperBodyParent: {
     		left: 0,
@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
     		paddingHorizontal: 10,
     		paddingVertical: 30,
     		gap: 19,
-    		top: 0,
+    		top: AlignStyles.workoutButtonTop,
     		position: "relative"
   	},
   	workoutsPage: {
