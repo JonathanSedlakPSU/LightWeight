@@ -20,6 +20,8 @@
     "expo-dev-client": "~4.0.29",
     "expo-status-bar": "~1.12.1",
     "firebase": "^10.14.0",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.46",
     "react": "18.2.0",
     "react-native": "0.74.5",
     "react-native-fbsdk-next": "^13.1.4",

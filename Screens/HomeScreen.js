@@ -2,19 +2,18 @@ import * as React from "react";
 import { Image, StyleSheet, Text, View, ScrollView , Pressable, Button, Modal} from "react-native";
 import { Color, FontFamily, FontSize, Border, Gap } from "../GlobalStyles";
 import { FIREBASE_AUTH, FIREBASE_DB } from "../FirebaseConfig";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import Svg, { Circle } from "react-native-svg";
 import DailyQuestPopup from "./DailyQuestPop-Up";
 import { collection, getDocs, setDoc } from "firebase/firestore";
+import moment from "moment-timezone";
 
 
 const HomePage = ({ userId }) => {
-  const navigation = useNavigation();
   const [userData, setUserData] = React.useState({});
   const [modalOpen, setModalOpen] = React.useState(false); // Daily Quest popup
   const [dailyQuests, setDailyQuests] = React.useState([]);
-
   const fetchUserData = async () => {
     try {
       const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
@@ -65,28 +64,13 @@ const HomePage = ({ userId }) => {
         const userData = userDoc.data();
         // Check last refresh date
         const lastRefresh = userData.lastRefresh ? new Date(userData.lastRefresh) : null;
-        const now = new Date();
-      
-             // Convert current time to EST at midnight
-      const estFormatter = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/New_York",
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-      });
+        const now = moment().tz("America/New_York");
 
-      // Get EST date string and create a new Date object at midnight
-      const estDateParts = estFormatter.formatToParts(now);
-      const estNow = new Date(
-        `${estDateParts.find((p) => p.type === "year").value}-${
-          estDateParts.find((p) => p.type === "month").value.padStart(2, "0")
-        }-${estDateParts.find((p) => p.type === "day").value.padStart(2, "0")}T00:00:00`
-      );
-
-      estNow.setDate(estNow.getDate() + 1); // Add 1 day to get the next midnight
+        // Set to midnight
+        const estMidnight = now.clone().startOf('day');
 
         // Check if the last refresh was before midnight
-        if (!lastRefresh || lastRefresh < estNow) {
+        if (!lastRefresh || lastRefresh < estMidnight.toDate()) {
           await fetchRandomQuests();
         } else {
           setDailyQuests(userData.dailyQuests || []);
@@ -101,7 +85,18 @@ const HomePage = ({ userId }) => {
   React.useEffect(() => {
     fetchUserData();
     checkAndRefreshQuests();
-  }, []);
+    const userDocRef = doc(FIREBASE_DB, "Users", userId);
+    const unsubscribe = onSnapshot(userDocRef, (doc) => {
+      if (doc.exists()) {
+        const data = doc.data();
+        setUserData(data);
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, [userId]);
+
 
 
   return (

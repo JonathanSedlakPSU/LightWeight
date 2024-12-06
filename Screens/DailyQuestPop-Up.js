@@ -2,32 +2,54 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import Svg, { Circle } from "react-native-svg";
 import { Color, FontFamily, FontSize } from "../GlobalStyles";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot, getDoc, updateDoc } from "firebase/firestore";
 import { FIREBASE_DB } from "../FirebaseConfig";
+import {  } from "firebase/firestore";
 
 const DailyQuestPopup = ({userId, dailyQuests }) => {
-  const [isImage1, setIsImage1] = useState(false);
-  const [isImage2, setIsImage2] = useState(false);
-  const [isImage3, setIsImage3] = useState(false);
   const [userData, setUserData] = useState({});
+  const [isImage1, setIsImage1] = useState(userData.completedQuest1 || false);
+  const [isImage2, setIsImage2] = useState(userData.completedQuest2 || false);
+  const [isImage3, setIsImage3] = useState(userData.completedQuest3 || false);
 
   // Load initial states
   useEffect(() => {
+    const userDocRef = doc(FIREBASE_DB, "Users", userId);
+
     const loadCompletionStates = async () => {
-      const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
+      const userDoc = await getDoc(userDocRef);
       if (userDoc.exists()) {
-        setUserData(userDoc.data());
+        const data = userDoc.data();
+        setUserData(data);
+        setIsImage1(data.completedQuest1 || false);
+        setIsImage2(data.completedQuest2 || false);
+        setIsImage3(data.completedQuest3 || false);
       }
     };
-    loadCompletionStates();
-  }, []);
 
+    loadCompletionStates();
+
+    // Set up snapshot listener for real-time updates
+    const unsubscribe = onSnapshot(userDocRef, (doc) => {
+      if (doc.exists()) {
+        const data = doc.data();
+        setUserData(data);
+        setIsImage1(data.completedQuest1 || false);
+        setIsImage2(data.completedQuest2 || false);
+        setIsImage3(data.completedQuest3 || false);
+      }
+    });
+
+    // Cleanup listener on unmount
+    return () => unsubscribe();
+  }, [userId]);
   const updateQuestStatus = async (questNumber, isCompleted) => {
     try {
       const userRef = doc(FIREBASE_DB, "Users", userId);
+       updatedQuestsCompleted = (userData.questsCompleted || 0) + 1;
       await updateDoc(userRef, {
         [`completedQuest${questNumber}`]: isCompleted,
-		questsCompleted: userData.questsCompleted + 1,
+        questsCompleted: updatedQuestsCompleted,
 	});
 
     } catch (error) {
@@ -75,7 +97,7 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
         <View style={[styles.groupParent, styles.groupPosition]}>
           <Pressable onPress={handlePress1} style={styles.ellipseParent}>
             <View style={styles.svgContainer}>
-              {userData.completedQuest1 ? (
+              {isImage1 ? (
                 // Checkmark if clicked
                 <Image
                   source={require("./Assets/DailyQuestPop-Up/CheckMark.png")}
