@@ -6,6 +6,7 @@ import { FIREBASE_AUTH, FIREBASE_DB } from "../FirebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const SignUpPage = () => {
   const navigation = useNavigation();
@@ -88,7 +89,9 @@ const SignUpPage = () => {
         </View>
         <View style={[styles.loginButtonContainer]}>
           <View style={[styles.loginButton]} />
-          <Button title="Create Account" style={styles.loginText} onPress={addUser}/>
+          <TouchableOpacity style={styles.loginText} onPress={addUser}>
+          <Text style={styles.loginText}>Create Account</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -219,7 +222,7 @@ const styles = StyleSheet.create({
     left: 24,
   },
   loginButton: {
-    backgroundColor: Color.orange,
+    backgroundColor: Color.theme1,
     height: 35,
     width: 300,
     position: "absolute",

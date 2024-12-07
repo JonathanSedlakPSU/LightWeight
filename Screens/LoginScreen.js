@@ -7,6 +7,7 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  Touchable,
 } from "react-native";
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
 import { FIREBASE_AUTH, FIREBASE_DB } from "../FirebaseConfig";
@@ -14,6 +15,7 @@ import {doc, getDoc, setDoc} from "firebase/firestore";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { signInWithCredential, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome } from "@expo/vector-icons";
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -107,19 +109,25 @@ const LoginPage = () => {
           style={[styles.loginPage, styles.loginPagePosition]}
           onPress={() => navigation.navigate("SignUp")}
         >
+
           <Text style={[styles.loginPage, styles.signUpText]}>Sign Up</Text>
         </TouchableOpacity>
         <View style={[styles.loginButtonContainer]}>
-          <Button title="Login" style={[styles.loginButton]} onPress={signIn}/>
-          <Text style={styles.loginText}>Sign in with</Text>
+          <TouchableOpacity title="Login" style={[styles.loginButton]} onPress={signIn}>
+          <Text style={styles.loginText}>Login</Text>
+            </TouchableOpacity> 
+             <Text style={styles.loginText2}>Sign in with</Text>
+
         </View>
+       
         <View style={[styles.googleSsoContainer]}>
-          <Button
-            title="Google"
-            style={[styles.googleButton]}
-            onPress={googleSignin}
-          />
-        </View>
+        <TouchableOpacity style={[styles.googleButton]} onPress={googleSignin}>
+          <View style={styles.googleButtonContent}>
+            <FontAwesome name="google" size={24} color="white" />
+            <Text style={styles.googleText}>Google</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
       </View>
     </View>
   );
@@ -157,6 +165,7 @@ const styles = StyleSheet.create({
     width: 145,
     height: 35,
     position: "absolute",
+    backgroundColor: Color.colorBackground
   },
   textTypo: {
     top: 3,
@@ -249,12 +258,12 @@ const styles = StyleSheet.create({
     left: 24,
   },
   loginButton: {
-    backgroundColor: Color.orange,
+    backgroundColor: Color.theme1,
     height: 35,
     width: 300,
     position: "absolute",
     borderRadius: Border.br_xl,
-    top: 0,
+    top: -30,
     left: 0,
   },
   loginText: {
@@ -266,7 +275,18 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     letterSpacing: 0,
     top: 0,
-    position: "realtive",
+    position: "relative",
+  },
+   loginText2: {
+    fontSize: FontSize.size_xl,
+    textAlign: "center",
+    color: Color.colorWhite,
+    fontFamily: FontFamily.interBold,
+    fontWeight: "700",
+    lineHeight: 30,
+    letterSpacing: 0,
+    top: 35,
+    position: "relative",
   },
   loginButtonContainer: {
     top: 200,
@@ -277,16 +297,29 @@ const styles = StyleSheet.create({
   },
   
   googleButton: {
-    backgroundColor: "#09c312",
+    padding: 10,
+    backgroundColor: Color.theme1,
     borderRadius: Border.br_xl,
-    top: 5,
-    left: 0,
-    width: 145,
-    height: 35,
-    position: "relative",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 50, 
+
+  },
+  googleButtonContent: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   googleText: {
-    left: 29,
+    fontSize: FontSize.size_xl,
+    textAlign: "center",
+    color: Color.colorWhite,
+    fontFamily: FontFamily.interBold,
+    fontWeight: "700",
+    lineHeight: 30,
+    top: 0,
+    letterSpacing: 0,
+    marginLeft: 10,
   },
   googleSsoContainer: {
     left: 27,
