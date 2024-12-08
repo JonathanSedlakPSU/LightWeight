@@ -3,14 +3,30 @@ import {StyleSheet, View, Image, Text, Pressable, Button, Modal} from "react-nat
 import { Color, Border, FontSize, FontFamily } from "../GlobalStyles";
 import GoalsPopUp from "./GoalsPop-Up";
 import LogCaloriesPopUp from "./LogCaloriesPop-Up";
-
-
-const ActivityPage = () => {
-  	
+import { doc, getDoc } from "firebase/firestore";
+import { FIREBASE_DB } from "../FirebaseConfig";
+const ActivityPage = ({userId}) => {
 	// Variables to set modal visible
 	const [modal1Open, setModal1Open] = React.useState(false);
 	const [modal2Open, setModal2Open] = React.useState(false);
+	const [userData, setUserData] = React.useState({});
+	const fetchUserData = async () => {
+		try {
+		  const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
+		  if (userDoc.exists()) {
+			setUserData(userDoc.data());
+		  } else {
+			console.log("No such document!");
+		  }
+		} catch (error) {
+		  console.error("Error fetching user data:", error);
+		}
+	
+	  };
 
+	  React.useEffect(() => {
+		fetchUserData();
+	  }, []);
   	return (
     		<View style={styles.activityPage}>
       			<View style={[styles.goalsParent,styles.scaledContent]}>
@@ -27,7 +43,7 @@ const ActivityPage = () => {
 						onRequestClose={() => setModal1Open(false)}>
 						<View style={styles.modalOverlay1}>
             			<View style={styles.modalContent}>
-              				<GoalsPopUp />
+              				<GoalsPopUp userId={userId}/>
               					<View style={styles.closeButton1}>
                 					<Button title="Close" onPress={() => setModal1Open(false)} />
               					</View>
@@ -50,7 +66,7 @@ const ActivityPage = () => {
 						onRequestClose={() => setModal2Open(false)}>
 						<View style={styles.modalOverlay2}>
             			<View style={styles.modalContent}>
-              				<LogCaloriesPopUp />
+              				<LogCaloriesPopUp userId={userId} />
               					<View style={styles.closeButton2}>
                 					<Button title="Close" onPress={() => setModal2Open(false)} />
               					</View>

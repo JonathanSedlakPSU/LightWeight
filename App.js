@@ -115,7 +115,6 @@ function TabBar({ route }) {
       </Tab.Screen>
       <Tab.Screen
         name="Activity"
-        component={ActivityPage}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="bar-chart-o" size={size} color={color} />
@@ -129,7 +128,10 @@ function TabBar({ route }) {
             </TouchableOpacity>
           ),
         }}
-      />
+        
+      >
+                  {(props) => <ActivityPage {...props} userId={userId} />}
+      </Tab.Screen>
     </Tab.Navigator>
 
     // Workout Screens

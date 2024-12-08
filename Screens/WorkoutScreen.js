@@ -15,7 +15,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const WorkoutsPage = () => {
 	const navigation = useNavigation();
-
   	return (
     		<View style={styles.workoutsPage}>
       			<View style={[styles.upperBodyParent, styles.scaledContent]}>

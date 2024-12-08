@@ -1,13 +1,51 @@
 import * as React from "react";
-import {StyleSheet, View, Text, Image, TextInput} from "react-native";
+import {StyleSheet, View, Text, Image, TextInput, TouchableOpacity} from "react-native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+import {setDoc, doc, getDoc} from "firebase/firestore";
+import {FIREBASE_DB} from  "../FirebaseConfig";
 
-const LogCaloriesPopUp = () => {
-    const [cal1, setCal1] = React.useState("");
-    const [cal2, setCal2] = React.useState("");
-    const [cal3, setCal3] = React.useState("");
-    const [cal4, setCal4] = React.useState("");
-  	
+
+const LogCaloriesPopUp = ({userId}) => {
+    const [cal1, setCal1] = React.useState(0);
+    const [cal2, setCal2] = React.useState(0);
+    const [cal3, setCal3] = React.useState(0);
+    const [cal4, setCal4] = React.useState(0);
+  	const [userData, setUserData] = React.useState({});
+      const fetchUserData = async () => {
+        try {
+          const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
+          if (userDoc.exists()) {
+            setUserData(userDoc.data());
+          } else {
+            console.log("No such document!");
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      };
+    
+      React.useEffect(() => {
+        fetchUserData();
+      }, [userId]);
+    
+      const updateCalories = async (calNumber) => {
+        try {
+          const userRef = doc(FIREBASE_DB, "Users", userId);
+          const calorieValue = calNumber === 1 ? cal1 : calNumber === 2 ? cal2 : calNumber === 3 ? cal3 : cal4;
+          await setDoc(userRef, {
+            [`calorie${calNumber}`]: calorieValue,
+            calories: userData.calorie1+userData.calorie2+userData.calorie3+userData.calorie4
+          }, { merge: true });
+        
+          // Update local state
+          setUserData((prevState) => ({
+            ...prevState,
+            [`calorie${calNumber}`]: calorieValue,
+          }));
+        } catch (error) {
+          console.error(`Error updating calorie ${calNumber}:`, error);
+        }
+      };
   	return (
     		<View style={styles.LogCaloriesPopUp}>
 
@@ -17,11 +55,15 @@ const LogCaloriesPopUp = () => {
         			<View style={[styles.colorbackground, styles.boxPositionLayout]} />
         			<Text style={[styles.title]}>Breakfast (cal)</Text>
         			<TextInput 
-                        onChangeText={(text) => setCal1(text)}
+                       value={cal1.toString()}
+                       onChangeText={(text) => setCal1(parseInt(text) || 0)}
                         placeholder="0"
+                        placeholderTextColor={'white'}
                         style={styles.cal}
                     />
-                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+                    <TouchableOpacity style={styles.image} onPress={()=> updateCalories(1)}>
+                    <Image resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+                    </TouchableOpacity>
                 </View>
 
                 {/* Lunch */}
@@ -29,11 +71,15 @@ const LogCaloriesPopUp = () => {
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
                     <Text style={[styles.title]}>Lunch (cal)</Text>
                     <TextInput 
-                        onChangeText={(text) => setCal2(text)}
+                     value={cal2.toString()}
+                     onChangeText={(text) => setCal2(parseInt(text) || 0)}
                         placeholder="0"
+                        placeholderTextColor={'white'}
                         style={styles.cal}
                     />
-                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+                    <TouchableOpacity style={styles.image} onPress={()=> updateCalories(2)}>
+                    <Image resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+                    </TouchableOpacity>
                 </View>
 
                 {/* Dinner */}
@@ -41,11 +87,16 @@ const LogCaloriesPopUp = () => {
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
                     <Text style={[styles.title]}>Dinner (cal)</Text>
         			<TextInput 
-                        onChangeText={(text) => setCal3(text)}
+                        value={cal3.toString()}
+                        onChangeText={(text) => setCal3(parseInt(text) || 0)}
                         placeholder="0"
+                        placeholderTextColor={'white'}
+
                         style={styles.cal}
                     />
-                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+                    <TouchableOpacity style={styles.image} onPress={()=> updateCalories(3)}>
+                    <Image resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+                    </TouchableOpacity>
                 </View>
 
                 {/* Snacks */}
@@ -53,11 +104,15 @@ const LogCaloriesPopUp = () => {
                     <View style={[styles.colorbackground, styles.boxPositionLayout]} />
                     <Text style={[styles.title]}>Snacks (cal)</Text>
         			<TextInput 
-                        onChangeText={(text) => setCal4(text)}
+                  value={cal4.toString()}
+                  onChangeText={(text) => setCal4(parseInt(text) || 0)}
                         placeholder="0"
+                        placeholderTextColor={'white'}
                         style={styles.cal}
                     />
-                    <Image style={styles.image} resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+                    <TouchableOpacity style={styles.image} onPress={()=> updateCalories(4)}>
+                    <Image resizeMode="cover" source={require('./Assets/ActivityScreen/Plus.png')} />
+                    </TouchableOpacity>
                 </View>
 
         </View>);

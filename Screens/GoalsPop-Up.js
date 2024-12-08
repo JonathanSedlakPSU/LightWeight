@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {StyleSheet, View, Text, TextInput} from "react-native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
-const GoalsPopUp = () => {
+const GoalsPopUp = ({userId}) => {
     const [bodyWeight1, setBodyWeight1] = React.useState("");
     const [bodyWeight2, setBodyWeight2] = React.useState("");
     const [bodyWeight3, setBodyWeight3] = React.useState("");
