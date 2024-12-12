@@ -99,6 +99,7 @@ const LoginPage = () => {
             onChangeText={(text) => setPassword(text)}
             placeholder=" Password"
             style={[styles.passwordTextbox]}
+            secureTextEntry={true}
           />
         </View>
 

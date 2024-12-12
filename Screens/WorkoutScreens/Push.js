@@ -20,7 +20,7 @@ const PushWorkout = () => {
          image: require("../Assets/Push/CableCrossovers_1.png"),},
 
       /* Triceps */
-      { id: 4, name: "Tricep Dips", reps: "3 x 8", level: "Hard", 
+      { id: 4, name: "Tricep Dips", reps: "3 x 8", level: "Advanced", 
          image: require("../Assets/Push/Dips_1.png"), },
 
       { id: 5, name: "Tricep Pushdowns", reps: "4 x 10", level: "Beginner", 

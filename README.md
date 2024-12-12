@@ -16,7 +16,6 @@ npm install react-native-svg
 npm install moment-timezone --legacy-peer-deps
 
 
-
 # Install expo dev: 
 npm install -g eas-cli
 eas build --profile development --platform android
