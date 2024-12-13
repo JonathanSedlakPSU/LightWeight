@@ -17,6 +17,7 @@ import { signInWithCredential, GoogleAuthProvider, signInWithEmailAndPassword } 
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
 const LoginPage = () => {
+  // Variables for saving useStates
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -79,6 +80,8 @@ const LoginPage = () => {
 
   return (
     <View style={styles.loginpage}>
+      
+      {/* Login */}
       <View style={[styles.header]}>
         <View style={styles.bar} />
         <View style={[styles.header1, styles.headerPosition]}>
@@ -87,6 +90,8 @@ const LoginPage = () => {
       </View>
       <View style={styles.loginBox}>
         <View style={[styles.outterLayer]} />
+
+        {/* Email */}
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setEmail(text)}
@@ -94,6 +99,8 @@ const LoginPage = () => {
             style={[styles.passwordTextbox]}
           />
         </View>
+
+        {/* Password */}
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setPassword(text)}
@@ -103,37 +110,43 @@ const LoginPage = () => {
           />
         </View>
 
+        {/* Forgot Password */}
         <Text style={[styles.forgotPassword, styles.loginPagePosition]}>
           Forgot Password?
         </Text>
+
+        {/* Sign Up Button*/}
         <TouchableOpacity
           style={[styles.loginPage, styles.loginPagePosition]}
           onPress={() => navigation.navigate("SignUp")}
         >
-
           <Text style={[styles.loginPage, styles.signUpText]}>Sign Up</Text>
         </TouchableOpacity>
+
+        {/* Login Button*/}
         <View style={[styles.loginButtonContainer]}>
           <TouchableOpacity title="Login" style={[styles.loginButton]} onPress={signIn}>
-          <Text style={styles.loginText}>Login</Text>
-            </TouchableOpacity> 
-             <Text style={styles.loginText2}>Sign in with</Text>
-
+            <Text style={styles.loginText}>Login</Text>
+          </TouchableOpacity> 
+          <Text style={styles.loginText2}>Sign in with</Text>
         </View>
        
+       {/* Google Button*/}
         <View style={[styles.googleSsoContainer]}>
-        <TouchableOpacity style={[styles.googleButton]} onPress={googleSignin}>
-          <View style={styles.googleButtonContent}>
-            <FontAwesome name="google" size={24} color="white" />
-            <Text style={styles.googleText}>Google</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity style={[styles.googleButton]} onPress={googleSignin}>
+            <View style={styles.googleButtonContent}>
+              <FontAwesome name="google" size={24} color="white" />
+              <Text style={styles.googleText}>Google</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
       </View>
     </View>
   );
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
   headerPosition: {
     width: 430,

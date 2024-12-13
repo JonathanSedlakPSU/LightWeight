@@ -6,7 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 const PushWorkout = () => {
   const navigation = useNavigation();
 
-   const workoutList = [
+  // Workout List Array
+  const workoutList = [
       // Level: Beginner, Intermediate, Advanced
 
       /* Chest */
@@ -28,8 +29,8 @@ const PushWorkout = () => {
 
       { id: 6, name: "Skull Crushers", reps: "3 x 12", level: "Beginner", 
          image: require("../Assets/Push/SkullCrushers_1.png"), },
-
   ];
+
 
   return (
    <View style={styles.container}>
@@ -59,6 +60,7 @@ const PushWorkout = () => {
  );
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

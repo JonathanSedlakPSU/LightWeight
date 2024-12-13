@@ -10,6 +10,8 @@ const ActivityPage = ({userId}) => {
 	const [modal1Open, setModal1Open] = React.useState(false);
 	const [modal2Open, setModal2Open] = React.useState(false);
 	const [userData, setUserData] = React.useState({});
+
+	// Grab user data from Firebase
 	const fetchUserData = async () => {
 		try {
 		  const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
@@ -27,6 +29,7 @@ const ActivityPage = ({userId}) => {
 	  React.useEffect(() => {
 		fetchUserData();
 	  }, []);
+
   	return (
     		<View style={styles.activityPage}>
       			<View style={[styles.goalsParent,styles.scaledContent]}>
@@ -101,13 +104,10 @@ const ActivityPage = ({userId}) => {
         				</View>
       			</View>
 
-
-				
-
-
     		</View>);
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
 	//Back
 	modalOverlay1: {

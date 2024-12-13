@@ -9,12 +9,14 @@ import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const SignUpPage = () => {
+  // Variables for saving useStates
   const navigation = useNavigation();
   const [email, setEmail] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
 
+  // Check Password
   const addUser = async () => {
     if (password !== confirmPassword) {
       Alert.alert("Error", "Passwords do not match");
@@ -47,16 +49,23 @@ const SignUpPage = () => {
       Alert.alert("Error", error.message);
     }
   };
+
+
   return (
     <View style={styles.signuppage}>
+
+      {/* Sign Up */}
       <View style={[styles.header]}>
         <View style={styles.bar} />
         <View style={[styles.header1, styles.headerPosition]}>
           <Text style={styles.login}>Sign Up</Text>
         </View>
       </View>
+
       <View style={styles.loginBox}>
         <View style={[styles.outterLayer]} />
+
+        {/* Email */}
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setEmail(text)}
@@ -64,6 +73,8 @@ const SignUpPage = () => {
             style={[styles.passwordTextbox]}
           />
         </View>
+
+        {/* Username */}
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setUsername(text)}
@@ -71,6 +82,8 @@ const SignUpPage = () => {
             style={[styles.passwordTextbox]}
           />
         </View>
+
+        {/* Password */}
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setPassword(text)}
@@ -79,6 +92,8 @@ const SignUpPage = () => {
             secureTextEntry={true}
           />
         </View>
+
+        {/* Confirm Password */}
         <View style={[styles.Layout1]}>
           <TextInput
             onChangeText={(text) => setConfirmPassword(text)}
@@ -87,17 +102,21 @@ const SignUpPage = () => {
             secureTextEntry={true}
           />
         </View>
+
+        {/* Create Account Button */}
         <View style={[styles.loginButtonContainer]}>
           <View style={[styles.loginButton]} />
           <TouchableOpacity style={styles.loginText} onPress={addUser}>
           <Text style={styles.loginText}>Create Account</Text>
           </TouchableOpacity>
         </View>
+
       </View>
     </View>
   );
 };
 
+{/* StyleSheet*/}
 const styles = StyleSheet.create({
   headerPosition: {
     width: 430,

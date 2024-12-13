@@ -11,9 +11,12 @@ import moment from "moment-timezone";
 
 
 const HomePage = ({ userId }) => {
+  // Variables for saving useStates
   const [userData, setUserData] = React.useState({});
   const [modalOpen, setModalOpen] = React.useState(false); // Daily Quest popup
   const [dailyQuests, setDailyQuests] = React.useState([]);
+  
+  // Get user data from Firebase
   const fetchUserData = async () => {
     try {
       const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
@@ -242,6 +245,7 @@ const HomePage = ({ userId }) => {
   );
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
 
     modalOverlay: {

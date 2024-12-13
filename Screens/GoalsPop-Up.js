@@ -3,6 +3,7 @@ import {StyleSheet, View, Text, TextInput} from "react-native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const GoalsPopUp = ({userId}) => {
+    // Variables for saving useStates
     const [bodyWeight1, setBodyWeight1] = React.useState("");
     const [bodyWeight2, setBodyWeight2] = React.useState("");
     const [bodyWeight3, setBodyWeight3] = React.useState("");
@@ -94,6 +95,7 @@ const GoalsPopUp = ({userId}) => {
             </View>);
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
     dailyPosition: {
         right: "0%",

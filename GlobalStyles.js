@@ -28,9 +28,9 @@ export const Color = {
    colorDarkgray: "#a3a3a3",
    colorGainsboro: "#d9d9d9",
 
-   // Red = ff0000
-   // Orange = ff3d00
-   // Purple =#4f04b3
+   // Red = #ff0000
+   // Orange = #ff3d00
+   // Purple = #4f04b3
    // PurpleBlue = #4104ba
    // Dark grey = #1c1a21
 };

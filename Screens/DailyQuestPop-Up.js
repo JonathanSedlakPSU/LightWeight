@@ -57,6 +57,7 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
     }
   };
 
+  // Functions to handle button pressing
   const handlePress1 = async () => {
     if (isImage1 === false) {
       setIsImage1(true);
@@ -214,6 +215,7 @@ const DailyQuestPopup = ({userId, dailyQuests }) => {
   );
 }
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
   childPosition: {
     bottom: "0%",

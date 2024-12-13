@@ -6,7 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 const PullWorkout = () => {
   const navigation = useNavigation();
 
-   const workoutList = [
+  // Workout List Array
+  const workoutList = [
       // Level: Beginner, Intermediate, Advanced
 
       /* Back */
@@ -28,7 +29,6 @@ const PullWorkout = () => {
 
       { id: 6, name: "Cable Curls", reps: "3 x 12", level: "Beginner", 
          image: require("../Assets/Pull/CableCurls_1.png"), },
-
   ];
 
   return (
@@ -59,6 +59,7 @@ const PullWorkout = () => {
  );
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

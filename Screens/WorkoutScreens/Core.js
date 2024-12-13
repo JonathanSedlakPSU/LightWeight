@@ -6,7 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 const CoreWorkout = () => {
   const navigation = useNavigation();
 
-   const workoutList = [
+  // Workout List Array
+  const workoutList = [
       // Level: Beginner, Intermediate, Advanced
 
       /* Core */
@@ -61,6 +62,7 @@ const CoreWorkout = () => {
  );
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -108,6 +108,7 @@ const WorkoutsPage = () => {
     		</View>);
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
   	pushLayout: {
     		width: AlignStyles.workoutButtonWidth,

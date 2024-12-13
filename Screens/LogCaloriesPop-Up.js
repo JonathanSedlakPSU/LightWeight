@@ -13,12 +13,14 @@ import { FIREBASE_DB } from "../FirebaseConfig";
 
 
 const LogCaloriesPopUp = ({ userId }) => {
+  // Variables for saving useStates
   const [cal1, setCal1] = React.useState(0);
   const [cal2, setCal2] = React.useState(0);
   const [cal3, setCal3] = React.useState(0);
   const [cal4, setCal4] = React.useState(0);
   const [userData, setUserData] = React.useState({});
 
+  // Get user data from Firebase
   const fetchUserData = async () => {
     try {
       const userDoc = await getDoc(doc(FIREBASE_DB, "Users", userId));
@@ -40,6 +42,7 @@ const LogCaloriesPopUp = ({ userId }) => {
     fetchUserData();
   }, [userId]);
 
+  // Updates the calories to Firebase
   const updateCalories = async (calNumber) => {
     try {
       const userRef = doc(FIREBASE_DB, "Users", userId);
@@ -64,6 +67,7 @@ const LogCaloriesPopUp = ({ userId }) => {
   
   return (
     <View style={styles.LogCaloriesPopUp}>
+      
       {/* Breakfast */}
       <View style={styles.calManager} />
       <View style={[styles.boxPosition1, styles.boxPositionLayout]}>
@@ -73,7 +77,6 @@ const LogCaloriesPopUp = ({ userId }) => {
           value={cal1.toString()}
           onChangeText={(text) => setCal1(parseInt(text) || 0)}
           placeholder={cal1 ? cal1.toString() : "0"}
-
           placeholderTextColor={"white"}
           style={styles.cal}
         />
@@ -118,7 +121,6 @@ const LogCaloriesPopUp = ({ userId }) => {
           value={cal3.toString()}
           onChangeText={(text) => setCal3(parseInt(text) || 0)}
           placeholder={cal3 ? cal3.toString() : "0"}
-
           placeholderTextColor={"white"}
           style={styles.cal}
         />
@@ -159,6 +161,7 @@ const LogCaloriesPopUp = ({ userId }) => {
   );
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
   dailyPosition: {
     right: "0%",

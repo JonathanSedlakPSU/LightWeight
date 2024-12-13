@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 const WarmUpsWorkout = () => {
    const navigation = useNavigation();
 
+   // Workout List Array
    const LowerBody = [
       /* Lower Body */
       { id: 1, name: "Figure-4", reps: "3 x 60sec",  
@@ -23,9 +24,10 @@ const WarmUpsWorkout = () => {
 
       { id: 5, name: "Toe Touches", reps: "2 x 30sec",  
          image: require("../Assets/Warm-Ups/LB-ToeTouches.png"), },
-  ];
+   ];
 
-  const UpperBody = [
+   // Workout List Array
+   const UpperBody = [
       /* Upper Body */
       { id: 1, name: "Back Popper", reps: "3 x 60sec",  
          image: require("../Assets/Warm-Ups/UB-Back.png"), },
@@ -59,6 +61,7 @@ const WarmUpsWorkout = () => {
 
      {/* Scrollable List */}
       <ScrollView contentContainerStyle={styles.scrollContainer}>
+         {/* Lower Body Warm Ups */}
          <View style={styles.header1}>
             <Text style={styles.headerText1}>-- Lower Body --</Text>
          </View>
@@ -74,6 +77,7 @@ const WarmUpsWorkout = () => {
             ))}
          </View>
 
+         {/* Upper Body Warm Ups */}
          <View style={styles.header1}>
             <Text style={styles.headerText1}>-- Upper Body --</Text>
          </View>
@@ -93,6 +97,7 @@ const WarmUpsWorkout = () => {
  );
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
    container: {
      flex: 1,

@@ -7,8 +7,8 @@ import { useNavigation } from "@react-navigation/native";
 const CardioWorkout = () => {
    const navigation = useNavigation();
 
+   // Workout List Array
    const workoutList = [
-      // Level: Beginner, Intermediate, Advanced
 
       /* Cardio */
       { id: 1, name: "Jump Rope", reps: "3 x 60sec",  
@@ -36,7 +36,7 @@ const CardioWorkout = () => {
          image: require("../Assets/Cardio/Tennis.png"), },
 
 
-  ];
+   ];
 
   return (
    <View style={styles.container}>
@@ -66,6 +66,7 @@ const CardioWorkout = () => {
  );
 };
 
+{/* StyleSheet */}
 const styles = StyleSheet.create({
    container: {
      flex: 1,
